@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insight Report — Pilot Evaluation Sample · Hidden Insight Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #080c10;
+    --surface:   #0c1218;
+    --surface2:  #101820;
+    --border:    rgba(100,180,255,0.08);
+    --border-hi: rgba(100,180,255,0.15);
+    --cyan:      #38c8f0;
+    --cyan-dim:  rgba(56,200,240,0.1);
+    --cyan-glow: rgba(56,200,240,0.2);
+    --green:     #3df0a0;
+    --red:       #ff5f5f;
+    --yellow:    #f5d923;
+    --amber:     #f0843d;
+    --muted:     rgba(216,232,244,0.38);
+    --dim:       rgba(216,232,244,0.2);
+    --text:      #d8e8f4;
+    --text-hi:   #ffffff;
+    --mono:      'JetBrains Mono', monospace;
+    --display:   'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px);
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+  /* TOP BAR */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border-hi);
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .top-bar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 24px; height: 24px;
+    border: 1px solid var(--cyan);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 8px var(--cyan-glow);
+  }
+
+  .logo-mark svg { width: 12px; height: 12px; }
+
+  .logo-text {
+    font-family: var(--display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-hi);
+    letter-spacing: 0.01em;
+  }
+
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .back-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--cyan); }
+
+  /* REPORT HEADER */
+  .report-header {
+    border: 1px solid var(--border-hi);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--green), transparent);
+  }
+
+  .report-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .report-brand {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-hi);
+    letter-spacing: 0.01em;
+  }
+
+  .report-brand .dot { color: var(--cyan); margin: 0 0.3rem; }
+
+  .report-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .badge {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border-hi);
+    color: var(--muted);
+  }
+
+  .badge.pilot { border-color: rgba(56,200,240,0.3); color: var(--cyan); }
+  .badge.sample { border-color: rgba(61,240,160,0.3); color: var(--green); }
+
+  .report-title {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-hi);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .report-subtitle { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.6; }
+
+  .report-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border-hi);
+    background: var(--border-hi);
+  }
+
+  .detail-cell {
+    background: var(--bg);
+    padding: 0.8rem 1rem;
+  }
+
+  .detail-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.2rem;
+  }
+
+  .detail-val { font-size: 0.8rem; color: var(--text-hi); }
+
+  /* SECTION */
+  .section { margin-bottom: 2.5rem; }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-heading h2 {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-hi);
+    letter-spacing: -0.01em;
+  }
+
+  .section-num {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(56,200,240,0.2);
+  }
+
+  /* SCORE GRID */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1px;
+    background: var(--border-hi);
+    border: 1px solid var(--border-hi);
+    margin-bottom: 1.2rem;
+  }
+
+  .score-cell {
+    background: var(--surface);
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+
+  .score-val {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .score-val.critical { color: var(--red); text-shadow: 0 0 12px rgba(255,95,95,0.3); }
+  .score-val.high     { color: var(--amber); }
+  .score-val.medium   { color: var(--yellow); }
+  .score-val.low      { color: var(--green); }
+  .score-val.neutral  { color: var(--text-hi); }
+  .score-val.cyan     { color: var(--cyan); text-shadow: 0 0 12px var(--cyan-glow); }
+
+  .score-label { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* FLOW */
+  .flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .flow-step { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+
+  .flow-node {
+    width: 110px;
+    padding: 0.6rem 0.5rem;
+    border: 1px solid var(--border-hi);
+    background: var(--surface);
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--text);
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .flow-node.has-friction { border-color: var(--amber); }
+  .flow-node.has-critical { border-color: var(--red); background: rgba(255,95,95,0.05); }
+  .flow-node.ok           { border-color: rgba(56,200,240,0.3); }
+
+  .flow-node-label { font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.25rem; }
+  .flow-node-name  { font-size: 0.68rem; color: var(--text-hi); font-weight: 500; }
+
+  .friction-inline {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem; border-radius: 2px;
+  }
+  .friction-inline.amber { background: rgba(240,132,61,0.15); color: var(--amber); border: 1px solid rgba(240,132,61,0.3); }
+  .friction-inline.red   { background: rgba(255,95,95,0.12);  color: var(--red);   border: 1px solid rgba(255,95,95,0.3); }
+  .flow-node a { text-decoration: none; color: inherit; }
+  .score-cell a { text-decoration: none; color: inherit; display: block; padding: 1.2rem 1rem; margin: -1.2rem -1rem; }
+  .score-cell a:hover { background: rgba(56,200,240,0.05); }
+
+  .flow-arrow {
+    width: 28px; display: flex; align-items: center; justify-content: center;
+    padding-top: 1.2rem; color: var(--border-hi); font-size: 0.75rem; flex-shrink: 0;
+  }
+
+  .drop-pct { font-size: 0.55rem; color: var(--red); margin-top: 0.3rem; text-align: center; }
+
+  /* FRICTION TABLE */
+  .friction-table { width: 100%; border-collapse: collapse; }
+
+  .friction-table th {
+    text-align: left; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); padding: 0.6rem 0.8rem;
+    background: var(--surface); border: 1px solid var(--border); white-space: nowrap;
+  }
+
+  .friction-table td {
+    padding: 0.85rem 0.8rem; border: 1px solid var(--border);
+    font-size: 0.75rem; vertical-align: top; background: var(--bg);
+  }
+
+  .friction-table tr:hover td { background: var(--surface); }
+
+  .sev-pill {
+    display: inline-block; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.18rem 0.5rem; font-weight: 500; white-space: nowrap;
+  }
+  .sev-critical { background: rgba(255,95,95,0.12); color: var(--red); border: 1px solid rgba(255,95,95,0.25); }
+  .sev-high     { background: rgba(240,132,61,0.1); color: var(--amber); border: 1px solid rgba(240,132,61,0.25); }
+  .sev-medium   { background: rgba(245,217,35,0.08); color: var(--yellow); border: 1px solid rgba(245,217,35,0.2); }
+  .sev-low      { background: rgba(61,240,160,0.07); color: var(--green); border: 1px solid rgba(61,240,160,0.18); }
+
+  .freq-bar { display: flex; align-items: center; gap: 0.5rem; }
+  .freq-track { width: 56px; height: 3px; background: var(--border-hi); position: relative; }
+  .freq-fill  { height: 100%; background: var(--cyan); }
+  .freq-label { font-size: 0.68rem; color: var(--text-hi); white-space: nowrap; }
+
+  .location-tag {
+    font-size: 0.62rem; color: var(--cyan); background: var(--cyan-dim);
+    padding: 0.1rem 0.4rem; border: 1px solid rgba(56,200,240,0.15); display: inline-block;
+  }
+
+  .quote { font-size: 0.72rem; color: var(--muted); font-style: italic; line-height: 1.6; }
+  .quote::before { content: '"'; color: var(--cyan); }
+  .quote::after  { content: '"'; color: var(--cyan); }
+
+  /* DEVICE TABLE */
+  .device-table { width: 100%; border-collapse: collapse; }
+  .device-table th {
+    text-align: left; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); padding: 0.5rem 0.8rem;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .device-table td {
+    padding: 0.65rem 0.8rem; border: 1px solid var(--border);
+    font-size: 0.75rem; background: var(--bg);
+  }
+
+  /* RECOMMENDATIONS */
+  .rec-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .rec {
+    display: flex; gap: 1rem;
+    border: 1px solid var(--border-hi); padding: 1.2rem;
+    background: var(--surface); align-items: flex-start;
+  }
+
+  .rec-rank {
+    font-family: var(--display); font-size: 1.8rem; font-weight: 800;
+    color: var(--border-hi); line-height: 1; flex-shrink: 0;
+    width: 2.2rem; text-align: center; letter-spacing: -0.04em; margin-top: -0.1rem;
+  }
+
+  .rec-body { flex: 1; }
+
+  .rec-title {
+    font-family: var(--display); font-size: 0.9rem; font-weight: 700;
+    color: var(--text-hi); margin-bottom: 0.3rem;
+  }
+
+  .rec-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.6rem; }
+
+  .rec-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .rec-tag {
+    font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.18rem 0.5rem; border: 1px solid var(--border-hi); color: var(--muted);
+  }
+
+  /* CALLOUT */
+  .callout {
+    border: 1px solid var(--border-hi); border-left: 2px solid var(--cyan);
+    padding: 1.2rem 1.5rem; background: var(--surface);
+    font-size: 0.8rem; color: var(--text); line-height: 1.8;
+  }
+  .callout strong { color: var(--text-hi); }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.62rem; color: var(--muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* UPGRADE CALLOUT */
+  .upgrade-band {
+    border: 1px solid rgba(56,200,240,0.2);
+    background: linear-gradient(135deg, rgba(56,200,240,0.04), rgba(61,240,160,0.02));
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .upgrade-band h3 {
+    font-family: var(--display); font-size: 0.95rem; font-weight: 700;
+    color: var(--text-hi); margin-bottom: 0.4rem;
+  }
+
+  .upgrade-band p { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+
+  .upgrade-btn {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bg); background: var(--cyan); padding: 0.65rem 1.4rem;
+    text-decoration: none; white-space: nowrap; display: inline-block;
+    box-shadow: 0 0 16px var(--cyan-glow);
+  }
+
+  /* FOOTER */
+  .report-footer {
+    border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .report-footer p { font-size: 0.62rem; color: var(--muted); line-height: 1.6; }
+
+  .confidential {
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--border-hi); padding: 0.2rem 0.6rem;
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 1.5rem 1rem 4rem; }
+    .report-header { padding: 1.5rem; }
+    .upgrade-band { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="index.html" class="top-bar-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#38c8f0" stroke-width="1.5">
+          <circle cx="7" cy="7" r="2.5"/>
+          <path d="M7 1v2M7 11v2M1 7h2M11 7h2M3 3l1.4 1.4M9.6 9.6L11 11M3 11l1.4-1.4M9.6 4.4L11 3"/>
+        </svg>
+      </div>
+      <span class="logo-text">Hidden Insight Labs</span>
+    </a>
+    <div class="top-bar-right">
+      <a href="index.html#pricing" class="back-link">← Back to Site</a>
+    </div>
+  </div>
+
+  <!-- REPORT HEADER -->
+  <div class="report-header">
+    <div class="report-meta">
+      <div class="report-brand">Hidden Insight Labs<span class="dot">·</span>Insight Report</div>
+      <div class="report-badges">
+        <span class="badge sample">Sample Document</span>
+        <span class="badge pilot">Pilot Evaluation</span>
+        <span class="badge">Zero Integration</span>
+      </div>
+    </div>
+
+    <div class="report-title">Friction Map: First-Session Onboarding</div>
+    <div class="report-subtitle">
+      <span style="background:rgba(216,232,244,0.12);color:rgba(216,232,244,0.5);padding:0.05rem 0.5rem;letter-spacing:0.06em;font-size:0.75rem;border:1px solid rgba(216,232,244,0.1);user-select:none;">[CLIENT APP]</span> &nbsp;·&nbsp; Mobile Application &nbsp;·&nbsp; Tester panel: 5 participants &nbsp;·&nbsp;
+      Flow evaluated: App install → Tutorial complete → First dungeon entered &nbsp;·&nbsp;
+      Devices: iOS and Android, mixed hardware
+    </div>
+
+    <div class="report-details">
+      <div class="detail-cell">
+        <div class="detail-label">Report Date</div>
+        <div class="detail-val">April 2026</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Engagement Type</div>
+        <div class="detail-val">Pilot Evaluation</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Panel Size</div>
+        <div class="detail-val">5 testers</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Skill Range</div>
+        <div class="detail-val">Casual → Core gamer</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Integration Required</div>
+        <div class="detail-val">None</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Flow Completion</div>
+        <div class="detail-val" style="color:var(--amber)">3 / 5 (60%)</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Friction Points Found</div>
+        <div class="detail-val" style="color:var(--red)">7</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-label">Testing Window</div>
+        <div class="detail-val">~48 hours</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. SEVERITY SUMMARY -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Severity Summary</h2>
+    </div>
+    <div class="score-grid">
+      <div class="score-cell"><a href="#f-critical"><div class="score-val critical">1</div><div class="score-label">Critical ↓</div></a></div>
+      <div class="score-cell"><a href="#f-high"><div class="score-val high">3</div><div class="score-label">High ↓</div></a></div>
+      <div class="score-cell"><a href="#f-medium"><div class="score-val medium">2</div><div class="score-label">Medium ↓</div></a></div>
+      <div class="score-cell"><a href="#f-low"><div class="score-val low">1</div><div class="score-label">Low ↓</div></a></div>
+      <div class="score-cell">
+        <div class="score-val" style="color:var(--amber)">60%</div>
+        <div class="score-label">Flow Completion</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-val" style="color:var(--red)">2/5</div>
+        <div class="score-label">Abandoned Flow</div>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Overall assessment:</strong> The first-session experience contains one critical blocker — a permissions prompt sequence that caused 2 of 5 testers to uninstall the app before reaching gameplay. The remaining 3 completions were characterised by repeated hesitation during the tutorial's combat instruction phase, where testers were expected to discover a gesture mechanic with no visual cue. These issues are concentrated in the first 4 minutes of use and represent high-risk churn points at the earliest stage of the player lifecycle. Findings from this panel are directionally clear; a Small Evaluation with a broader panel would confirm severity distribution and reveal secondary issues not surfaced at this scale.
+    </div>
+  </div>
+
+  <!-- 2. TESTER PANEL -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Tester Panel</h2>
+    </div>
+    <table class="device-table">
+      <thead>
+        <tr>
+          <th>Tester</th>
+          <th>Device</th>
+          <th>OS</th>
+          <th>Gaming Profile</th>
+          <th>Session Length</th>
+          <th>Completed Flow</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--dim)">T-01</td>
+          <td>iPhone 14</td>
+          <td>iOS 17.4</td>
+          <td>Casual (mobile only)</td>
+          <td>6 min</td>
+          <td style="color:var(--red)">No — uninstalled</td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">T-02</td>
+          <td>Samsung Galaxy A54</td>
+          <td>Android 14</td>
+          <td>Core gamer (console + mobile)</td>
+          <td>18 min</td>
+          <td style="color:var(--green)">Yes</td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">T-03</td>
+          <td>Pixel 7</td>
+          <td>Android 14</td>
+          <td>Mid-core (mobile primarily)</td>
+          <td>14 min</td>
+          <td style="color:var(--green)">Yes</td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">T-04</td>
+          <td>iPhone 13 mini</td>
+          <td>iOS 16.7</td>
+          <td>Casual (occasional mobile)</td>
+          <td>5 min</td>
+          <td style="color:var(--red)">No — uninstalled</td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">T-05</td>
+          <td>OnePlus 11</td>
+          <td>Android 13</td>
+          <td>Mid-core (mobile + PC)</td>
+          <td>21 min</td>
+          <td style="color:var(--green)">Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. FLOW MAP -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Flow Friction Map</h2>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Critical — caused abandonment</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div> High / medium friction</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--cyan);opacity:0.5"></div> Completed without significant issue</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-node ok">
+          <div class="flow-node-label">Step 1</div>
+          <div class="flow-node-name">App Store / Install</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-node has-critical">
+          <a href="#f-permissions">
+          <div class="flow-node-label">Step 2</div>
+          <div class="flow-node-name">Launch &amp; Permissions</div>
+          <span class="friction-inline red">! Critical</span>
+          </a>
+        </div>
+        <div class="drop-pct">2 uninstalled here</div>
+      </div>
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-node ok">
+          <div class="flow-node-label">Step 3</div>
+          <div class="flow-node-name">Character Select</div>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-node has-friction">
+          <a href="#f-tutorial">
+          <div class="flow-node-label">Step 4</div>
+          <div class="flow-node-name">Combat Tutorial</div>
+          <span class="friction-inline amber">3 issues</span>
+          </a>
+        </div>
+        <div class="drop-pct">avg. 3 retries</div>
+      </div>
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-node has-friction">
+          <a href="#f-mapnav">
+          <div class="flow-node-label">Step 5</div>
+          <div class="flow-node-name">Map Navigation</div>
+          <span class="friction-inline amber">2 issues</span>
+          </a>
+        </div>
+      </div>
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-node ok">
+          <div class="flow-node-label">Step 6</div>
+          <div class="flow-node-name">First Dungeon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. FRICTION LOG -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Friction Point Log</h2>
+    </div>
+
+    <table class="friction-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Severity</th>
+          <th>Frequency</th>
+          <th>Tester Quote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="f-critical" id="f-permissions">
+          <td style="color:var(--dim)">F-01</td>
+          <td><span class="location-tag">Launch &amp; Permissions</span></td>
+          <td style="color:var(--text)">App requests camera, microphone, and contacts permissions on first launch before any gameplay context has been established. Both casual testers denied all permissions and uninstalled within 6 minutes, citing the requests as "suspicious."</td>
+          <td><span class="sev-pill sev-critical">Critical</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:40%"></div></div>
+              <span class="freq-label">2/5</span>
+            </div>
+          </td>
+          <td><span class="quote">Why does a game need my camera? I'm not installing something that wants all my stuff before I even play it.</span></td>
+        </tr>
+        <tr id="f-high" id="f-tutorial">
+          <td style="color:var(--dim)">F-02</td>
+          <td><span class="location-tag">Combat Tutorial</span></td>
+          <td style="color:var(--text)">The "power slash" mechanic requires a two-finger diagonal swipe — taught only through a single static icon with no animation, haptic cue, or retry prompt. All 3 completing testers attempted this gesture multiple times incorrectly before succeeding.</td>
+          <td><span class="sev-pill sev-high">High</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:60%"></div></div>
+              <span class="freq-label">3/3</span>
+            </div>
+          </td>
+          <td><span class="quote">I kept swiping and nothing was happening. I didn't know if I was doing it wrong or if it was broken.</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">F-03</td>
+          <td><span class="location-tag">Combat Tutorial</span></td>
+          <td style="color:var(--text)">Tutorial timer creates visible urgency with no option to pause. One tester exited to the menu mid-tutorial to search for a pause option and lost all progress.</td>
+          <td><span class="sev-pill sev-high">High</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:40%"></div></div>
+              <span class="freq-label">2/3</span>
+            </div>
+          </td>
+          <td><span class="quote">The countdown was stressing me out. I wanted to read the instructions but the timer kept going.</span></td>
+        </tr>
+        <tr id="f-mapnav">
+          <td style="color:var(--dim)">F-04</td>
+          <td><span class="location-tag">Map Navigation</span></td>
+          <td style="color:var(--text)">World map uses unlabeled icons for dungeon types. Testers could not distinguish between "story" and "daily challenge" dungeons without trial and error. Two testers entered a challenge dungeon with starter equipment and were eliminated.</td>
+          <td><span class="sev-pill sev-high">High</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:60%"></div></div>
+              <span class="freq-label">2/3</span>
+            </div>
+          </td>
+          <td><span class="quote">I had no idea what the icons meant. I just tapped one and ended up in something way too hard for where I was.</span></td>
+        </tr>
+        <tr id="f-medium">
+          <td style="color:var(--dim)">F-05</td>
+          <td><span class="location-tag">Combat Tutorial</span></td>
+          <td style="color:var(--text)">Audio cues for enemy attack warnings are too quiet on default volume and do not scale with device volume. Testers playing in a typical environment (ambient noise) missed all audio-based warnings.</td>
+          <td><span class="sev-pill sev-medium">Medium</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:60%"></div></div>
+              <span class="freq-label">3/3</span>
+            </div>
+          </td>
+          <td><span class="quote">I didn't even notice there was sound telling me something was about to happen.</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--dim)">F-06</td>
+          <td><span class="location-tag">Map Navigation</span></td>
+          <td style="color:var(--text)">"Return to base" button is not visible while on the dungeon selection screen on smaller displays (iPhone 13 mini). Tester had to use the hardware back gesture to exit, which triggered an unintended app close.</td>
+          <td><span class="sev-pill sev-medium">Medium</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:20%"></div></div>
+              <span class="freq-label">1/3</span>
+            </div>
+          </td>
+          <td><span class="quote">I couldn't find a back button so I used the phone's gesture and it closed the whole app.</span></td>
+        </tr>
+        <tr id="f-low" id="f-charselect">
+          <td style="color:var(--dim)">F-07</td>
+          <td><span class="location-tag">Character Select</span></td>
+          <td style="color:var(--text)">Character stat tooltips require a long-press to view but this interaction is not indicated. Testers skipped character selection without reading stats, defaulting to visual preference.</td>
+          <td><span class="sev-pill sev-low">Low</span></td>
+          <td>
+            <div class="freq-bar">
+              <div class="freq-track"><div class="freq-fill" style="width:60%"></div></div>
+              <span class="freq-label">3/3</span>
+            </div>
+          </td>
+          <td><span class="quote">I just picked the one that looked coolest. I didn't know there was more info available.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5. PRIORITISED RECOMMENDATIONS -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Prioritised Recommendations</h2>
+    </div>
+
+    <div class="rec-list">
+      <div class="rec">
+        <div class="rec-rank">1</div>
+        <div class="rec-body">
+          <div class="rec-title">Defer all permissions requests until a contextual moment — never on first launch</div>
+          <p class="rec-desc">Camera and microphone permissions should only be requested when a feature that requires them is about to be used, accompanied by a one-line explanation of why. Contacts access should be deferred to the "invite friends" flow, not the initial launch. This change would have prevented both early abandonments in this panel. This is the highest-ROI fix available — it costs minimal development effort and directly removes the most significant churn point in the first-session experience.</p>
+          <div class="rec-meta">
+            <span class="rec-tag">Affects: F-01</span>
+            <span class="rec-tag">Effort: Low</span>
+            <span class="rec-tag">Impact: Critical</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <div class="rec-rank">2</div>
+        <div class="rec-body">
+          <div class="rec-title">Replace static gesture icon with animated tutorial and haptic feedback</div>
+          <p class="rec-desc">The power slash instruction should use a looped animation demonstrating the two-finger diagonal swipe, paired with a gentle haptic pulse on correct execution. Add a "try again" prompt after 2 failed attempts. Gesture-based mechanics are a known UX risk on mobile — the tutorial should expect failure, not assume success.</p>
+          <div class="rec-meta">
+            <span class="rec-tag">Affects: F-02</span>
+            <span class="rec-tag">Effort: Medium</span>
+            <span class="rec-tag">Impact: High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <div class="rec-rank">3</div>
+        <div class="rec-body">
+          <div class="rec-title">Remove or pause the tutorial countdown timer; reading and learning require time</div>
+          <p class="rec-desc">A countdown timer during instructional content creates anxiety and forces testers to choose between reading and acting. Either remove the timer entirely from tutorial sections or implement an auto-pause when instructional overlays are visible. Consider offering a "relaxed mode" toggle for players who want a less pressured introduction.</p>
+          <div class="rec-meta">
+            <span class="rec-tag">Affects: F-03</span>
+            <span class="rec-tag">Effort: Low</span>
+            <span class="rec-tag">Impact: High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <div class="rec-rank">4</div>
+        <div class="rec-body">
+          <div class="rec-title">Add text labels and difficulty indicators to all dungeon map icons</div>
+          <p class="rec-desc">Map icons should display a short text label on tap and a visible recommended level or difficulty indicator. New players should never be able to enter end-game content by accident. Consider adding a warning prompt ("This dungeon is recommended for Level 15+. You are Level 1. Continue?") as a short-term solution while icons are redesigned.</p>
+          <div class="rec-meta">
+            <span class="rec-tag">Affects: F-04</span>
+            <span class="rec-tag">Effort: Low–Medium</span>
+            <span class="rec-tag">Impact: High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <div class="rec-rank">5</div>
+        <div class="rec-body">
+          <div class="rec-title">Increase default audio volume for warning cues; add visual fallback</div>
+          <p class="rec-desc">Enemy attack warnings should have a visual component (brief screen flash or icon pulse) that functions independently of audio. Increase the default mixing level for warning sounds. This change improves accessibility for players with hearing differences while also solving the ambient-noise problem reported by all testers.</p>
+          <div class="rec-meta">
+            <span class="rec-tag">Affects: F-05</span>
+            <span class="rec-tag">Effort: Low</span>
+            <span class="rec-tag">Impact: Medium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE CALLOUT -->
+  <div class="upgrade-band">
+    <div>
+      <h3>Want deeper coverage? This is what a Small Evaluation adds.</h3>
+      <p>A Small Evaluation would expand this panel to ~20 testers across a wider range of devices, OS versions, and player profiles — including older hardware that pilots don't cover. It would also add a second testing pass after changes are made, so you can verify that fixes resolved the issues found here. <a href="hil-report-small.html" style="color:var(--cyan);text-decoration:none">View the Small Evaluation sample report →</a></p>
+    </div>
+    <a href="index.html#contact" class="upgrade-btn">Request a Small Evaluation</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="report-footer">
+    <div>
+      <p style="margin-bottom:0.25rem; color:var(--text-hi); font-size:0.68rem;">Hidden Insight Labs</p>
+      <p>This is a sample document. All product names, testers, and findings are fictional and for illustrative purposes only.</p>
+    </div>
+    <span class="confidential">Sample — Not Confidential</span>
+  </div>
+
+</div>
+</body>
+</html>
