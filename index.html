@@ -396,7 +396,7 @@
       background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 3.5rem 3rem;
+      padding: 4rem 3rem;
     }
 
     .signal-grid {
@@ -409,6 +409,9 @@
       padding: 0 2.5rem;
       border-right: 1px solid var(--border);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .signal-stat:first-child { padding-left: 0; }
@@ -433,6 +436,16 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--dim);
+      margin-bottom: 0.3rem;
+    }
+
+    .signal-sublabel {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 0.25rem;
+      font-family: var(--body);
     }
 
     /* ── WHO WE HELP ── */
@@ -1059,45 +1072,216 @@
     }
 
     /* ── CTA ── */
-    .cta-section {
+    /* ── CONTACT SECTION ── */
+    .contact-section {
       position: relative;
       overflow: hidden;
-      text-align: center;
       padding: 7rem 3rem;
+      background: var(--bg);
     }
 
-    .cta-section .bg-orb {
+    .contact-section .bg-orb {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 700px;
-      height: 700px;
+      width: 900px;
+      height: 900px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(56,200,240,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(56,200,240,0.05) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    .cta-inner { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+    .contact-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
 
-    .cta-section h2 {
+    .contact-left h2 {
       font-family: var(--display);
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       margin-bottom: 1.25rem;
     }
 
-    .cta-section h2 span { color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); }
+    .contact-left h2 span { color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); }
 
-    .cta-section p {
-      font-size: 1rem;
+    .contact-left p {
+      font-size: 0.95rem;
       font-weight: 300;
       color: var(--muted);
-      margin-bottom: 2.5rem;
-      line-height: 1.65;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .contact-guarantee {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .contact-guarantee-item::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+      box-shadow: 0 0 6px var(--cyan-glow);
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      position: relative;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--green), transparent);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      padding: 0.65rem 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: var(--dim); }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: rgba(56,200,240,0.4);
+      background: var(--surface);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.6;
+    }
+
+    .form-field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23556677' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2rem;
+    }
+
+    .form-field select option { background: #0c1218; color: var(--text); }
+
+    .form-submit {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--cyan);
+      border: none;
+      padding: 0.9rem 2rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--cyan-glow);
+      transition: box-shadow 0.2s, transform 0.15s;
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      box-shadow: 0 0 36px var(--cyan-glow);
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--dim);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .form-success h3 {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 960px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
     }
 
     /* ── FOOTER ── */
@@ -1240,24 +1424,25 @@
     <div class="hero-orb"></div>
 
     <div class="hero-content">
-      <div class="hero-tag">Real Humans · Real Devices · AR / Mobile / Desktop</div>
+      <div class="hero-tag">Mobile · AR · Desktop · AI — Real Humans, Real Conditions</div>
       <h1 class="hero-headline">
-        Your Software.<br/>
-        <span class="hl">Tested by Hundreds</span><br/>
-        Before Anyone Else Sees It.
+        You've Built<br/>
+        Something Real.<br/>
+        <span class="hl">Don't Let Launch Day</span><br/>
+        Be the Test.
       </h1>
       <p class="hero-body">
-        Hidden Insight Labs deploys a distributed global network of real testers to find what internal teams can't see — reliability failures, usability gaps, and edge cases hiding in the long tail of real-world conditions.
+        Your team has poured months into this. The last thing you need is for strangers on the internet to find your bugs before you do. Hidden Insight Labs puts independent human analysts inside your product — before it ships.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Start an Evaluation</a>
-        <a href="#pricing" class="btn-ghost">View Pricing</a>
+        <a href="#contact" class="btn-primary">Talk to Us Before Your Launch</a>
+        <a href="#reports" class="btn-ghost">See Sample Reports</a>
       </div>
     </div>
 
     <!-- LIVE TESTER TICKER -->
     <div class="ticker-bar">
-      <div class="ticker-label">Live tester network — active participants</div>
+      <div class="ticker-label">Our analysts — testing right now, somewhere in the world</div>
       <div class="ticker-track" id="ticker">
         <!-- items injected by JS -->
       </div>
@@ -1268,20 +1453,24 @@
   <div class="signal-strip">
     <div class="signal-grid stagger">
       <div class="signal-stat">
-        <div class="signal-num cyan">Global</div>
-        <div class="signal-label">Distributed tester network</div>
+        <div class="signal-num cyan">100<span style="font-size:1.4rem;letter-spacing:0">+</span></div>
+        <div class="signal-label">Human analysts on our network</div>
+        <div class="signal-sublabel">People who approach your product the way a real user does — without knowing how it was built or what it was supposed to do.</div>
       </div>
       <div class="signal-stat">
-        <div class="signal-num green">48h</div>
-        <div class="signal-label">Pilot turnaround</div>
+        <div class="signal-num green" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">Every<br/>platform</div>
+        <div class="signal-label">Mobile · AR · Desktop · AI</div>
+        <div class="signal-sublabel">We test in the environments your users actually inhabit — not a controlled lab that looks nothing like the real world.</div>
       </div>
       <div class="signal-stat">
-        <div class="signal-num orange">Zero</div>
-        <div class="signal-label">SDK or integration required</div>
+        <div class="signal-num orange" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">One bad<br/>review</div>
+        <div class="signal-label">Is all it takes to change the story</div>
+        <div class="signal-sublabel">App store ratings don't forgive first impressions. Neither do journalists, streamers, or early adopters.</div>
       </div>
       <div class="signal-stat">
-        <div class="signal-num white">Wide</div>
-        <div class="signal-label">Device &amp; OS coverage</div>
+        <div class="signal-num white" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">Found<br/>first by us</div>
+        <div class="signal-label">Not by your users</div>
+        <div class="signal-sublabel">That's the only difference between a confident launch and a crisis update on day one.</div>
       </div>
     </div>
   </div>
@@ -1289,9 +1478,9 @@
   <!-- ── NETWORK SECTION ── -->
   <section id="network" class="network-section">
     <div class="fade-up">
-      <div class="section-label">The Tester Network</div>
-      <h2 class="section-title">Hundreds of Real People.<br />One Coordinated Signal.</h2>
-      <p class="section-sub">Every evaluation draws from our global pool of trained testers — real humans on real devices, in real network conditions, approaching your software the way actual users do.</p>
+      <div class="section-label">The Problem with Internal Testing</div>
+      <h2 class="section-title">Your Team Is Too Good<br />at <span style="color:var(--cyan)">Knowing Your Product.</span></h2>
+      <p class="section-sub">That sounds like a strength. In testing, it's a liability. The more your team understands how something works, the less they can experience it as a stranger would. They skip the confusion. They fill in the gaps. They know which button to press. Your users don't.</p>
     </div>
 
     <div class="network-canvas-wrap fade-up">
@@ -1304,15 +1493,15 @@
     <div class="network-facts stagger">
       <div class="network-fact">
         <div class="network-fact-dot" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></div>
-        <p><strong>Diverse devices</strong> — mobile, tablet, desktop, legacy hardware, and everything in between.</p>
+        <p><strong>Real devices, real conditions</strong> — mobile, tablet, desktop, legacy hardware, AR-capable hardware. The long tail your QA lab doesn't cover.</p>
       </div>
       <div class="network-fact">
         <div class="network-fact-dot" style="background:var(--green);box-shadow:0 0 8px var(--green)"></div>
-        <p><strong>Global coverage</strong> — testers across North America, Europe, Asia-Pacific, and beyond.</p>
+        <p><strong>No shared assumptions</strong> — our analysts don't know your roadmap, your intent, or your workarounds. They only know what's in front of them. That's the point.</p>
       </div>
       <div class="network-fact">
         <div class="network-fact-dot" style="background:var(--orange);box-shadow:0 0 8px var(--orange)"></div>
-        <p><strong>Structured tasks</strong> — every tester follows a defined evaluation protocol, producing consistent, comparable signal.</p>
+        <p><strong>Structured signal, not chaos</strong> — every analyst follows a defined evaluation protocol. What comes back isn't a list of complaints. It's a prioritised, actionable report.</p>
       </div>
     </div>
   </section>
@@ -1320,14 +1509,14 @@
   <!-- ── WHO WE HELP ── -->
   <section id="services" class="who-section">
     <div class="fade-up">
-      <div class="section-label">Who We Help</div>
-      <h2 class="section-title">Built for Complex Software Teams</h2>
-      <p class="section-sub" style="margin-bottom:0">We work with studios, platforms, and product teams who need independent eyes before launch.</p>
+      <div class="section-label">Who We Work With</div>
+      <h2 class="section-title">If You're Shipping Software,<br/>You Have Something to Lose.</h2>
+      <p class="section-sub" style="margin-bottom:0">We work with founders, producers, leads, and CTOs — anyone who knows that a bad launch isn't just a bad day. It's a bad quarter.</p>
     </div>
     <div class="who-layout">
       <div class="fade-up" style="padding-top:3rem">
-        <p style="font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--muted);margin-bottom:1.25rem">Internal teams are experts at building systems. They are not experts at <em style="color:var(--text)">forgetting what they know</em> about them.</p>
-        <p style="font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--muted)">When hundreds of independent testers explore your product without assumptions, the gaps become visible. That's the data your internal QA can't generate — and it's what we specialise in collecting.</p>
+        <p style="font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--muted);margin-bottom:1.25rem">The teams we work with are talented. They've done their internal testing. They care deeply about quality. And they still want someone outside the building to look at what they've built — because they know how much is at stake.</p>
+        <p style="font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--muted)">We're not here to replace your QA process. We're the independent layer that catches what proximity makes invisible — and turns it into something your team can actually act on.</p>
       </div>
       <div class="who-cards stagger">
         <div class="who-card">
@@ -1337,7 +1526,7 @@
             <circle cx="16" cy="20" r="3"/>
           </svg>
           <h3>Game Studios</h3>
-          <p>Pre-launch testing across hardware, OS, and player profiles. Surface what breaks before launch day does.</p>
+          <p>A 1-star review that says "constant crashes on Android" lives on your store page forever. We find those crashes first — across the hardware combinations you didn't think to test.</p>
         </div>
         <div class="who-card who-card--ar">
           <svg class="who-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -1346,7 +1535,7 @@
             <path d="M16 10v12M10 16h12"/>
           </svg>
           <h3>Augmented Reality</h3>
-          <p>AR apps demand testing across environments, lighting conditions, and physical spaces that can't be replicated in a lab. We deploy testers in the real world — indoors, outdoors, across devices.</p>
+          <p>AR breaks in ways a desk test can't predict — wrong lighting, cluttered backgrounds, outdoor glare, different room sizes. We deploy analysts into those real conditions, because that's where your users will be.</p>
           <div class="who-card-tag">Spatial · LiDAR · ARKit · ARCore</div>
         </div>
         <div class="who-card">
@@ -1354,8 +1543,8 @@
             <path d="M6 26l6-6 5 5 9-12"/>
             <circle cx="27" cy="9" r="3"/>
           </svg>
-          <h3>AI Systems</h3>
-          <p>Reliability profiling and unexpected-output discovery for AI-enabled software.</p>
+          <h3>AI-Enabled Products</h3>
+          <p>AI systems surface unexpected behaviours under real-world usage patterns that no benchmark anticipates. We map those edges before your users encounter them and share them publicly.</p>
         </div>
         <div class="who-card">
           <svg class="who-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -1364,7 +1553,7 @@
             <circle cx="22" cy="22" r="3"/>
           </svg>
           <h3>Software Platforms</h3>
-          <p>Independent evaluation before major releases — seen through the eyes of real users, not internal assumptions.</p>
+          <p>Major releases carry the weight of everything you've built. Independent eyes give you the confidence to ship — or the warning to wait. Either way, you're better off knowing.</p>
         </div>
       </div>
     </div>
@@ -1374,23 +1563,23 @@
   <section id="process" class="process-section">
     <div class="fade-up">
       <div class="section-label">How It Works</div>
-      <h2 class="section-title">From Scope to Signal in Three Steps</h2>
+      <h2 class="section-title">Simple to Start.<br/>Serious When It Matters.</h2>
     </div>
     <div class="process-steps stagger">
       <div class="process-step">
         <div class="process-step-num">STEP 01</div>
-        <h3>Define the Scope</h3>
-        <p>We work with your team to identify the systems, features, and risk areas to target. No lengthy onboarding — a focused kick-off to set clear objectives and select the right tester profile.</p>
+        <h3>Tell Us What You're Worried About</h3>
+        <p>You know your product better than anyone. You also know which parts make you nervous. We start there — a focused conversation about your release, your risk areas, and what kind of users we should be recruiting to test it.</p>
       </div>
       <div class="process-step">
         <div class="process-step-num">STEP 02</div>
-        <h3>Deploy the Network</h3>
-        <p>We activate the right slice of our tester network — matched to your target user base by device, region, OS, and experience level. They test your product in real conditions, without assumptions.</p>
+        <h3>We Put Real People Inside Your Product</h3>
+        <p>We recruit from our analyst network — matching device profile, experience level, and region to your actual target audience. They use your software the way real users do: imperfectly, unpredictably, and without reading the manual.</p>
       </div>
       <div class="process-step">
         <div class="process-step-num">STEP 03</div>
-        <h3>Receive Clear Insight</h3>
-        <p>You receive a structured, prioritised report — failure modes, usability risks, and edge cases ranked by severity. Larger engagements include a live debrief with your development team.</p>
+        <h3>You Get a Report You Can Actually Use</h3>
+        <p>Not a spreadsheet of complaints. A structured, prioritised insight report — friction points ranked by severity, supported by tester quotes, completion data, and specific recommendations. Your developers know exactly what to fix first.</p>
       </div>
     </div>
   </section>
@@ -1399,12 +1588,12 @@
   <section id="reports" class="reports-section">
     <div class="reports-intro fade-up">
       <div class="reports-intro-left">
-        <div class="section-label">Sample Reports</div>
-        <h2>See Exactly<br/><span>What You Get.</span></h2>
+        <div class="section-label">Before You Commit — Read the Evidence</div>
+        <h2>This Is What<br/><span>We Actually Deliver.</span></h2>
       </div>
       <div class="reports-intro-right">
-        <p>Every engagement ends with a structured insight report — not a raw bug list. Before you commit, read the real thing. These samples show the depth, format, and actionability of what we deliver at each tier.</p>
-        <p>Our reports include friction maps, tester panel details, severity rankings, cross-tester behavioural patterns, prioritised recommendations, and — for multi-pass engagements — verified before/after comparisons.</p>
+        <p>We don't ask you to take our word for it. These are real-format sample reports — written exactly as we'd write them for a paying client, with fictional product details. Read them before you decide. That's the point.</p>
+        <p>See how we document friction points, how we rank severity, how we surface patterns across testers, and — in the Small Evaluation — how we verify that fixes actually worked.</p>
       </div>
     </div>
 
@@ -1425,7 +1614,7 @@
           </div>
           <div class="report-card-tier">Pilot Evaluation</div>
           <div class="report-card-name">Pilot Insight Report</div>
-          <p class="report-card-desc">A real-format sample of what a 48-hour Pilot Evaluation delivers — 5 testers, one focused flow, 7 friction points surfaced, and 5 prioritised recommendations your team can act on immediately.</p>
+          <p class="report-card-desc">Not sure what you'd get? This sample shows exactly how a Pilot reads — the friction map, the tester panel, the quotes, the severity rankings, and five prioritised recommendations ready for your dev team.</p>
           <div class="report-card-meta">
             <div class="report-card-meta-item">
               <span class="rcm-label">Panel Size</span>
@@ -1466,7 +1655,7 @@
           </div>
           <div class="report-card-tier">Small Evaluation · 2-Pass</div>
           <div class="report-card-name">Small Evaluation Report</div>
-          <p class="report-card-desc">A full-depth sample of a Small Evaluation — 21 testers across 2 passes, 16 friction points in Pass 1, a client patch window, then Pass 2 verification. Completion rate improved from 57% to 86%. Includes cross-tester patterns, completion analysis, and verified before/after fix data.</p>
+          <p class="report-card-desc">This sample shows what happens when you go deeper — 21 testers, two testing passes, and verified proof that the fixes worked. Completion rate lifted from 57% to 86% between passes. This is what informed shipping looks like.</p>
           <div class="report-card-meta">
             <div class="report-card-meta-item">
               <span class="rcm-label">Panel Size</span>
@@ -1499,8 +1688,8 @@
   <section id="pricing">
     <div class="fade-up">
       <div class="section-label">Engagements</div>
-      <h2 class="section-title">Choose Your Scope</h2>
-      <p class="section-sub">Every evaluation starts with people — matched to your product, your platform, and your risk areas.</p>
+      <h2 class="section-title">Start Small.<br/>Go as Deep as You Need.</h2>
+      <p class="section-sub">Most clients begin with a Pilot to see what we find. Many come back for more. The engagement tier is your call — we'll tell you honestly what level of coverage your release warrants.</p>
 
     </div>
     <div class="pricing-grid stagger">
@@ -1517,7 +1706,7 @@
         <div class="pilot-discount-block">
           <div class="was">Standard pilot price: $1,500</div>
           <div class="saving">80% discount for first-time clients</div>
-          <div class="note">This price is for new clients only and is not renewable at the same rate. It's designed so you can see our work before committing further.</div>
+          <div class="note">This offer exists because we believe in the work. See what we find before you commit to anything larger. New clients only — not renewable at this rate.</div>
         </div>
         <hr class="pricing-rule" />
         <ul class="pricing-features">
@@ -1576,13 +1765,76 @@
     </div>
   </section>
 
-  <!-- ── CTA ── -->
-  <section id="contact" class="cta-section">
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="contact-section">
     <div class="bg-orb"></div>
-    <div class="cta-inner fade-up">
-      <h2>See Your Software Through <span>Fresh Eyes.</span></h2>
-      <p>Start with a Pilot Evaluation — no SDK, no integration, no long setup. Just a fast, independent view of your software before your users find the gaps for you.</p>
-      <a href="mailto:hello@hiddeninsightlabs.com" class="btn-primary">Request a Pilot Evaluation</a>
+    <div class="contact-inner">
+
+      <div class="contact-left fade-up">
+        <div class="section-label">Let's Talk</div>
+        <h2>Your Launch Is<br/>Coming.<br/><span>Let's Make Sure<br/>You're Ready.</span></h2>
+        <p>Tell us what you're building and when you're shipping. We'll come back within one business day with an honest view of what scope makes sense — and what we'd expect to find.</p>
+        <div class="contact-guarantee">
+          <div class="contact-guarantee-item">We don't need access to your codebase, your repo, or your infrastructure. Just your product.</div>
+          <div class="contact-guarantee-item">You can start for $300 and scale from there. Most teams that try us come back.</div>
+          <div class="contact-guarantee-item">Every report is written for humans — not a spreadsheet dump. Your team will know exactly what to fix and why.</div>
+          <div class="contact-guarantee-item">We've tested mobile games, AR apps, AI tools, and enterprise platforms. If real users will use it, we can evaluate it.</div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up" id="contact-form-wrap">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name">Your Name</label>
+            <input type="text" id="cf-name" placeholder="Jane Smith" />
+          </div>
+          <div class="form-field">
+            <label for="cf-company">Company</label>
+            <input type="text" id="cf-company" placeholder="Acme Studio" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Work Email</label>
+          <input type="email" id="cf-email" placeholder="jane@acmestudio.com" />
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-type">Product Type</label>
+            <select id="cf-type">
+              <option value="" disabled selected>Select one…</option>
+              <option>Mobile Game</option>
+              <option>Augmented Reality App</option>
+              <option>Mobile Application</option>
+              <option>Desktop / PC Software</option>
+              <option>AI-Enabled System</option>
+              <option>Web Platform</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cf-tier">Engagement Interest</label>
+            <select id="cf-tier">
+              <option value="" disabled selected>Select one…</option>
+              <option>Pilot ($300 — new clients)</option>
+              <option>Small Evaluation ($7,000+)</option>
+              <option>Standard Evaluation ($30,000+)</option>
+              <option>Large / Enterprise</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cf-message">What would you like evaluated?</label>
+          <textarea id="cf-message" placeholder="Briefly describe your product, the flow or feature area you're most concerned about, and your target release timeline…"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Send Enquiry →</button>
+        <p class="form-note">We respond within one business day. Your details are never shared.</p>
+        <div class="form-success" id="form-success">
+          <h3>✓ Enquiry received</h3>
+          <p>We'll be in touch within one business day.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1591,7 +1843,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <h3>Hidden Insight Labs</h3>
-        <p>Independent software evaluation powered by a global network of real testers — for teams that can't afford launch-day surprises.</p>
+        <p>We find what your team can't see — before your users do. Independent evaluation for teams who care about their first impression.</p>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
@@ -1607,7 +1859,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:hello@hiddeninsightlabs.com">hello@hiddeninsightlabs.com</a></li>
-          <li><a href="#contact">Request a Pilot</a></li>
+          <li><a href="#contact">Get in Touch</a></li>
         </ul>
       </div>
     </div>
@@ -1746,6 +1998,45 @@
     initNodes(80);
     draw();
     window.addEventListener('resize', () => { resize(); });
+
+    // ── CONTACT FORM ──
+    function handleSubmit() {
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const company = document.getElementById('cf-company').value.trim();
+      const type    = document.getElementById('cf-type').value;
+      const tier    = document.getElementById('cf-tier').value;
+      const message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !email || !message) {
+        // simple highlight empty required fields
+        ['cf-name','cf-email','cf-message'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) {
+            el.style.borderColor = 'rgba(255,95,95,0.5)';
+            el.addEventListener('input', () => el.style.borderColor = '', {once:true});
+          }
+        });
+        return;
+      }
+
+      // Build mailto
+      const subject = encodeURIComponent('HIL Enquiry — ' + (type || 'Software') + ' — ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Company: ' + (company || '—') + '\n' +
+        'Email: ' + email + '\n' +
+        'Product type: ' + (type || '—') + '\n' +
+        'Engagement interest: ' + (tier || '—') + '\n\n' +
+        'Message:\n' + message
+      );
+
+      window.location.href = 'mailto:hello@hiddeninsightlabs.com?subject=' + subject + '&body=' + body;
+
+      // Show success state
+      document.getElementById('contact-form-wrap').querySelector('.form-submit').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
   </script>
 </body>
 </html>
