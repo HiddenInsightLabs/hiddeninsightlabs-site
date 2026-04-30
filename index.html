@@ -17,8 +17,8 @@
       --border:    rgba(100,180,255,0.1);
       --border2:   rgba(100,180,255,0.06);
       --text:      #d8e8f4;
-      --muted:     rgba(216,232,244,0.45);
-      --dim:       rgba(216,232,244,0.22);
+      --muted:     rgba(216,232,244,0.68);
+      --dim:       rgba(216,232,244,0.42);
       --cyan:      #38c8f0;
       --cyan-dim:  rgba(56,200,240,0.12);
       --cyan-glow: rgba(56,200,240,0.25);
@@ -656,10 +656,59 @@
     /* ── PRICING ── */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
       margin-top: 3rem;
     }
+
+    .pricing-addons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pricing-addon-card {
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 1.75rem;
+      border-radius: 4px;
+      position: relative;
+      transition: border-color 0.25s;
+    }
+
+    .pricing-addon-card:hover { border-color: rgba(56,200,240,0.25); }
+
+    .addon-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .addon-scale {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-footnote {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      font-family: var(--mono);
+    }
+
+    .pricing-footnote strong { color: var(--text); }
 
     .pricing-card {
       background: var(--bg2);
@@ -1382,7 +1431,10 @@
       .signal-stat { border-right: none; padding: 0; }
       .who-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .process-steps { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+      .pricing-grid .pricing-card[style*="grid-column"] { grid-column: 1; display: flex; flex-direction: column; gap: 0; }
+      .pricing-grid .pricing-card[style*="grid-column"] > div:last-child { padding-top: 0; }
+      .pricing-addons { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
       .network-facts { grid-template-columns: 1fr; }
@@ -1470,7 +1522,7 @@
       <div class="signal-stat">
         <div class="signal-num white" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">Found<br/>1st by us</div>
         <div class="signal-label">Not by your users</div>
-        <div class="signal-sublabel">That's the difference between a confident launch and a crisis update on day one.</div>
+        <div class="signal-sublabel">That's the only difference between a confident launch and a crisis update on day one.</div>
       </div>
     </div>
   </div>
@@ -1536,7 +1588,7 @@
           </svg>
           <h3>Augmented Reality</h3>
           <p>AR breaks in ways a desk test can't predict — wrong lighting, cluttered backgrounds, outdoor glare, different room sizes. We deploy analysts into those real conditions, because that's where your users will be.</p>
-          <div class="who-card-tag">Spatial · ARKit · ARCore</div>
+          <div class="who-card-tag">Spatial · LiDAR · ARKit · ARCore</div>
         </div>
         <div class="who-card">
           <svg class="who-card-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -1689,38 +1741,73 @@
     <div class="fade-up">
       <div class="section-label">Engagements</div>
       <h2 class="section-title">Start Small.<br/>Go as Deep as You Need.</h2>
-      <p class="section-sub">Most clients begin with a Pilot to see what we find. Many come back for more. The engagement tier is your call — we'll tell you honestly what level of coverage your release warrants.</p>
+      <p class="section-sub">Most clients begin with a Pilot to see what we find. Many come back for more. The engagement tier is your call — we'll tell you honestly what level of coverage your release warrants. Every tier includes a results walkthrough meeting.</p>
 
     </div>
-    <div class="pricing-grid stagger">
+    <div class="pricing-grid">
 
       <!-- PILOT -->
-      <div class="pricing-card pilot">
-        <div class="pilot-badge-wrap">
-          <span class="pilot-badge">New Client Offer</span>
+      <div class="pricing-card pilot" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;">
+        <div>
+          <div class="pilot-badge-wrap">
+            <span class="pilot-badge">New Client Offer</span>
+          </div>
+          <div class="pricing-tier">Pilot</div>
+          <h3>Pilot Evaluation</h3>
+          <div class="pricing-price green">$300</div>
+          <div class="pricing-timeline">Delivery: ~48 hours</div>
+          <div class="pilot-discount-block">
+            <div class="was">Standard price: $1,500</div>
+            <div class="saving">80% off — one per company</div>
+            <div class="note">This offer exists because we believe the best way to earn your trust is to show you what we find.</div>
+          </div>
         </div>
-        <div class="pricing-tier">Pilot</div>
-        <h3>Pilot Evaluation</h3>
-        <div class="pricing-price green">$300</div>
+        <div style="padding-top: 2.5rem;">
+          <hr class="pricing-rule" />
+          <ul class="pricing-features">
+            <li>One end-to-end user goal — such as signing up, completing a purchase, or creating a profile</li>
+            <li>Small tester sample</li>
+            <li>Summary of key findings</li>
+            <li>Results walkthrough meeting included</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ESSENTIALS -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Essentials</div>
+        <h3>Essentials</h3>
+        <div class="pricing-price">$1,500</div>
         <div class="pricing-timeline">Delivery: ~48 hours</div>
-        <div class="pilot-discount-block">
-          <div class="was">Standard pilot price: $1,500</div>
-          <div class="saving">80% discount for first-time clients</div>
-          <div class="note">This offer exists because we believe in the work. See what we find before you commit to anything larger. New clients only — not renewable at this rate.</div>
-        </div>
         <hr class="pricing-rule" />
         <ul class="pricing-features">
-          <li>Focused group of testers</li>
-          <li>Blind-spot usability &amp; reliability review</li>
-          <li>Short written findings report</li>
-          <li>Zero integration — no SDK required</li>
+          <li>One end-to-end user goal — such as signing up, completing a purchase, or creating a profile</li>
+          <li>Small tester sample</li>
+          <li>Summary of key findings</li>
+          <li>Results walkthrough meeting included</li>
         </ul>
       </div>
 
-      <!-- SMALL -->
+      <!-- FOCUSED -->
       <div class="pricing-card">
-        <div class="pricing-tier">Small</div>
-        <h3>Small Evaluation</h3>
+        <div class="pricing-tier">Focused</div>
+        <h3>Focused</h3>
+        <div class="pricing-price">$3,500</div>
+        <div class="pricing-timeline">Delivery: ~1 week</div>
+        <hr class="pricing-rule" />
+        <ul class="pricing-features">
+          <li>Up to three end-to-end user goals — e.g. account creation, core feature usage, and checkout</li>
+          <li>15–25 testers across devices &amp; OS combinations</li>
+          <li>Structured bug report with severity ratings</li>
+          <li>Top 3 prioritised risks with recommendations</li>
+          <li>Results walkthrough meeting included</li>
+        </ul>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Standard</div>
+        <h3>Standard</h3>
         <div class="pricing-price">$7,000+</div>
         <div class="pricing-timeline">Delivery: ~1 week</div>
         <hr class="pricing-rule" />
@@ -1728,14 +1815,15 @@
           <li>Diverse testers across devices &amp; environments</li>
           <li>Focused feature or workflow evaluation</li>
           <li>Structured risk analysis</li>
-          <li>Prioritised findings with mitigation guidance</li>
+          <li>Detailed technical report</li>
+          <li>Results walkthrough meeting included</li>
         </ul>
       </div>
 
-      <!-- STANDARD -->
+      <!-- COMPREHENSIVE -->
       <div class="pricing-card">
-        <div class="pricing-tier">Standard</div>
-        <h3>Standard Evaluation</h3>
+        <div class="pricing-tier">Comprehensive</div>
+        <h3>Comprehensive</h3>
         <div class="pricing-price">$30,000+</div>
         <div class="pricing-timeline">Delivery: 2–4 weeks</div>
         <hr class="pricing-rule" />
@@ -1743,25 +1831,69 @@
           <li>Broad tester coverage across user perspectives</li>
           <li>Detailed technical report</li>
           <li>Edge-case discovery &amp; risk prioritisation</li>
-          <li>Live debrief with your development team</li>
+          <li>Executive-ready reporting</li>
+          <li>Results walkthrough meeting included</li>
         </ul>
       </div>
 
-      <!-- LARGE -->
+      <!-- ENTERPRISE -->
       <div class="pricing-card">
-        <div class="pricing-tier">Large</div>
-        <h3>Large Evaluation</h3>
+        <div class="pricing-tier">Enterprise</div>
+        <h3>Enterprise</h3>
         <div class="pricing-price">Custom</div>
         <div class="pricing-timeline">Delivery: 6–8 weeks</div>
         <hr class="pricing-rule" />
         <ul class="pricing-features">
           <li>Large-scale testing across device &amp; OS combinations</li>
           <li>Extensive system behaviour analysis</li>
-          <li>Executive-ready reporting &amp; presentation</li>
-          <li>Optional follow-up advisory support</li>
+          <li>Executive-ready reporting</li>
+          <li>Dedicated point of contact</li>
+          <li>Results walkthrough meeting included</li>
         </ul>
       </div>
 
+    </div>
+
+    <!-- ADD-ONS -->
+    <div style="margin-top:2.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;">Add-ons</div>
+      <div class="pricing-addons">
+
+        <div class="pricing-addon-card">
+          <div class="addon-label">Add-on</div>
+          <h3 style="font-family:var(--display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;">Raw Session Recordings</h3>
+          <div class="pricing-price" style="font-size:1.4rem;margin-bottom:0.2rem;">From $600</div>
+          <div class="addon-scale">Pricing scales with engagement tier</div>
+          <hr class="pricing-rule" />
+          <ul class="pricing-features">
+            <li>Full unedited tester session recordings with audio</li>
+            <li>Testers narrate their experience in real time</li>
+            <li>Delivered via time-limited download link</li>
+            <li>Available on Focused tier and above</li>
+          </ul>
+        </div>
+
+        <div class="pricing-addon-card">
+          <div class="addon-label">Add-on</div>
+          <h3 style="font-family:var(--display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;">Hosted Focus Group</h3>
+          <div class="pricing-price" style="font-size:1.4rem;margin-bottom:0.2rem;">$1,200</div>
+          <div class="addon-scale">&nbsp;</div>
+          <hr class="pricing-rule" />
+          <ul class="pricing-features">
+            <li>Testers meet together, facilitated by Hidden Insight Labs</li>
+            <li>Surfaces consensus issues and conflicting experiences</li>
+            <li>60–90 minute facilitated session</li>
+            <li>Full recording with timestamped highlight notes</li>
+            <li>Can be combined with raw session recordings</li>
+            <li>Available on Standard tier and above</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pricing-footnote">
+        <strong>Note:</strong> The Pilot Evaluation is a one-time introductory offer, available once per company. If you're returning for another engagement, the Essentials tier reflects the standard Pilot price.
+      </div>
     </div>
   </section>
 
@@ -1815,10 +1947,12 @@
             <label for="cf-tier">Engagement Interest</label>
             <select id="cf-tier">
               <option value="" disabled selected>Select one…</option>
-              <option>Pilot ($300 — new clients)</option>
-              <option>Small Evaluation ($7,000+)</option>
-              <option>Standard Evaluation ($30,000+)</option>
-              <option>Large / Enterprise</option>
+              <option>Pilot — $300 (new clients)</option>
+              <option>Essentials — $1,500</option>
+              <option>Focused — $3,500</option>
+              <option>Standard — $7,000+</option>
+              <option>Comprehensive — $30,000+</option>
+              <option>Enterprise — Custom</option>
               <option>Not sure yet</option>
             </select>
           </div>
