@@ -1146,6 +1146,119 @@
     }
 
     /* ── CTA ── */
+
+    /* ── INSIGHTS SECTION ── */
+    .insights-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .insight-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .insight-card:hover {
+      border-color: rgba(56,200,240,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+
+    .insight-card:hover::before { opacity: 1; }
+
+    .insight-card-tag {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .insight-card-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .insight-card-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .insight-card-cta {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+
+    .insight-card:hover .insight-card-cta { gap: 0.65rem; }
+
+    .insight-card.wide {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .insight-card.wide .insight-card-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .insights-grid { grid-template-columns: 1fr 1fr; }
+      .insight-card.wide { grid-column: span 2; display: flex; flex-direction: column; }
+    }
+
+    @media (max-width: 540px) {
+      .insights-grid { grid-template-columns: 1fr; }
+      .insight-card.wide { grid-column: span 1; }
+    }
+
     /* ── CONTACT SECTION ── */
     .contact-section {
       position: relative;
@@ -1490,11 +1603,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#reports">Sample Reports</a></li>
-      <li><a href="article-ai-product-testing.html">Insights</a></li>
-      <li><a href="article-ar-testing.html">AR Testing</a></li>
-      <li><a href="article-indie-launch-risk.html">Indie Launch</a></li>
-      <li><a href="article-ai-personalisation-testing.html">AI Personalisation</a></li>
-      <li><a href="article-global-south-testing.html">Global Testing</a></li>
+      <li><a href="#insights">Insights</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
@@ -1766,6 +1875,67 @@
     </div>
   </section>
 
+  <!-- ── INSIGHTS ── -->
+  <section id="insights" class="insights-section">
+    <div class="fade-up">
+      <div class="section-label">Insights</div>
+      <h2 class="section-title">Thinking About<br/><span style="color:var(--cyan)">Software Quality.</span></h2>
+      <p class="section-sub">Articles on the testing challenges that matter most — AI-driven products, AR experiences, indie launches, global markets, and what it takes to ship with confidence.</p>
+    </div>
+
+    <div class="insights-grid">
+
+      <!-- FEATURED: AI PERSONALISATION — wide card -->
+      <a href="article-ai-personalisation-testing.html" class="insight-card wide fade-up">
+        <div>
+          <div class="insight-card-tag">AI · Personalisation · Featured</div>
+          <div class="insight-card-title">The Testing Problem That Comes With AI Personalisation at Scale</div>
+          <p class="insight-card-desc">When every user sees a different experience, traditional QA breaks down. Apps like Duolingo have made a serious bet on AI-driven adaptive learning — and it creates a quality challenge the industry hasn't fully confronted yet.</p>
+          <span class="insight-card-cta">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5h7M6 2.5l3 3-3 3"/></svg></span>
+        </div>
+        <div class="insight-card-right" style="background:var(--surface);border:1px solid var(--border);padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem;justify-content:center;">
+          <div style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:0.25rem;">Also in this article</div>
+          <div style="font-size:0.8rem;font-weight:300;color:var(--muted);line-height:1.55;padding-left:0.75rem;border-left:1px solid var(--border);">Why automated testing can't verify experience quality</div>
+          <div style="font-size:0.8rem;font-weight:300;color:var(--muted);line-height:1.55;padding-left:0.75rem;border-left:1px solid var(--border);">The five challenges AI personalisation creates for QA</div>
+          <div style="font-size:0.8rem;font-weight:300;color:var(--muted);line-height:1.55;padding-left:0.75rem;border-left:1px solid var(--border);">A framework for testing adaptive products at any scale</div>
+        </div>
+      </a>
+
+      <!-- AI PRODUCT TESTING -->
+      <a href="article-ai-product-testing.html" class="insight-card fade-up">
+        <div class="insight-card-tag">AI · Reliability</div>
+        <div class="insight-card-title">Why AI Products Fail in the Real World — and How to Test Before They Do</div>
+        <p class="insight-card-desc">AI-enabled software breaks in ways that traditional QA wasn't designed to catch. Distribution shift, confident wrong outputs, interaction-dependent failures — here's the testing gap and how to close it.</p>
+        <span class="insight-card-cta">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5h7M6 2.5l3 3-3 3"/></svg></span>
+      </a>
+
+      <!-- GLOBAL SOUTH -->
+      <a href="article-global-south-testing.html" class="insight-card fade-up">
+        <div class="insight-card-tag">Global Markets · Device Diversity</div>
+        <div class="insight-card-title">Why Your Software Needs to Be Tested Where Most of Your Users Actually Are</div>
+        <p class="insight-card-desc">The majority of the world's smartphone users are in Africa, Southeast Asia, Latin America, and South Asia — on hardware and networks that most development teams never test against.</p>
+        <span class="insight-card-cta">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5h7M6 2.5l3 3-3 3"/></svg></span>
+      </a>
+
+      <!-- AR TESTING -->
+      <a href="article-ar-testing.html" class="insight-card fade-up">
+        <div class="insight-card-tag">Augmented Reality</div>
+        <div class="insight-card-title">Why Augmented Reality Apps Are So Hard to Test — and What Actually Works</div>
+        <p class="insight-card-desc">An AR app that works perfectly in your studio can fail completely in a user's living room. The environment is the experience — and you can't test it from a desk.</p>
+        <span class="insight-card-cta">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5h7M6 2.5l3 3-3 3"/></svg></span>
+      </a>
+
+      <!-- INDIE LAUNCH -->
+      <a href="article-indie-launch-risk.html" class="insight-card fade-up">
+        <div class="insight-card-tag">Indie Game Development</div>
+        <div class="insight-card-title">The Indie Studio Launch Risk Nobody Talks About</div>
+        <p class="insight-card-desc">You know your game too well to see it the way a stranger does. Here's what launch-day risk actually looks like for indie studios — and what to do about it before it's too late.</p>
+        <span class="insight-card-cta">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5h7M6 2.5l3 3-3 3"/></svg></span>
+      </a>
+
+    </div>
+  </section>
+
   <!-- ── PRICING ── -->
   <section id="pricing">
     <div class="fade-up">
@@ -2016,11 +2186,7 @@
           <li><a href="#services">Who We Help</a></li>
           <li><a href="#process">How It Works</a></li>
           <li><a href="#reports">Sample Reports</a></li>
-          <li><a href="article-ai-product-testing.html">Insights: AI Testing</a></li>
-          <li><a href="article-ar-testing.html">Insights: AR Testing</a></li>
-          <li><a href="article-indie-launch-risk.html">Insights: Indie Launch Risk</a></li>
-          <li><a href="article-ai-personalisation-testing.html">Insights: AI Personalisation Testing</a></li>
-          <li><a href="article-global-south-testing.html">Insights: Global South Testing</a></li>
+          <li><a href="#insights">Insights</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
       </div>
