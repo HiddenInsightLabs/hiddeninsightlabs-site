@@ -242,7 +242,7 @@
 
     .hero-headline {
       font-family: var(--display);
-      font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+      font-size: clamp(2rem, 8vw, 5.2rem);
       font-weight: 800;
       line-height: 1.0;
       letter-spacing: -0.02em;
@@ -1563,6 +1563,58 @@
     @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(8,12,16,0.98);
+        backdrop-filter: blur(20px);
+        z-index: 200;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 2rem;
+      }
+      .nav-links.open li { width: 100%; text-align: center; }
+      .nav-links.open a {
+        font-size: 1.1rem !important;
+        letter-spacing: 0.08em !important;
+        padding: 0.9rem 0;
+        display: block;
+        border-bottom: 1px solid var(--border);
+        opacity: 1 !important;
+      }
+      .nav-links.open .nav-cta {
+        margin-top: 1rem;
+        padding: 0.9rem 2rem !important;
+        width: 100%;
+        text-align: center;
+        display: block;
+        border-bottom: none !important;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.4rem;
+        z-index: 300;
+        position: relative;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        transition: transform 0.25s, opacity 0.25s;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
       section { padding: 4rem 1.5rem; }
       .hero { padding: 6rem 1.5rem 3rem; }
       .signal-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -1577,7 +1629,12 @@
       .footer-brand { grid-column: 1 / -1; }
       .network-facts { grid-template-columns: 1fr; }
       .signal-strip { padding: 2.5rem 1.5rem; }
+      .insights-grid { grid-template-columns: 1fr 1fr; }
+      .insight-card.wide { grid-column: span 2; display: flex; flex-direction: column; }
     }
+
+    /* hide hamburger on desktop */
+    .hamburger { display: none; }
 
     @media (max-width: 540px) {
       .pricing-grid { grid-template-columns: 1fr; }
@@ -1598,15 +1655,18 @@
       </div>
       <span class="nav-logo-text">Hidden Insight Labs</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#network">Our Network</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#reports">Sample Reports</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#network" onclick="closeNav()">Our Network</a></li>
+      <li><a href="#services" onclick="closeNav()">Services</a></li>
+      <li><a href="#process" onclick="closeNav()">Process</a></li>
+      <li><a href="#reports" onclick="closeNav()">Sample Reports</a></li>
+      <li><a href="#insights" onclick="closeNav()">Insights</a></li>
+      <li><a href="#pricing" onclick="closeNav()">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="closeNav()">Get Started</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ── HERO ── -->
@@ -2371,6 +2431,23 @@
       // Show success state
       document.getElementById('contact-form-wrap').querySelector('.form-submit').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
+    }
+
+    // ── MOBILE NAV ──
+    function toggleNav() {
+      const nav = document.getElementById('navLinks');
+      const btn = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    }
+
+    function closeNav() {
+      const nav = document.getElementById('navLinks');
+      const btn = document.getElementById('hamburger');
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow = '';
     }
   </script>
 </body>
