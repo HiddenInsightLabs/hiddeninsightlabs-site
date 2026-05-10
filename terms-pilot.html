@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilot Evaluation — Terms of Service · Hidden Insight Labs</title>
+  <meta name="description" content="Terms of service for the Hidden Insight Labs $300 Pilot Evaluation. Please read before purchasing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #080c10;
+      --bg2:       #0c1218;
+      --bg3:       #101820;
+      --surface:   #131d28;
+      --border:    rgba(100,180,255,0.1);
+      --border2:   rgba(100,180,255,0.06);
+      --text:      #d8e8f4;
+      --muted:     rgba(216,232,244,0.68);
+      --dim:       rgba(216,232,244,0.42);
+      --cyan:      #38c8f0;
+      --cyan-dim:  rgba(56,200,240,0.12);
+      --cyan-glow: rgba(56,200,240,0.25);
+      --green:     #3df0a0;
+      --green-dim: rgba(61,240,160,0.1);
+      --orange:    #f0843d;
+      --white:     #ffffff;
+      --display:   'Syne', sans-serif;
+      --mono:      'JetBrains Mono', monospace;
+      --body:      'Instrument Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,16,0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 28px; height: 28px;
+      border: 1px solid var(--cyan);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .nav-logo-text {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--cyan); }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 3rem 6rem;
+    }
+
+    /* ── HEADER ── */
+    .doc-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .doc-title {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .doc-meta {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── SUMMARY BOX ── */
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: 6px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .summary-box-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .summary-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── SECTIONS ── */
+    .doc-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .doc-section-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.4rem;
+    }
+
+    .doc-section h2 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .doc-section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .doc-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .doc-section ul li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .doc-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+
+    .doc-divider {
+      border: none;
+      border-top: 1px solid var(--border2);
+      margin: 2.5rem 0;
+    }
+
+    /* ── HIGHLIGHT ── */
+    .hl-green { color: var(--green); font-weight: 500; }
+    .hl-orange { color: var(--orange); }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-block {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 3rem;
+    }
+
+    .contact-block-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-block p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-block a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dim);
+      text-decoration: none;
+    }
+
+    .footer-link {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-decoration: none;
+    }
+
+    .footer-link:hover { color: var(--cyan); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .page { padding: 7rem 1.5rem 4rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://hiddeninsightlabs.com" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="7" r="2.5" stroke="#38c8f0" stroke-width="1.2"/>
+          <circle cx="7" cy="7" r="5.5" stroke="#38c8f0" stroke-width="0.6" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Hidden Insight Labs</span>
+    </a>
+    <a href="https://hiddeninsightlabs.com" class="nav-back">← Back to site</a>
+  </nav>
+
+  <div class="page">
+
+    <div class="doc-label">Legal · Pilot Engagement</div>
+    <h1 class="doc-title">Pilot Evaluation<br>Terms of Service</h1>
+    <div class="doc-meta">
+      Effective date: 10 May 2025 &nbsp;·&nbsp;
+      Applies to: $300 Pilot Evaluation (new clients only) &nbsp;·&nbsp;
+      Issued by: Hidden Insight Labs Ltd
+    </div>
+
+    <div class="summary-box">
+      <div class="summary-box-label">Plain-language summary</div>
+      <p>You're purchasing a one-time, limited-scope testing engagement. We will test one user flow in your app using a small panel of real-world testers and deliver a written findings report within approximately 48 hours of engagement commencement. This offer is available once per company. Testing begins once we have confirmed receipt of your payment and obtained the information needed to access your app. No refunds are issued once testing has commenced.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 01</div>
+      <h2>Parties</h2>
+      <p>These terms form a binding agreement between <span class="hl-green">Hidden Insight Labs Ltd</span> ("we", "us", "HIL"), a company registered in England and Wales, and the individual or organisation purchasing the Pilot Evaluation ("you", "the client").</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 02</div>
+      <h2>Scope of the Pilot Evaluation</h2>
+      <p>The Pilot Evaluation is a fixed-scope, introductory engagement. It includes:</p>
+      <ul>
+        <li>Evaluation of <strong>one (1) end-to-end user flow</strong> within your app or software product, as specified by you at the time of booking</li>
+        <li>Testing conducted by a small, focused panel drawn from the Hidden Insight Labs tester network</li>
+        <li>A written findings report, including prioritised issues, severity ratings, and tester observations</li>
+        <li>One (1) results walkthrough meeting, scheduled at mutual convenience within 7 days of report delivery</li>
+      </ul>
+      <p style="margin-top:0.75rem">The Pilot Evaluation does <span class="hl-orange">not</span> include: automated testing, code review, re-testing after fixes, multiple flows, or any deliverable not listed above. Expanded coverage is available via our Essentials, Focused, or Standard engagement tiers.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 03</div>
+      <h2>One-Time Offer</h2>
+      <p>The $300 Pilot Evaluation is a <span class="hl-green">new client introductory offer</span>, available once per company or individual. Repeat engagements, including subsequent pilots for the same product or a different product from the same client or organisation, are billed at the standard Essentials rate of $1,500.</p>
+      <p>HIL reserves the right to determine, at its sole discretion, whether a purchaser qualifies as a new client.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 04</div>
+      <h2>Commencement & Delivery</h2>
+      <p>The 48-hour delivery window begins once both of the following conditions are met:</p>
+      <ul>
+        <li>Payment has been received and confirmed</li>
+        <li>HIL has received all information necessary to access and test the specified flow (app store link, TestFlight/beta access, login credentials if required, or equivalent)</li>
+      </ul>
+      <p style="margin-top:0.75rem">If access information is not provided within 7 calendar days of payment, HIL reserves the right to treat the engagement as lapsed. In this case, a credit toward an Essentials engagement may be offered at HIL's discretion, but no refund will be issued.</p>
+      <p>Delivery timelines are approximate. HIL will communicate promptly if any delay is anticipated.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 05</div>
+      <h2>Payment & Refund Policy</h2>
+      <p>Payment is collected in full at the time of booking via Stripe. All prices are in US dollars unless otherwise stated.</p>
+      <p><span class="hl-orange">No refunds are issued once testing has commenced.</span> If you wish to cancel before testing begins, please contact us at <a href="mailto:hello@hiddeninsightlabs.com" style="color:var(--cyan);text-decoration:none">hello@hiddeninsightlabs.com</a> and we will do our best to accommodate a cancellation or credit.</p>
+      <p>If HIL is unable to complete the engagement due to factors within our control, a full refund will be issued.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 06</div>
+      <h2>Confidentiality</h2>
+      <p>HIL treats all client information, app access credentials, and findings as strictly confidential. We will not share, publish, or reference your product, findings, or engagement details with any third party without your express written consent.</p>
+      <p>You may use the findings report internally and share it with your team and stakeholders without restriction. You may not resell or redistribute the report as a standalone product.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 07</div>
+      <h2>Nature of Findings</h2>
+      <p>The findings report reflects the real-world observations of a small tester panel during the engagement window. It is not a guarantee that all issues in the specified flow have been identified, nor a certification that your software is free of defects.</p>
+      <p>HIL's role is to surface friction and issues that are present during testing. We do not warrant any particular outcome and accept no liability for issues that arise after the engagement is complete.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 08</div>
+      <h2>Intellectual Property</h2>
+      <p>All intellectual property in your app remains yours. HIL claims no rights over your software, content, or data.</p>
+      <p>The findings report is produced by HIL and delivered to you for your use. Ownership of the report transfers to you upon delivery.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 09</div>
+      <h2>Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, HIL's total liability arising from the Pilot Evaluation shall not exceed the amount paid for the engagement ($300). HIL is not liable for indirect, consequential, or incidental damages of any kind.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 10</div>
+      <h2>Governing Law</h2>
+      <p>These terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <div class="doc-section">
+      <div class="doc-section-num">Section 11</div>
+      <h2>Changes to These Terms</h2>
+      <p>HIL may update these terms from time to time. The terms in effect at the time of your purchase govern your engagement. The effective date at the top of this page reflects the most recent revision.</p>
+    </div>
+
+    <div class="contact-block">
+      <div class="contact-block-label">Questions?</div>
+      <p>If you have any questions about these terms before purchasing, please reach out at <a href="mailto:hello@hiddeninsightlabs.com">hello@hiddeninsightlabs.com</a>. We're happy to clarify anything before you commit.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="https://hiddeninsightlabs.com" class="footer-logo">Hidden Insight Labs</a>
+    <a href="https://hiddeninsightlabs.com" class="footer-link">hiddeninsightlabs.com</a>
+  </footer>
+
+</body>
+</html>
