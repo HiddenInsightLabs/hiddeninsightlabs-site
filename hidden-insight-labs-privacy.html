@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Notice — Hidden Insight Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e12;
+    --paper: #f6f4ef;
+    --rule: #c8c2b2;
+    --accent: #1a3a5c;
+    --accent-light: #e8edf3;
+    --muted: #6b6560;
+    --highlight: #2d6a4f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+  }
+  .header-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .org-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+    margin-bottom: 0.75rem;
+  }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+  .meta-row span { display: flex; align-items: center; gap: 0.4em; }
+
+  /* ── Layout ── */
+  .layout {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0 3rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .toc h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    columns: 2;
+    column-gap: 2rem;
+  }
+  @media (max-width: 560px) { .toc ol { columns: 1; } }
+  .toc li {
+    counter-increment: toc;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  .toc li::before {
+    content: counter(toc) ". ";
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── Sections ── */
+  section { margin-bottom: 3rem; scroll-margin-top: 1rem; }
+  section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  section h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 1.25rem 0 0.5rem;
+    color: var(--ink);
+  }
+  p { margin-bottom: 0.85rem; color: #2a2724; }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 0.85rem; }
+  li { margin-bottom: 0.35rem; }
+
+  /* ── Info boxes ── */
+  .info-box {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.93rem;
+  }
+  .info-box.highlight {
+    border-left: 4px solid var(--highlight);
+    background: #f0f7f4;
+  }
+  .info-box strong { display: block; margin-bottom: 0.35rem; }
+
+  /* ── Data table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .data-table th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 0.65rem 1rem;
+    font-weight: 500;
+  }
+  .data-table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .data-table tr:nth-child(even) td { background: #f9f8f5; }
+
+  /* ── Rights grid ── */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .right-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+  }
+  .right-card .right-name {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .right-card p { font-size: 0.83rem; margin: 0; color: var(--muted); }
+
+  /* ── Contact box ── */
+  .contact-box {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 1rem;
+  }
+  .contact-box h3 { color: #fff; margin-bottom: 1rem; }
+  .contact-box p { color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+  .contact-box a { color: #a8d4f5; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+  footer a { color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="org-name">Hidden Insight Labs</p>
+    <h1>Privacy Notice</h1>
+    <div class="meta-row">
+      <span>🇬🇧 UK GDPR &amp; Data Protection Act 2018</span>
+      <span>📅 Effective: 5 January 2026</span>
+      <span>🔄 Last reviewed: 12 May 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#who-we-are">Who we are</a></li>
+      <li><a href="#what-we-collect">What data we collect</a></li>
+      <li><a href="#how-we-use">How we use it</a></li>
+      <li><a href="#lawful-basis">Lawful basis</a></li>
+      <li><a href="#sharing">Who we share it with</a></li>
+      <li><a href="#international">International transfers</a></li>
+      <li><a href="#retention">How long we keep it</a></li>
+      <li><a href="#your-rights">Your rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#changes">Changes to this notice</a></li>
+      <li><a href="#contact">How to contact us</a></li>
+    </ol>
+  </div>
+
+  <div class="info-box highlight">
+    <strong>Who this notice applies to</strong>
+    This privacy notice applies to clients of Hidden Insight Labs — individuals and organisations who engage us for UX evaluation, software testing, or programme management advisory services. It explains how we collect, use, and protect your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+  </div>
+
+  <!-- 1 -->
+  <section id="who-we-are">
+    <h2>1. Who we are</h2>
+    <p>Hidden Insight Labs is a UK-registered limited company providing UX testing, software evaluation, and programme management services to B2B clients. We are the <strong>data controller</strong> in respect of the personal data we hold about our clients and their representatives.</p>
+    <div class="info-box">
+      <strong>Registered company details</strong>
+      <p>Company name: Hidden Insight Labs Ltd<br>
+      Registered address: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ<br>
+      Company number: 16941841<br>
+      Contact email: <a href="mailto:privacy@hiddeninsightlabs.com">privacy@hiddeninsightlabs.com</a></p>
+    </div>
+    <p>We are registered with the Information Commissioner's Office (ICO). ICO registration number: <strong>ZC149156</strong>.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="what-we-collect">
+    <h2>2. What personal data we collect</h2>
+    <p>We collect the minimum personal data necessary to deliver our services and manage the client relationship. This may include:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Identity &amp; contact</strong></td>
+          <td>Name, job title, company name, business email address, phone number</td>
+          <td>Provided directly by you or your organisation</td>
+        </tr>
+        <tr>
+          <td><strong>Contract &amp; engagement</strong></td>
+          <td>Signed agreements, statements of work, project briefs, correspondence</td>
+          <td>Created or received during the engagement</td>
+        </tr>
+        <tr>
+          <td><strong>Financial</strong></td>
+          <td>Invoice details, payment records, billing address</td>
+          <td>Provided by you or your finance team</td>
+        </tr>
+        <tr>
+          <td><strong>Technical</strong></td>
+          <td>Access credentials we create on your behalf for testing environments, software or systems you share with us</td>
+          <td>Provided by you for service delivery</td>
+        </tr>
+        <tr>
+          <td><strong>Communications</strong></td>
+          <td>Emails, meeting notes, written feedback, project updates</td>
+          <td>Generated through our working relationship</td>
+        </tr>
+        <tr>
+          <td><strong>Website visitors</strong></td>
+          <td>IP address, browser type, pages visited, time of visit (via cookies — see Section 10)</td>
+          <td>Automatically collected when you visit our website</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>We do <strong>not</strong> intentionally collect special category data (e.g. health, ethnicity, biometric data) from clients. If any such data is shared incidentally as part of your product or materials submitted for testing, it will be handled with additional care and not retained beyond the project scope.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="how-we-use">
+    <h2>3. How we use your personal data</h2>
+    <p>We use your personal data for the following purposes:</p>
+    <ul>
+      <li><strong>Delivering contracted services</strong> — performing UX evaluations, usability testing, software assessments, and programme management work as agreed</li>
+      <li><strong>Communicating with you</strong> — responding to enquiries, managing project delivery, sharing deliverables and reports</li>
+      <li><strong>Contract management</strong> — drawing up, administering, and enforcing our service agreements and NDAs</li>
+      <li><strong>Financial administration</strong> — issuing invoices, processing payments, maintaining accounting records</li>
+      <li><strong>Legal compliance</strong> — meeting our obligations under UK tax law, company law, and data protection law</li>
+      <li><strong>Service improvement</strong> — understanding how our services are used to improve them (using anonymised or aggregated data where possible)</li>
+      <li><strong>Marketing communications</strong> — sending relevant updates about our services, where you have opted in or where we have a legitimate interest and you are an existing client (you may opt out at any time)</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="lawful-basis">
+    <h2>4. Lawful basis for processing</h2>
+    <p>Under the UK GDPR, we must have a lawful basis for processing personal data. Our bases are:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Processing purpose</th>
+          <th>Lawful basis (UK GDPR Article 6)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Delivering services under a signed agreement</td>
+          <td><strong>Contract</strong> — Art. 6(1)(b): processing necessary for the performance of a contract</td>
+        </tr>
+        <tr>
+          <td>Responding to pre-contract enquiries</td>
+          <td><strong>Contract</strong> — Art. 6(1)(b): steps taken at your request prior to entering a contract</td>
+        </tr>
+        <tr>
+          <td>Accounting, invoicing, tax obligations</td>
+          <td><strong>Legal obligation</strong> — Art. 6(1)(c): UK tax and company law requirements</td>
+        </tr>
+        <tr>
+          <td>Maintaining business records, managing disputes</td>
+          <td><strong>Legitimate interests</strong> — Art. 6(1)(f): our legitimate interest in operating a lawful business</td>
+        </tr>
+        <tr>
+          <td>Marketing to existing clients (email updates)</td>
+          <td><strong>Legitimate interests</strong> — Art. 6(1)(f): we balance this against your interests and you may opt out at any time</td>
+        </tr>
+        <tr>
+          <td>Marketing to new contacts (newsletter opt-in)</td>
+          <td><strong>Consent</strong> — Art. 6(1)(a): you have given clear, specific consent</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Where we rely on legitimate interests, we have carried out a balancing test to ensure our interests do not override your rights. You may request details of this assessment by contacting us.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="sharing">
+    <h2>5. Who we share your data with</h2>
+    <p>We do not sell your personal data. We share it only where necessary:</p>
+    <h3>Service providers acting as processors</h3>
+    <p>We use a small number of trusted third-party tools to operate our business. Where these providers act as data processors on our behalf, they are contractually bound to process data only as we instruct:</p>
+    <ul>
+      <li><strong>Email &amp; communication</strong> — Proton Mail AG (Switzerland; end-to-end encrypted; subject to the Swiss Data Protection Act and covered by the UK–Switzerland adequacy arrangement)</li>
+      <li><strong>File storage</strong> — Dropbox, Inc. (US; transfers covered by Standard Contractual Clauses / IDTA) and Google Drive / Google LLC (US; transfers covered by Standard Contractual Clauses / IDTA). Client files and internal working documents are stored here.</li>
+      <li><strong>Website hosting</strong> — GitHub, Inc. / GitHub Pages (US; transfers covered by Standard Contractual Clauses / IDTA). Static site files are hosted via GitHub; no personal data is processed by GitHub beyond standard server logs.</li>
+      <li><strong>Transactional email</strong> — Resend, Inc. (US; transfers covered by Standard Contractual Clauses). Enquiry submissions made via our contact form are transmitted to us through Resend's email delivery infrastructure. Enquiry data is processed only to deliver the email to us and is not retained by Resend beyond their standard log retention period.</li>
+      <li><strong>Serverless compute</strong> — Cloudflare, Inc. (US; transfers covered by Standard Contractual Clauses). Contact form submissions are processed by a Cloudflare Worker before being passed to Resend. Cloudflare may retain request logs for a short period for security and operational purposes.</li>
+      <li><strong>Website analytics</strong> — Google Analytics 4 / Google LLC (US; transfers covered by Standard Contractual Clauses / IDTA). We use Google Analytics to understand aggregate website usage. See Section 10 for full details of cookies and how to opt out.</li>
+    </ul>
+    <h3>Independent data controllers we share data with</h3>
+    <p>Some third parties receive personal data but act as independent data controllers under their own privacy notices — meaning they determine their own purposes for processing and you may need to contact them directly to exercise your rights in relation to data they hold:</p>
+    <ul>
+      <li><strong>Company administration</strong> — Quality Company Formations (Quality Formations Limited, ICO reg. ZA113958), who act as our registered office and company administration provider. They receive only the contact and identity information necessary to fulfil Companies House and HMRC obligations on our behalf. See their privacy policy at <a href="https://www.qualitycompanyformations.co.uk/privacy-policy/" target="_blank" rel="noopener">qualitycompanyformations.co.uk/privacy-policy</a>.</li>
+    </ul>
+    <h3>Professional advisers</h3>
+    <p>Legal advisers where necessary for compliance or dispute resolution, bound by professional confidentiality obligations.</p>
+    <h3>Legal &amp; regulatory authorities</h3>
+    <p>HMRC, Companies House, or other authorities where we are legally required to disclose information.</p>
+    <p>We will not share your data with any other party without notifying you first, except where required by law.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="international">
+    <h2>6. International transfers</h2>
+    <p>As a business operated from Japan by a UK-registered company, your data may be processed or accessed from Japan. Japan has received an <strong>adequacy decision</strong> from the UK (under Article 45 UK GDPR), meaning the UK recognises Japan's data protection standards as equivalent. No additional safeguards are required for this transfer.</p>
+    <p>Where we use third-party service providers based outside the UK or Japan (for example, cloud services based in the US), we ensure transfers are protected by one of the following mechanisms:</p>
+    <ul>
+      <li>An adequacy decision issued by the UK Secretary of State</li>
+      <li>International Data Transfer Agreements (IDTAs) approved by the ICO</li>
+      <li>Standard Contractual Clauses (as adapted for UK use)</li>
+    </ul>
+    <p>You may request details of the specific transfer mechanisms in place for any particular service by contacting us at the address in Section 12.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="retention">
+    <h2>7. How long we keep your data</h2>
+    <p>We retain personal data only for as long as necessary for the purposes for which it was collected, and in line with our legal obligations. Specific retention periods:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Retention period</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Client contracts and engagement records</td>
+          <td>6 years from project end</td>
+          <td>UK Limitation Act 1980 (contractual claims period)</td>
+        </tr>
+        <tr>
+          <td>Invoices and financial records</td>
+          <td>6 years from the end of the relevant financial year</td>
+          <td>HMRC tax record requirements</td>
+        </tr>
+        <tr>
+          <td>Project correspondence and deliverables</td>
+          <td>3 years from project completion</td>
+          <td>Operational need and potential dispute resolution</td>
+        </tr>
+        <tr>
+          <td>Marketing contact data (opt-in)</td>
+          <td>Until you withdraw consent or 2 years of inactivity</td>
+          <td>Consent-based; withdrawn consent triggers deletion</td>
+        </tr>
+        <tr>
+          <td>Pre-contract enquiries (not converted)</td>
+          <td>12 months</td>
+          <td>Legitimate interest in managing our sales pipeline</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>When data is no longer needed, it is securely deleted or anonymised.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="your-rights">
+    <h2>8. Your rights</h2>
+    <p>Under the UK GDPR, you have the following rights in relation to your personal data:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-name">Right of access</div>
+        <p>Request a copy of the personal data we hold about you (a Subject Access Request).</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to rectification</div>
+        <p>Ask us to correct inaccurate or incomplete data about you.</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to erasure</div>
+        <p>Ask us to delete your data where there is no longer a lawful reason to hold it ("right to be forgotten").</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to restrict processing</div>
+        <p>Ask us to pause processing of your data in certain circumstances.</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to data portability</div>
+        <p>Receive your data in a structured, commonly-used format to transfer to another organisation.</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to object</div>
+        <p>Object to processing based on legitimate interests, including direct marketing.</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Right to withdraw consent</div>
+        <p>Where processing is based on consent, withdraw it at any time without affecting prior lawful processing.</p>
+      </div>
+      <div class="right-card">
+        <div class="right-name">Rights re: automated decisions</div>
+        <p>We do not use automated decision-making or profiling. This right would apply if we did.</p>
+      </div>
+    </div>
+    <p>To exercise any of these rights, contact us using the details in Section 12. We will respond within <strong>one calendar month</strong> of receiving your request. In complex cases we may extend this by a further two months and will notify you if so.</p>
+    <p>We will not charge a fee for exercising your rights in most cases. If a request is clearly unfounded or excessive, we may charge a reasonable fee or refuse the request, and will explain why.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="security">
+    <h2>9. Security</h2>
+    <p>We take appropriate technical and organisational measures to protect your personal data against unauthorised access, accidental loss, or destruction. Measures include:</p>
+    <ul>
+      <li>End-to-end encrypted email (Proton Mail) for sensitive communications</li>
+      <li>Strong password policies and multi-factor authentication on all accounts holding client data</li>
+      <li>Restricted access to personal data on a need-to-know basis</li>
+      <li>Encrypted file storage for sensitive documents</li>
+      <li>Regular review of our security practices</li>
+    </ul>
+    <p>In the event of a personal data breach that is likely to pose a risk to your rights and freedoms, we will notify the ICO within 72 hours and, where required, inform you directly without undue delay.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="cookies">
+    <h2>10. Cookies &amp; Analytics</h2>
+    <p>Our website uses Google Analytics 4 (GA4) to collect anonymised data about how visitors use the site — including pages visited, time on page, and general geographic region (country level). This helps us understand which content is useful and improve the site.</p>
+    <p>GA4 sets cookies on your device to distinguish visitors and sessions. The data collected is aggregated and does not identify you personally. Your IP address is anonymised before any data is stored by Google.</p>
+    <p><strong>Legal basis:</strong> We rely on legitimate interests (UK GDPR Art. 6(1)(f)) for analytics. Our interest is in understanding site performance; the data collected is minimal and anonymised.</p>
+    <p><strong>Opt out:</strong> You can prevent GA4 from collecting data about your visit by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>, or by using a browser privacy extension that blocks analytics trackers.</p>
+    <p>We do not use advertising cookies, retargeting cookies, or any tracking technologies beyond GA4. Your browser may also store technically necessary information (such as session state) as part of normal website operation.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="changes">
+    <h2>11. Changes to this notice</h2>
+    <p>We review this privacy notice at least annually and whenever there are material changes to how we process personal data. The "last reviewed" date at the top of this page will be updated accordingly.</p>
+    <p>Where changes are significant, we will notify active clients directly by email prior to the changes taking effect. Continued engagement with us after that date constitutes acknowledgement of the updated notice.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="contact">
+    <h2>12. How to contact us</h2>
+    <p>If you have any questions about this notice, wish to exercise your rights, or have a concern about how we handle your data, please contact us:</p>
+    <div class="contact-box">
+      <h3>Data Controller Contact</h3>
+      <p><strong>Hidden Insight Labs Ltd</strong></p>
+      <p>📧 Email: <a href="mailto:privacy@hiddeninsightlabs.com">privacy@hiddeninsightlabs.com</a></p>
+      <p>📮 Post: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ</p>
+    </div>
+    <h3 style="margin-top:2rem;">Complaints</h3>
+    <p>If you are not satisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO):</p>
+    <div class="info-box">
+      <strong>Information Commissioner's Office (ICO)</strong>
+      <p>Website: <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk/make-a-complaint</a><br>
+      Phone: 0303 123 1113<br>
+      Post: ICO, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</p>
+    </div>
+    <p>We would appreciate the opportunity to address your concerns directly before you contact the ICO.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Hidden Insight Labs Ltd &nbsp;·&nbsp; UK Company No. 16941841 &nbsp;·&nbsp; ICO Reg. No. ZC149156</p>
+  <p style="margin-top:0.35rem;font-size:0.82rem;opacity:0.75;">Hidden Insight Labs is operated from Japan by システムレンズ評価 (System Lens Evaluation)</p>
+  <p style="margin-top:0.5rem;"><a href="/">Back to website</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Notice</a></p>
+</footer>
+
+</body>
+</html>

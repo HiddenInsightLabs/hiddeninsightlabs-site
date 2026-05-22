@@ -242,7 +242,7 @@
 
     .hero-headline {
       font-family: var(--display);
-      font-size: clamp(2rem, 8vw, 5.2rem);
+      font-size: clamp(1.8rem, 7vw, 5.2rem);
       font-weight: 800;
       line-height: 1.0;
       letter-spacing: -0.02em;
@@ -1559,6 +1559,9 @@
     .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
     .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
 
+    /* ── HAMBURGER: hidden on desktop, shown on mobile ── */
+    .hamburger { display: none; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
@@ -1568,8 +1571,7 @@
         flex-direction: column;
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(8,12,16,0.98);
-        backdrop-filter: blur(20px);
+        background: #080c10;
         z-index: 200;
         align-items: center;
         justify-content: center;
@@ -1594,7 +1596,7 @@
         border-bottom: none !important;
       }
       .hamburger {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
@@ -1633,12 +1635,20 @@
       .insight-card.wide { grid-column: span 2; display: flex; flex-direction: column; }
     }
 
-    /* hide hamburger on desktop */
-    .hamburger { display: none; }
+
 
     @media (max-width: 540px) {
       .pricing-grid { grid-template-columns: 1fr; }
       .who-cards { grid-template-columns: 1fr; }
+      .hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero-headline { font-size: clamp(1.6rem, 8.5vw, 2.5rem); }
+      .hero-body { font-size: 0.95rem; }
+      section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .signal-strip { padding: 2rem 1.25rem; }
+      .signal-num { font-size: 1.8rem !important; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .insight-card.wide { grid-column: span 1; }
+      .reports-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1714,12 +1724,12 @@
         <div class="signal-sublabel">We test in the environments your users actually inhabit — not a controlled lab that looks nothing like the real world.</div>
       </div>
       <div class="signal-stat">
-        <div class="signal-num orange" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">3 bad<br/>reviews</div>
+        <div class="signal-num orange" style="font-size:clamp(1.1rem,4vw,1.8rem);letter-spacing:-0.02em;line-height:1.1">3 bad<br/>reviews</div>
         <div class="signal-label">Is all it takes to completely change the story</div>
         <div class="signal-sublabel">App store ratings don't forgive first impressions. Neither do journalists, streamers, or early adopters.</div>
       </div>
       <div class="signal-stat">
-        <div class="signal-num white" style="font-size:1.8rem;letter-spacing:-0.02em;line-height:1.1">Found<br/>1st by us</div>
+        <div class="signal-num white" style="font-size:clamp(1.1rem,4vw,1.8rem);letter-spacing:-0.02em;line-height:1.1">Found<br/>1st by us</div>
         <div class="signal-label">Not by your users</div>
         <div class="signal-sublabel">That's the only difference between a confident launch and a crisis update on day one.</div>
       </div>
@@ -2260,7 +2270,10 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 Hidden Insight Labs Ltd. All rights reserved.</p>
-      <p>Registered in England &amp; Wales</p>
+      <p style="font-size:0.58rem;letter-spacing:0.06em;margin-top:0.3rem;">Hidden Insight Labs is operated from Japan by システムレンズ評価 (System Lens Evaluation)</p>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+        <a href="hidden-insight-labs-privacy.html" style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--dim)'">Privacy Notice</a>
+      </div>
     </div>
   </footer>
 
@@ -2394,8 +2407,8 @@
     draw();
     window.addEventListener('resize', () => { resize(); });
 
-    // ── CONTACT FORM ──
-    function handleSubmit() {
+    // ── CONTACT FORM — Resend API ──
+    async function handleSubmit() {
       const name    = document.getElementById('cf-name').value.trim();
       const email   = document.getElementById('cf-email').value.trim();
       const company = document.getElementById('cf-company').value.trim();
@@ -2403,8 +2416,8 @@
       const tier    = document.getElementById('cf-tier').value;
       const message = document.getElementById('cf-message').value.trim();
 
+      // Validate required fields
       if (!name || !email || !message) {
-        // simple highlight empty required fields
         ['cf-name','cf-email','cf-message'].forEach(id => {
           const el = document.getElementById(id);
           if (!el.value.trim()) {
@@ -2415,22 +2428,39 @@
         return;
       }
 
-      // Build mailto
-      const subject = encodeURIComponent('HIL Enquiry — ' + (type || 'Software') + ' — ' + name);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Company: ' + (company || '—') + '\n' +
-        'Email: ' + email + '\n' +
-        'Product type: ' + (type || '—') + '\n' +
-        'Engagement interest: ' + (tier || '—') + '\n\n' +
-        'Message:\n' + message
-      );
+      // Disable button and show sending state
+      const btn = document.querySelector('.form-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
 
-      window.location.href = 'mailto:hello@hiddeninsightlabs.com?subject=' + subject + '&body=' + body;
+      try {
+        // ── POST to Cloudflare Worker (API key is held server-side, never in this file) ──
+        // TODO: replace with your Worker URL after deploying hil-contact-worker.js
+        const WORKER_URL = 'https://hil-contact.YOUR-ACCOUNT.workers.dev';
 
-      // Show success state
-      document.getElementById('contact-form-wrap').querySelector('.form-submit').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, type, tier, message })
+        });
+
+        if (res.ok) {
+          // Success state
+          btn.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          const err = await res.json();
+          throw new Error(err.message || 'Send failed');
+        }
+      } catch (err) {
+        console.error('Resend error:', err);
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.background = 'rgba(255,95,95,0.8)';
+      }
     }
 
     // ── MOBILE NAV ──
