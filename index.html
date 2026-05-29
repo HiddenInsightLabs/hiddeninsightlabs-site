@@ -2432,7 +2432,9 @@
     draw();
     window.addEventListener('resize', () => { resize(); });
 
-    // ── CONTACT FORM — Resend API ──
+    // ── CONTACT FORM ──
+    // When WORKER_URL is filled in, sends silently in the background (no page nav).
+    // Until then, opens mailto in a NEW TAB so this page stays open.
     async function handleSubmit() {
       const name    = document.getElementById('cf-name').value.trim();
       const email   = document.getElementById('cf-email').value.trim();
@@ -2453,38 +2455,56 @@
         return;
       }
 
-      // Disable button and show sending state
       const btn = document.querySelector('.form-submit');
-      const originalText = btn.textContent;
       btn.textContent = 'Sending…';
       btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      try {
-        // ── POST to Cloudflare Worker (API key is held server-side, never in this file) ──
-        // TODO: replace with your Worker URL after deploying hil-contact-worker.js
-        const WORKER_URL = 'https://hil-contact.YOUR-ACCOUNT.workers.dev';
+      // ── Replace YOUR-ACCOUNT once Worker is deployed ──
+      const WORKER_URL = 'https://hil-contact.YOUR-ACCOUNT.workers.dev';
+      const workerReady = !WORKER_URL.includes('YOUR-ACCOUNT');
 
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, company, type, tier, message })
-        });
-
-        if (res.ok) {
-          // Success state
-          btn.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else {
-          const err = await res.json();
-          throw new Error(err.message || 'Send failed');
+      if (workerReady) {
+        // Silent background send — page never navigates away
+        try {
+          const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, company, type, tier, message })
+          });
+          if (res.ok) {
+            btn.style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+          } else {
+            throw new Error('Worker error ' + res.status);
+          }
+        } catch (err) {
+          console.error('Worker error:', err);
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          btn.style.background = 'rgba(255,95,95,0.8)';
         }
-      } catch (err) {
-        console.error('Resend error:', err);
-        btn.textContent = 'Something went wrong — try again';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        btn.style.background = 'rgba(255,95,95,0.8)';
+
+      } else {
+        // Fallback: open mailto in a NEW TAB — this page stays open
+        const subject = encodeURIComponent('HIL Enquiry — ' + (type || 'Software') + ' — ' + name);
+        const body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Company: ' + (company || '—') + '\n' +
+          'Email: ' + email + '\n' +
+          'Product type: ' + (type || '—') + '\n' +
+          'Engagement interest: ' + (tier || '—') + '\n\n' +
+          'Message:\n' + message
+        );
+        window.open('mailto:hello@hiddeninsightlabs.com?subject=' + subject + '&body=' + body, '_blank');
+
+        // Show confirmation — user still needs to hit Send in their email client
+        btn.style.display = 'none';
+        const successEl = document.getElementById('form-success');
+        successEl.style.display = 'block';
+        successEl.querySelector('h3').textContent = '✓ Email client opened';
+        successEl.querySelector('p').textContent = 'Your details are pre-filled. Please send the email and we'll be in touch within one business day.';
       }
     }
 
