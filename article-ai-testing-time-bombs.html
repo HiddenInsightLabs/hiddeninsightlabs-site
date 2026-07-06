@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gradual Ways to Use Human Testing to Hedge Against AI Development Risk | Hidden Insight Labs</title>
-  <meta name="description" content="AI-generated code and AI-assisted testing produce confident-looking output whether it's right or wrong. That's a new kind of risk — and human evaluation is one of the few ways to catch what the AI pipeline missed." />
-  <meta name="keywords" content="AI development risk, AI code testing, LLM testing, AI QA, human testing AI, AI technical debt, AI software quality, vibe coding testing" />
-  <link rel="canonical" href="https://hiddeninsightlabs.com/article-ai-testing-time-bombs.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Gradual Ways to Use Human Testing to Hedge Against AI Development Risk" />
-  <meta property="og:description" content="AI-generated code produces confident-looking output whether it's right or wrong. Human evaluation is one of the few ways to catch what the AI pipeline missed." />
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+
+  <title>Gradual Ways to Use Human Testing to Hedge Against AI Development Risk — Hidden InSight Labs</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="description" content="AI-assisted development speeds up how fast you ship. It doesn't change what your users actually experience. Here's how to hedge against that gap without slowing down." />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
   <script>
@@ -21,298 +26,205 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #080c10; --bg2: #0c1218; --surface: #101820;
-      --border: rgba(100,180,255,0.1); --border-hi: rgba(100,180,255,0.16);
-      --cyan: #38c8f0; --cyan-dim: rgba(56,200,240,0.1); --cyan-glow: rgba(56,200,240,0.2);
-      --green: #3df0a0; --amber: #f0843d; --red: #ff5f5f; --yellow: #f5d923;
-      --muted: rgba(216,232,244,0.68); --dim: rgba(216,232,244,0.42);
-      --text: #d8e8f4; --white: #ffffff;
-      --mono: 'JetBrains Mono', monospace; --display: 'Syne', sans-serif; --body: 'Instrument Sans', sans-serif;
+      --bg:          #0b0d10; --bg2: #0f1216; --surface: #14181d;
+      --border:      rgba(200,210,220,0.10); --border-hi: rgba(200,210,220,0.18);
+      --accent:      #5b9ecf; --accent-dim: rgba(91,158,207,0.10); --accent-line: rgba(91,158,207,0.30);
+      --muted:       rgba(224,228,232,0.72); --dim: rgba(224,228,232,0.58);
+      --text:        #e3e6e9; --white: #f7f7f5;
+      --sans:        'DM Sans', system-ui, sans-serif; --mono: 'DM Mono', 'JetBrains Mono', monospace;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px); pointer-events: none; z-index: 1000; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
 
-    nav { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 3rem; border-bottom: 1px solid var(--border); background: #080c10; z-index: 100; }
-    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-    .logo-mark { width: 24px; height: 24px; border: 1px solid var(--cyan); border-radius: 3px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 8px var(--cyan-glow); }
-    .logo-text { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--white); }
-    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--cyan); }
+    nav {
+      position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem; border-bottom: 1px solid var(--border);
+      background: rgba(11,13,16,0.92); backdrop-filter: blur(8px); z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-mark { width: 32px; height: 32px; display: block; object-fit: contain; }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-returning { font-size: 0.76rem; color: var(--dim); border: 1px solid var(--border-hi); padding: 0.5rem 0.9rem; border-radius: 2px; text-decoration: none; transition: color 0.2s, border-color 0.2s; }
+    .nav-returning:hover { color: var(--accent); border-color: var(--accent-line); }
+    @media (max-width: 700px) { .nav-returning { display: none; } }
 
-    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 8rem; }
-    .article-header { margin-bottom: 3rem; }
-    .article-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); border: 1px solid var(--border); padding: 0.3rem 0.75rem; background: var(--cyan-dim); margin-bottom: 1.5rem; }
-    .article-title { font-family: var(--display); font-size: clamp(1.35rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem; }
-    .article-intro { font-size: clamp(0.95rem, 3vw, 1.1rem); font-weight: 300; line-height: 1.75; color: var(--muted); margin-bottom: 2rem; border-left: 2px solid var(--cyan); padding-left: 1.25rem; }
-    .article-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--dim); border-top: 1px solid var(--border); padding-top: 1rem; }
+    .article-header { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .article-tags { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+    .article-title { font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--white); margin-bottom: 1.25rem; }
+    .article-lede { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .article-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.02em; }
 
-    .article-body h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--white); letter-spacing: -0.01em; margin: 2.75rem 0 0.9rem; line-height: 1.2; }
-    .article-body h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 1.75rem 0 0.5rem; }
-    .article-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 1.25rem; }
-    .article-body p strong { color: var(--white); font-weight: 500; }
-    .article-body p em { color: var(--text); font-style: italic; }
-    .article-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(56,200,240,0.3); transition: border-color 0.2s; }
-    .article-body a:hover { border-color: var(--cyan); }
-    .article-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-    .article-body ul li { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 0.4rem; padding-left: 0.4rem; }
-    .article-body ul li strong { color: var(--white); font-weight: 500; }
-    .article-body ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-    .article-body ol li { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 0.6rem; padding-left: 0.5rem; }
-    .article-body ol li strong { color: var(--white); font-weight: 500; }
+    .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; margin: 2.75rem 0 1.1rem; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--white); margin: 2rem 0 0.75rem; }
+    .article-body p { font-size: 0.98rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1.25rem; }
+    .article-body li { font-size: 0.96rem; color: var(--muted); line-height: 1.85; margin-bottom: 0.6rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body a { color: var(--accent); }
 
-    .callout { border: 1px solid var(--border-hi); border-left: 2px solid var(--cyan); background: var(--bg2); padding: 1.25rem 1.5rem; margin: 2rem 0; font-size: 0.92rem; line-height: 1.75; color: var(--text); }
-    .callout.amber { border-left-color: var(--amber); }
-    .callout.green { border-left-color: var(--green); }
-    .callout.red { border-left-color: var(--red); }
-    .callout strong { color: var(--white); }
+    .pull-quote { border-left: 2px solid var(--accent); background: var(--accent-dim); padding: 1.25rem 1.75rem; margin: 1.75rem 0; font-size: 0.98rem; color: var(--text); line-height: 1.85; }
 
-    .pull-quote { font-family: var(--display); font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 700; color: var(--white); line-height: 1.3; letter-spacing: -0.01em; margin: 2.5rem 0; padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .pull-quote span { color: var(--cyan); }
+    .num-ladder { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 1.75rem 0; }
+    .num-item { background: var(--bg); padding: 1.5rem 1.75rem; }
+    .num-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .num-item h4 { font-size: 0.98rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .num-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0; }
 
-    .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border-hi); margin: 2rem 0; }
-    .risk-cell { background: var(--bg2); padding: 1.25rem 1.5rem; }
-    .risk-cell-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .risk-cell h4 { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-    .risk-cell p { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.6; margin: 0; }
+    .compare-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 1.75rem 0; }
+    .compare-box { background: var(--bg); padding: 1.5rem 1.75rem; }
+    .compare-box.hi { background: var(--accent-dim); }
+    .compare-box h4 { font-size: 0.92rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .compare-box p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.5rem; }
+    .compare-box p:last-child { margin-bottom: 0; }
+    .compare-box .compare-limit { font-size: 0.78rem; color: var(--dim); }
 
-    .step-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border-hi); margin: 2rem 0; }
-    .step-item { display: grid; grid-template-columns: 3rem 1fr; background: var(--bg2); }
-    .step-num { background: var(--surface); border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.65rem; color: var(--cyan); font-weight: 500; }
-    .step-content { padding: 1.1rem 1.25rem; }
-    .step-content h4 { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
-    .step-content p { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.6; margin: 0; }
+    .article-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border: 1px solid var(--border-hi); font-size: 0.85rem; }
+    .article-table th { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); text-align: left; padding: 0.8rem 0.9rem; background: var(--surface); border-bottom: 1px solid var(--border-hi); }
+    .article-table td { padding: 0.85rem 0.9rem; color: var(--muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+    .article-table tr:last-child td { border-bottom: none; }
 
-    .article-cta { border: 1px solid rgba(56,200,240,0.2); background: linear-gradient(135deg, var(--bg2), rgba(56,200,240,0.03)); padding: 2rem 2.5rem; margin: 3rem 0; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-    .article-cta h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-    .article-cta p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.6; }
-    .article-cta a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--cyan); padding: 0.75rem 1.5rem; text-decoration: none; white-space: nowrap; box-shadow: 0 0 16px var(--cyan-glow); transition: box-shadow 0.2s; border-bottom: none; display: inline-block; }
-    .article-cta a:hover { box-shadow: 0 0 28px var(--cyan-glow); border-bottom: none; }
+    .article-cta { max-width: 720px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-cta-box { border: 1px solid var(--accent-line); background: var(--accent-dim); padding: 2.25rem 2rem; text-align: center; }
+    .article-cta-box h3 { font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 0.85rem; letter-spacing: -0.01em; }
+    .article-cta-box p { font-size: 0.94rem; color: var(--text); line-height: 1.8; margin-bottom: 1.5rem; }
+    .btn-primary { display: inline-block; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.01em; color: var(--bg); background: var(--accent); padding: 0.9rem 1.9rem; text-decoration: none; border: 1px solid var(--accent); transition: background 0.2s, color 0.2s; }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
 
-    .more-insights { margin: 3rem 0 0; border-top: 1px solid var(--border); padding-top: 2.5rem; }
-    .more-insights-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.25rem; }
-    .more-insights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border-hi); }
-    .more-insight-card { background: var(--bg2); padding: 1.25rem 1.5rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.4rem; transition: background 0.2s; }
-    .more-insight-card:hover { background: var(--surface); }
-    .more-insight-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); opacity: 0.7; }
-    .more-insight-title { font-family: var(--display); font-size: 0.88rem; font-weight: 700; color: var(--white); line-height: 1.25; }
-    .more-insight-arrow { font-family: var(--mono); font-size: 0.6rem; color: var(--dim); margin-top: 0.25rem; transition: color 0.2s; }
-    .more-insight-card:hover .more-insight-arrow { color: var(--cyan); }
+    .related-section { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid var(--border); }
+    .related-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; text-align: center; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .related-card { background: var(--bg); padding: 1.5rem; text-decoration: none; display: block; transition: background 0.2s; }
+    .related-card:hover { background: var(--surface); }
+    .related-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .related-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); line-height: 1.4; }
 
-    .article-footer { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .article-footer p { font-family: var(--mono); font-size: 0.62rem; color: var(--dim); margin: 0; }
-    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-links a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cyan); }
+    footer { padding: 2.5rem 3rem 3rem; }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--dim); }
+    .footer-links-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.85rem; }
+    .footer-links-row a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--accent); }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
-      .article-wrap { padding: 2.5rem 1.25rem 6rem; }
-      .risk-grid { grid-template-columns: 1fr; }
-      .article-cta { grid-template-columns: 1fr; }
-      .more-insights-grid { grid-template-columns: 1fr; }
-      .step-item { grid-template-columns: 2.5rem 1fr; }
+      .article-header { padding: 3rem 1.5rem 2rem; }
+      .article-body { padding: 2rem 1.5rem; }
+      .article-cta { padding: 2rem 1.5rem; }
+      .related-section { padding: 2rem 1.5rem; }
+      .related-grid { grid-template-columns: 1fr 1fr; }
+      .compare-two { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; }
+      .article-table { display: block; }
+      .article-table tr { display: block; margin-bottom: 1px; background: var(--surface); border: 1px solid var(--border-hi); }
+      .article-table tr:first-child { display: none; }
+      .article-table td { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: right; white-space: normal; }
+      .article-table td:last-child { border-bottom: none; }
+      .article-table td::before { content: attr(data-label); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); text-align: left; flex-shrink: 0; padding-top: 0.1rem; }
     }
   </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
   <nav>
     <a href="index.html" class="nav-logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#38c8f0" stroke-width="1.5">
-          <circle cx="7" cy="7" r="2.5"/>
-          <path d="M7 1v2M7 11v2M1 7h2M11 7h2M3 3l1.4 1.4M9.6 9.6L11 11M3 11l1.4-1.4M9.6 4.4L11 3"/>
-        </svg>
+      <img src="assets/logo-mark-96.png" alt="Hidden InSight Labs" class="logo-mark" />
+      <div class="logo-text-wrap">
+        <span class="logo-text">Hidden InSight Labs</span>
+        <span class="logo-tag">Independent Evaluation</span>
       </div>
-      <span class="logo-text">Hidden Insight Labs</span>
     </a>
-    <a href="index.html#insights" class="nav-back">Back to Insights</a>
+    <div class="nav-right">
+      <a href="mailto:contact@hiddeninsightlabs.com?subject=Returning%20client" class="nav-returning">Returning client</a>
+      <a href="index.html#insights" class="nav-back">&#8592; All Insights</a>
+    </div>
   </nav>
 
-  <div class="article-wrap">
-    <header class="article-header">
-      <div class="article-tag">AI Development · Risk · Testing Strategy</div>
-      <h1 class="article-title">Gradual Ways to Use Human Testing to Hedge Against AI Development Risk</h1>
-      <p class="article-intro">AI-generated code and AI-assisted testing produce confident-looking output whether it's right or wrong. That's a genuinely new kind of risk — and human evaluation is one of the few ways to catch what the AI pipeline missed before your users do.</p>
-      <div class="article-meta">
-        <span>Hidden Insight Labs</span>
-        <span>·</span>
-        <span>9 min read</span>
-        <span>·</span>
-        <span>AI Development · Risk · Strategy</span>
+  <div class="article-header">
+    <div class="article-tags">AI Development · Technical Debt · Risk Management</div>
+    <h1 class="article-title">Gradual Ways to Use Human Testing to Hedge Against AI Development Risk</h1>
+    <p class="article-lede">AI-assisted development has genuinely changed how fast teams can ship. It has not changed what your users actually experience when they use what got shipped. That gap is where the risk lives.</p>
+    <div class="article-meta">Hidden InSight Labs &middot; 8 min read</div>
+  </div>
+
+  <div class="article-body">
+    <p>AI coding assistants have become a normal part of how software gets built. Teams that have adopted them report genuine, substantial gains in development speed &mdash; more features shipped, more iterations run, more experiments tried per unit of engineering time. This is a real and durable shift, not a fad.</p>
+    <p>What hasn't shifted at the same pace is the process by which teams verify that what gets built actually works the way real users need it to. Code that compiles, passes automated tests, and does what the prompt asked for is not the same thing as an experience that works well for a real person encountering it for the first time. AI-assisted development can quietly widen the gap between those two things, because the friction of writing code has gone down while the friction of writing thorough tests, or evaluating the resulting experience by hand, often hasn't gone down by nearly as much.</p>
+
+    <h2>Why the Risk Is Easy to Miss</h2>
+    <p>The risk created by faster AI-assisted shipping is easy to miss precisely because nothing about it looks like a traditional bug. The code often works exactly as specified. It's the specification &mdash; the prompt, the ticket, the assumption behind it &mdash; that didn't fully capture what a real user actually needed.</p>
+    <div class="compare-two">
+      <div class="compare-box">
+        <h4>Traditional technical debt</h4>
+        <p>Accumulates visibly &mdash; in code quality, in test coverage gaps, in architecture decisions that get harder to unwind over time. Engineers can usually see it building up.</p>
       </div>
-    </header>
-
-    <div class="article-body">
-
-      <p>Something has changed quietly in how software gets built. Teams that would previously have spent weeks implementing a feature are now shipping in days. Products that would have required a team of five are being built by teams of two. Codebases are growing faster than the humans who own them can fully comprehend.</p>
-
-      <p>This is not a criticism. The productivity gains from AI-assisted development are real, and the teams using these tools effectively are building things that would not have been possible at their scale or timeline without them.</p>
-
-      <p>But every tool that makes something easier also makes something else harder. And in the case of AI-generated code and AI-assisted testing, what gets harder is knowing whether what you've built actually works — for real users, in real conditions, in ways that matter.</p>
-
-      <h2>What's Different About AI-Generated Risk</h2>
-
-      <p>Traditional technical debt is visible if you look for it. Code that is poorly structured, undertested, or built on shaky foundations tends to announce itself through increasing maintenance cost, accumulating bugs, and the familiar sense that changes in one part of the system break things in another.</p>
-
-      <p>AI-generated risk has a different character. The code looks clean. The tests pass. The output is confident and well-formatted. And yet the risk is real — because AI systems optimise for producing plausible, coherent output, not for correctness in every edge case, and not for the specific context of your users and your product.</p>
-
-      <div class="risk-grid">
-        <div class="risk-cell">
-          <div class="risk-cell-label" style="color:var(--amber)">Traditional technical debt</div>
-          <h4>Signals it's accumulating</h4>
-          <p>Maintenance slows down. Bug density increases. Engineers feel friction. The system tells you something is wrong, gradually and increasingly loudly.</p>
-        </div>
-        <div class="risk-cell">
-          <div class="risk-cell-label" style="color:var(--red)">AI-generated risk</div>
-          <h4>Signals are harder to read</h4>
-          <p>The code looks reasonable. The tests pass. The AI was confident. Problems surface when real users encounter edge cases the AI didn't anticipate — often at the worst possible moment.</p>
-        </div>
-      </div>
-
-      <p>There are several specific mechanisms through which AI development creates risk that is harder to detect than traditional technical debt.</p>
-
-      <h3>The confidence problem</h3>
-      <p>AI coding assistants produce confident output. They do not flag uncertainty in the way a thoughtful human developer would — they do not say "I'm not sure about this edge case" or "this approach might have issues with your specific data model." They produce code that looks complete and correct, whether it is or not. The developer reviewing it has to supply the skepticism that the tool does not.</p>
-
-      <h3>The context gap</h3>
-      <p>AI tools do not know your users. They do not know the specific ways real people will interact with your product, the devices they'll use, the network conditions they'll be on, or the expectations they bring from their prior experience. The code they generate is optimised for the prompt they were given, not for the full complexity of the real world your product will inhabit.</p>
-
-      <h3>The testing loop problem</h3>
-      <p>When AI is used to generate both code and tests, the tests tend to verify the assumptions embedded in the code rather than challenge them. An AI that generates a function with a particular edge-case assumption is likely to generate tests that share that assumption. The tests pass. The assumption is wrong. Nobody finds out until users encounter the edge case.</p>
-
-      <h3>The velocity trap</h3>
-      <p>The speed gains from AI-assisted development create pressure to ship faster. Faster shipping means shorter evaluation windows. Shorter evaluation windows mean less time to find problems before they reach users. The same tool that made it possible to build faster also creates pressure to skip the step that would catch what it missed.</p>
-
-      <div class="pull-quote">
-        The AI was confident. The tests passed. The code looked clean. <span>None of that is evidence that real users will have a good experience.</span>
-      </div>
-
-      <h2>Why Automated Testing Doesn't Fully Close the Gap</h2>
-
-      <p>The natural response to the testing loop problem is better automated testing — more tests, higher coverage, more sophisticated test generation. This helps, and it should be part of the response. But it has a ceiling that is structural rather than a matter of engineering effort.</p>
-
-      <p>Automated tests verify that software behaves as specified. They cannot verify that the specification was correct — that is, that what was built is actually what users need and what works in the real world. They cannot test for the things that were not anticipated when the tests were written. They cannot evaluate whether a user interface is confusing, whether a flow is frustrating, or whether the product delivers on its promise in the way real people experience it.</p>
-
-      <p>These are not gaps that more automated testing closes. They are gaps that require human judgment, human experience, and human context — specifically, the judgment and experience of people who are genuinely encountering the product for the first time, without the assumptions and knowledge that the development team carries.</p>
-
-      <div class="callout amber">
-        <strong>The specific failure mode to watch for:</strong> A team uses AI to build a feature quickly, uses AI to generate tests for that feature, the tests pass, and the feature ships. Six weeks later, users start encountering an edge case that the AI didn't anticipate and the tests didn't cover. The support tickets arrive. The post-mortem reveals that the issue would have been found immediately by any first-time user who tried a specific, not-uncommon action. Nobody tried it before shipping because the automated tests said everything was fine.
-      </div>
-
-      <h2>Gradual Ways to Introduce Human Evaluation Into an AI-Assisted Workflow</h2>
-
-      <p>The goal is not to slow down AI-assisted development or to add evaluation as a heavy gate before every release. The goal is to introduce human judgment at the points where it is most valuable — where the AI pipeline is most likely to have produced confident but incomplete output, and where the cost of finding a problem before shipping is lowest.</p>
-
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h4>Start with your highest-risk flows</h4>
-            <p>Not every part of your product carries equal risk. The first-session experience, the core value delivery loop, and the payment or conversion flow are where problems cost the most. Start human evaluation there, before expanding to lower-risk areas. A focused evaluation of your three most critical user flows is more valuable than broad coverage of lower-stakes features.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h4>Evaluate at feature-complete, not just at release</h4>
-            <p>The cheapest time to find a problem is before the code is frozen and the release is scheduled. Build human evaluation into the feature development cycle as a step between "feature complete" and "release candidate" — not as an afterthought once everything else is done. A small evaluation panel at this stage surfaces issues while they are still cheap to address.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h4>Use fresh eyes specifically where AI was most involved</h4>
-            <p>If your team knows that a particular feature or flow was built primarily with AI assistance, that is specifically where fresh-eyes human evaluation is most valuable. The confidence problem is most acute where the AI had the most autonomy. Human evaluation is the correction for AI confidence that didn't check its own assumptions.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">04</div>
-          <div class="step-content">
-            <h4>Test on the devices and conditions your users actually use</h4>
-            <p>AI-generated code is often developed and tested on high-end hardware with fast connections. Your users are not all on high-end hardware with fast connections. Evaluation that covers the actual device and network diversity of your user base surfaces performance and reliability issues that development environment testing misses entirely.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">05</div>
-          <div class="step-content">
-            <h4>Treat human evaluation as calibration, not just bug-finding</h4>
-            <p>The most valuable output from human evaluation of AI-assisted products is often not a bug report — it's a calibration of how well the AI's assumptions about user behaviour matched reality. What did users try that the AI didn't anticipate? Where did they hesitate? What did they expect that the product didn't deliver? This calibration feeds back into how the team prompts, reviews, and validates AI output in future development cycles.</p>
-          </div>
-        </div>
-      </div>
-
-      <h2>The Proportionality Principle</h2>
-
-      <p>One of the most useful frameworks for thinking about this is proportionality: the level of human evaluation should be proportional to the risk of the thing being shipped and the degree to which AI was involved in building and testing it.</p>
-
-      <p>A small UI polish built by an experienced developer, thoroughly reviewed, and tested manually before shipping carries low risk. A significant new feature built primarily with AI assistance, with AI-generated tests, being shipped to a large user base carries much higher risk. The evaluation effort should match.</p>
-
-      <p>This is not an argument for slowing down every release with heavy evaluation processes. It is an argument for being honest about where the risk is concentrated and investing evaluation effort accordingly.</p>
-
-      <div class="callout green">
-        <strong>A practical heuristic:</strong> After each sprint or release cycle, ask your team: which features shipped this cycle had the highest AI involvement in both development and testing? Those features are the candidates for a focused human evaluation before the next cycle ships on top of them. The evaluation doesn't have to be large — a small panel of real users exploring those specific flows will surface the majority of meaningful issues.
-      </div>
-
-      <h2>The Longer-Term Case</h2>
-
-      <p>There is a longer-term argument for investing in human evaluation alongside AI-assisted development that goes beyond individual release risk.</p>
-
-      <p>Teams that build a feedback loop between AI-generated output and human evaluation develop something valuable over time: a calibrated sense of where their AI tools are reliable and where they are not. They learn which kinds of prompts produce code that holds up under real-world use and which kinds produce code that looks correct but fails in practice. They develop institutional knowledge about the gaps in their AI pipeline that their automated testing doesn't cover.</p>
-
-      <p>Teams that skip this feedback loop remain exposed to the same failure modes indefinitely. The AI continues to be confident. The tests continue to pass. And the problems continue to surface when users find the edge cases that nobody thought to check.</p>
-
-      <p>The teams building the most durable products in the current AI development moment are not the ones who ship fastest. They are the ones who ship fast <em>and</em> maintain enough contact with real-world user experience to catch what the AI pipeline missed. Human evaluation is the most direct way to maintain that contact.</p>
-
-      <div class="article-cta">
-        <div>
-          <h3>We evaluate what your AI pipeline didn't anticipate.</h3>
-          <p>Real users, real devices, real conditions — finding the edge cases and experience failures that automated testing confidently missed. Start with a Pilot for $300.</p>
-        </div>
-        <a href="index.html#contact">Talk to Us</a>
-      </div>
-
-    </div>
-
-    <div class="more-insights">
-      <div class="more-insights-label">More from Insights</div>
-      <div class="more-insights-grid">
-        <a href="article-habit-app-testing.html" class="more-insight-card">
-          <div class="more-insight-tag">Wellness · Habit Apps</div>
-          <div class="more-insight-title">Why Habit-Building Apps Fail in Ways Traditional QA Doesn't Catch</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-support-tickets-lagging-indicator.html" class="more-insight-card">
-          <div class="more-insight-tag">Product Quality</div>
-          <div class="more-insight-title">Your Support Tickets Are a Lagging Indicator</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-ai-product-testing.html" class="more-insight-card">
-          <div class="more-insight-tag">AI · Reliability</div>
-          <div class="more-insight-title">Why AI Products Fail in the Real World</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-indie-launch-risk.html" class="more-insight-card">
-          <div class="more-insight-tag">Indie Game Development</div>
-          <div class="more-insight-title">The Indie Studio Launch Risk Nobody Talks About</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
+      <div class="compare-box hi">
+        <h4>AI development risk</h4>
+        <p>Accumulates invisibly &mdash; in the growing gap between "this does what was asked" and "this is what a real user actually needed." Nothing in the code itself signals the gap.</p>
       </div>
     </div>
+    <p>The second kind of risk doesn't show up in a code review. It shows up when a real user, with no context and no investment in the feature succeeding, tries to use it and gets confused, frustrated, or stuck &mdash; and by then it has already shipped.</p>
 
-    <footer class="article-footer">
-      <p>© 2026 Hidden Insight Labs · Operated from Japan by システムレンズ評価</p>
-      <div class="footer-links">
+    <h2>Five Ways to Hedge, Without Slowing Down</h2>
+    <div class="num-ladder">
+      <div class="num-item"><div class="num-label">01</div><h4>Treat AI-generated features as unverified by default</h4><p>The speed gain from AI-assisted development is real, but it applies to writing code, not to knowing whether the result is right. Build in an explicit human-evaluation step for anything user-facing, sized to the risk of the feature rather than skipped because the code shipped fast.</p></div>
+      <div class="num-item"><div class="num-label">02</div><h4>Evaluate the specification, not just the output</h4><p>A common failure mode is a prompt or ticket that under-specifies an edge case, and an AI-generated implementation that faithfully implements the under-specified version. A person unfamiliar with the original prompt, testing the actual experience, catches this in a way that reviewing the code cannot.</p></div>
+      <div class="num-item"><div class="num-label">03</div><h4>Scale evaluation with release velocity, not headcount</h4><p>If AI assistance has doubled your shipping velocity, your evaluation needs to grow in proportion, or an increasing share of what ships goes unevaluated by a real user. The fix isn't doubling your QA headcount &mdash; it's putting the incremental budget into independent, targeted evaluation that supplements the QA process you already have, scoped to the highest-risk changes.</p></div>
+      <div class="num-item"><div class="num-label">04</div><h4>Watch for consistency drift across AI-generated features</h4><p>Different prompts, run at different times, can produce features that are individually reasonable but collectively inconsistent &mdash; different terminology, different interaction patterns, different edge-case handling. A person using the product end-to-end notices this. Isolated code review does not.</p></div>
+      <div class="num-item"><div class="num-label">05</div><h4>Use independent evaluation for the features that matter most</h4><p>Internal teams, having written or reviewed the prompt themselves, share the same blind spots as the AI they used to generate the feature. An external, independent evaluator has no such blind spot &mdash; which is exactly the value of a second opinion applied to AI-assisted work specifically.</p></div>
+    </div>
+
+    <h2>The Compounding Version of This Problem</h2>
+    <p>The risk compounds in a way that traditional technical debt often doesn't. Traditional technical debt tends to slow a team down gradually and visibly &mdash; velocity drops, and the team notices. The AI-assisted version can instead accumulate as an increasing volume of shipped-but-unevaluated user experience, with no corresponding drop in visible velocity, because the code kept shipping fine the whole time.</p>
+    <p>The first signal is often external: a spike in support tickets, a cluster of confused reviews, a retention dip that doesn't map cleanly to any single change. By the time the signal is visible in those lagging indicators, the gap between "shipped" and "evaluated" may have been open for months.</p>
+
+    <h2>What a Gradual Hedge Actually Looks Like</h2>
+    <p>None of this requires halting AI-assisted development or reverting to slower processes. The teams handling this well are adding a proportional, independent evaluation layer &mdash; scaled to the risk of what's shipping, not to the volume of code being written.</p>
+    <p>A useful starting point: pick the two or three user flows that matter most commercially &mdash; onboarding, checkout, the core action your product exists to enable &mdash; and commit to an independent, real-user evaluation of those flows on a fixed cadence, regardless of how quickly the underlying implementation has been changing. That single habit closes most of the gap.</p>
+  </div>
+
+  <div class="article-cta">
+    <div class="article-cta-box">
+      <h3>Hedge your AI-assisted shipping with an independent check.</h3>
+      <p>A Level 1 New Client Evaluation puts real users through the flow that matters most, independent of the team that built it. Starts at $300.</p>
+      <a href="level-1.html" class="btn-primary">Get a Second Opinion</a>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">More from Insights</div>
+    <div class="related-grid">
+      <a href="article-ai-product-testing.html" class="related-card"><div class="related-tag">AI · Reliability</div><h4>Why AI Products Fail in the Real World</h4></a>
+      <a href="article-ai-personalisation-testing.html" class="related-card"><div class="related-tag">AI · Personalisation</div><h4>The Testing Problem That Comes With AI Personalisation at Scale</h4></a>
+      <a href="article-support-tickets-lagging-indicator.html" class="related-card"><div class="related-tag">Product Quality · Strategy</div><h4>Your Support Tickets Are a Lagging Indicator</h4></a>
+      <a href="article-indie-launch-risk.html" class="related-card"><div class="related-tag">Indie Game Development</div><h4>The Indie Studio Launch Risk Nobody Talks About</h4></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Hidden InSight Labs &#183; Operated from Japan by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (System Lens Evaluation) &#183; All services delivered digitally</p>
+      <div class="footer-links-row">
         <a href="index.html">Home</a>
         <a href="index.html#insights">All Insights</a>
-        <a href="index.html#contact">Get in Touch</a>
+        <a href="hil-terms-of-service.html">Terms of Service</a>
+        <a href="hidden-insight-labs-privacy.html">Privacy Notice</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
+
 </body>
 </html>

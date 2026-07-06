@@ -1,497 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Notice — Hidden Insight Labs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #0e0e12;
-    --paper: #f6f4ef;
-    --rule: #c8c2b2;
-    --accent: #1a3a5c;
-    --accent-light: #e8edf3;
-    --muted: #6b6560;
-    --highlight: #2d6a4f;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+  <!-- End Google Tag Manager -->
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.75;
-  }
+  <title>Privacy Notice — Hidden InSight Labs</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="description" content="Privacy Notice for Hidden InSight Labs, operated by System Lens Evaluation, Japan, under Japan's Act on the Protection of Personal Information (APPI)." />
 
-  /* ── Header ── */
-  header {
-    background: var(--accent);
-    color: #fff;
-    padding: 3rem 2rem 2.5rem;
-  }
-  .header-inner {
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .org-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    opacity: 0.75;
-    margin-bottom: 0.75rem;
-  }
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.15;
-    font-weight: 400;
-    margin-bottom: 1.25rem;
-  }
-  .meta-row {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    font-size: 0.85rem;
-    opacity: 0.8;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 1rem;
-    margin-top: 0.5rem;
-  }
-  .meta-row span { display: flex; align-items: center; gap: 0.4em; }
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T280BWY17N');
+  </script>
 
-  /* ── Layout ── */
-  .layout {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 2rem 5rem;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  /* ── TOC ── */
-  .toc {
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    padding: 1.5rem 2rem;
-    margin: 2.5rem 0 3rem;
-    border-radius: 0 4px 4px 0;
-  }
-  .toc h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .toc ol {
-    list-style: none;
-    counter-reset: toc;
-    columns: 2;
-    column-gap: 2rem;
-  }
-  @media (max-width: 560px) { .toc ol { columns: 1; } }
-  .toc li {
-    counter-increment: toc;
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-  }
-  .toc li::before {
-    content: counter(toc) ". ";
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .toc a { color: var(--accent); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
+  <style>
+    :root {
+      --bg:          #0b0d10;
+      --bg2:         #0f1216;
+      --surface:     #14181d;
+      --border:      rgba(200,210,220,0.10);
+      --border-hi:   rgba(200,210,220,0.18);
+      --accent:      #5b9ecf;
+      --accent-dim:  rgba(91,158,207,0.10);
+      --accent-line: rgba(91,158,207,0.30);
+      --muted:       rgba(224,228,232,0.62);
+      --dim:         rgba(224,228,232,0.38);
+      --text:        #e3e6e9;
+      --white:       #f7f7f5;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', 'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
 
-  /* ── Sections ── */
-  section { margin-bottom: 3rem; scroll-margin-top: 1rem; }
-  section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  section h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 1.25rem 0 0.5rem;
-    color: var(--ink);
-  }
-  p { margin-bottom: 0.85rem; color: #2a2724; }
-  ul, ol { padding-left: 1.5rem; margin-bottom: 0.85rem; }
-  li { margin-bottom: 0.35rem; }
+    nav {
+      position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem; border-bottom: 1px solid var(--border);
+      background: rgba(11,13,16,0.92); backdrop-filter: blur(8px); z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-mark { width: 32px; height: 32px; display: block; object-fit: contain; }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-returning {
+      font-size: 0.76rem; color: var(--dim); border: 1px solid var(--border-hi);
+      padding: 0.5rem 0.9rem; border-radius: 2px; text-decoration: none; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-returning:hover { color: var(--accent); border-color: var(--accent-line); }
+    @media (max-width: 700px) { .nav-returning { display: none; } }
 
-  /* ── Info boxes ── */
-  .info-box {
-    background: #fff;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin: 1rem 0 1.5rem;
-    font-size: 0.93rem;
-  }
-  .info-box.highlight {
-    border-left: 4px solid var(--highlight);
-    background: #f0f7f4;
-  }
-  .info-box strong { display: block; margin-bottom: 0.35rem; }
+    .legal-header { padding: 4rem 3rem 2.5rem; max-width: 780px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .legal-eyebrow {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+    }
+    .legal-title { font-size: clamp(1.7rem, 3.5vw, 2.3rem); font-weight: 600; letter-spacing: -0.02em; color: var(--white); margin-bottom: 1rem; }
+    .legal-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); line-height: 1.9; }
 
-  /* ── Data table ── */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-    margin: 1rem 0 1.5rem;
-  }
-  .data-table th {
-    background: var(--accent);
-    color: #fff;
-    text-align: left;
-    padding: 0.65rem 1rem;
-    font-weight: 500;
-  }
-  .data-table td {
-    padding: 0.6rem 1rem;
-    border-bottom: 1px solid var(--rule);
-    vertical-align: top;
-  }
-  .data-table tr:nth-child(even) td { background: #f9f8f5; }
+    .legal-toc { max-width: 780px; margin: 2rem auto 0; padding: 1.75rem 2rem; background: var(--surface); border: 1px solid var(--border-hi); }
+    .legal-toc-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .legal-toc ol { list-style: none; columns: 2; gap: 2rem; }
+    .legal-toc li { margin-bottom: 0.5rem; font-size: 0.85rem; }
+    .legal-toc a { color: var(--muted); text-decoration: none; }
+    .legal-toc a:hover { color: var(--accent); }
 
-  /* ── Rights grid ── */
-  .rights-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 1rem;
-    margin: 1rem 0 1.5rem;
-  }
-  .right-card {
-    background: #fff;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 1rem 1.1rem;
-  }
-  .right-card .right-name {
-    font-weight: 500;
-    font-size: 0.88rem;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
-  }
-  .right-card p { font-size: 0.83rem; margin: 0; color: var(--muted); }
+    .plain-summary {
+      max-width: 780px; margin: 1.5rem auto 0; padding: 1.75rem 2rem;
+      background: var(--accent-dim); border: 1px solid var(--accent-line);
+    }
+    .plain-summary-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .plain-summary p { font-size: 0.94rem; color: var(--text); line-height: 1.85; }
 
-  /* ── Contact box ── */
-  .contact-box {
-    background: var(--accent);
-    color: #fff;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 1rem;
-  }
-  .contact-box h3 { color: #fff; margin-bottom: 1rem; }
-  .contact-box p { color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
-  .contact-box a { color: #a8d4f5; }
+    .legal-section { max-width: 780px; margin: 0 auto; padding: 2.75rem 3rem; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
+    .legal-section-num { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .legal-section h2 { font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .legal-section h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.25rem 0 0.5rem; }
+    .legal-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+    .legal-section ul, .legal-section ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .legal-section li { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 0.4rem; }
+    .legal-section a { color: var(--accent); }
+    .legal-section strong { color: var(--text); font-weight: 600; }
 
-  /* ── Footer ── */
-  footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.8rem;
-  }
-  footer a { color: rgba(255,255,255,0.7); }
-</style>
+    .legal-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; border: 1px solid var(--border-hi); font-size: 0.85rem; }
+    .legal-table th {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); text-align: left; padding: 0.8rem 0.9rem; background: var(--surface); border-bottom: 1px solid var(--border-hi);
+    }
+    .legal-table td { padding: 0.85rem 0.9rem; color: var(--muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+    .legal-table tr:last-child td { border-bottom: none; }
+
+    .contact-block { border: 1px solid var(--border-hi); padding: 1.5rem; margin: 1rem 0; background: var(--surface); }
+    .contact-block p { margin-bottom: 0.4rem; }
+
+    .legal-footer-note { max-width: 780px; margin: 0 auto; padding: 2.5rem 3rem; }
+    .legal-footer-note p { font-size: 0.85rem; color: var(--muted); line-height: 1.85; }
+    .legal-footer-note a { color: var(--accent); }
+
+    footer { padding: 2.5rem 3rem 3rem; }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--dim); }
+    .footer-links-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.85rem; }
+    .footer-links-row a {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links-row a:hover { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .legal-header { padding: 3rem 1.5rem 2rem; }
+      .legal-toc { margin: 1.5rem 1.5rem 0; }
+      .legal-toc ol { columns: 1; }
+      .plain-summary { margin: 1.5rem 1.5rem 0; }
+      .legal-section { padding: 2rem 1.5rem; }
+      .legal-footer-note { padding: 2rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .legal-table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-<header>
-  <div class="header-inner">
-    <p class="org-name">Hidden Insight Labs</p>
-    <h1>Privacy Notice</h1>
-    <div class="meta-row">
-      <span>🇬🇧 UK GDPR &amp; Data Protection Act 2018</span>
-      <span>📅 Effective: 5 January 2026</span>
-      <span>🔄 Last reviewed: 12 May 2026</span>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-mark-96.png" alt="Hidden InSight Labs" class="logo-mark" />
+      <div class="logo-text-wrap">
+        <span class="logo-text">Hidden InSight Labs</span>
+        <span class="logo-tag">Independent Evaluation</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <a href="mailto:contact@hiddeninsightlabs.com?subject=Returning%20client" class="nav-returning">Returning client</a>
+      <a href="index.html" class="nav-back">&#8592; Back to site</a>
+    </div>
+  </nav>
+
+  <div class="legal-header">
+    <div class="legal-eyebrow">Legal · Privacy Notice</div>
+    <h1 class="legal-title">Privacy Notice</h1>
+    <div class="legal-meta">
+      Japan Act on the Protection of Personal Information (APPI)<br />
+      Effective: 5 July 2026 &middot; Last reviewed: 5 July 2026
     </div>
   </div>
-</header>
 
-<div class="layout">
-
-  <div class="toc">
-    <h2>Contents</h2>
+  <div class="legal-toc">
+    <div class="legal-toc-label">Contents</div>
     <ol>
-      <li><a href="#who-we-are">Who we are</a></li>
-      <li><a href="#what-we-collect">What data we collect</a></li>
-      <li><a href="#how-we-use">How we use it</a></li>
-      <li><a href="#lawful-basis">Lawful basis</a></li>
-      <li><a href="#sharing">Who we share it with</a></li>
-      <li><a href="#international">International transfers</a></li>
-      <li><a href="#retention">How long we keep it</a></li>
-      <li><a href="#your-rights">Your rights</a></li>
-      <li><a href="#security">Security</a></li>
-      <li><a href="#cookies">Cookies</a></li>
-      <li><a href="#changes">Changes to this notice</a></li>
-      <li><a href="#contact">How to contact us</a></li>
+      <li><a href="#who-we-are">1. Who we are</a></li>
+      <li><a href="#what-we-collect">2. What data we collect</a></li>
+      <li><a href="#how-we-use">3. How we use it</a></li>
+      <li><a href="#purpose">4. Purpose of utilization</a></li>
+      <li><a href="#sharing">5. Who we share it with</a></li>
+      <li><a href="#international">6. Cross-border transfers</a></li>
+      <li><a href="#retention">7. How long we keep it</a></li>
+      <li><a href="#your-rights">8. Your rights</a></li>
+      <li><a href="#security">9. Security</a></li>
+      <li><a href="#cookies">10. Cookies</a></li>
+      <li><a href="#changes">11. Changes to this notice</a></li>
+      <li><a href="#contact">12. How to contact us</a></li>
     </ol>
   </div>
 
-  <div class="info-box highlight">
-    <strong>Who this notice applies to</strong>
-    This privacy notice applies to clients of Hidden Insight Labs — individuals and organisations who engage us for UX evaluation, software testing, or programme management advisory services. It explains how we collect, use, and protect your personal data in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+  <div class="plain-summary">
+    <div class="plain-summary-label">Who this notice applies to</div>
+    <p>This privacy notice applies to clients of Hidden InSight Labs — individuals and organizations who engage us for software evaluation, UX testing, or programme management advisory services. It explains how we collect, use, and protect your personal data in accordance with Japan's Act on the Protection of Personal Information (APPI).</p>
   </div>
 
-  <!-- 1 -->
-  <section id="who-we-are">
-    <h2>1. Who we are</h2>
-    <p>Hidden Insight Labs is a UK-registered limited company providing UX testing, software evaluation, and programme management services to B2B clients. We are the <strong>data controller</strong> in respect of the personal data we hold about our clients and their representatives.</p>
-    <div class="info-box">
-      <strong>Registered company details</strong>
-      <p>Company name: Hidden Insight Labs Ltd<br>
-      Registered address: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ<br>
-      Company number: 16941841<br>
-      Contact email: <a href="mailto:privacy@hiddeninsightlabs.com">privacy@hiddeninsightlabs.com</a></p>
+  <div class="legal-section" id="who-we-are">
+    <div class="legal-section-num">Section 01</div>
+    <h2>Who we are</h2>
+    <p>Hidden InSight Labs is the trading name of System Lens Evaluation (システムレンズ評価), a sole proprietorship operated from Japan providing software evaluation, UX testing, and programme management services to B2B clients. We are the party responsible for handling the personal data we hold about our clients and their representatives.</p>
+    <div class="contact-block">
+      <p><strong>Operator:</strong> System Lens Evaluation (システムレンズ評価)</p>
+      <p><strong>Operated from:</strong> Kanagawa, Japan</p>
+      <p><strong>Contact email:</strong> <a href="mailto:contact@hiddeninsightlabs.com">contact@hiddeninsightlabs.com</a></p>
     </div>
-    <p>We are registered with the Information Commissioner's Office (ICO). ICO registration number: <strong>ZC149156</strong>.</p>
-  </section>
+  </div>
 
-  <!-- 2 -->
-  <section id="what-we-collect">
-    <h2>2. What personal data we collect</h2>
+  <div class="legal-section" id="what-we-collect">
+    <div class="legal-section-num">Section 02</div>
+    <h2>What personal data we collect</h2>
     <p>We collect the minimum personal data necessary to deliver our services and manage the client relationship. This may include:</p>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Examples</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Identity &amp; contact</strong></td>
-          <td>Name, job title, company name, business email address, phone number</td>
-          <td>Provided directly by you or your organisation</td>
-        </tr>
-        <tr>
-          <td><strong>Contract &amp; engagement</strong></td>
-          <td>Signed agreements, statements of work, project briefs, correspondence</td>
-          <td>Created or received during the engagement</td>
-        </tr>
-        <tr>
-          <td><strong>Financial</strong></td>
-          <td>Invoice details, payment records, billing address</td>
-          <td>Provided by you or your finance team</td>
-        </tr>
-        <tr>
-          <td><strong>Technical</strong></td>
-          <td>Access credentials we create on your behalf for testing environments, software or systems you share with us</td>
-          <td>Provided by you for service delivery</td>
-        </tr>
-        <tr>
-          <td><strong>Communications</strong></td>
-          <td>Emails, meeting notes, written feedback, project updates</td>
-          <td>Generated through our working relationship</td>
-        </tr>
-        <tr>
-          <td><strong>Website visitors</strong></td>
-          <td>IP address, browser type, pages visited, time of visit (via cookies — see Section 10)</td>
-          <td>Automatically collected when you visit our website</td>
-        </tr>
-      </tbody>
+    <table class="legal-table">
+      <tr><th>Category</th><th>Examples</th><th>Source</th></tr>
+      <tr><td><strong>Identity &amp; contact</strong></td><td>Name, job title, company name, business email address, phone number</td><td>Provided directly by you or your organization</td></tr>
+      <tr><td><strong>Contract &amp; engagement</strong></td><td>Signed agreements, statements of work, project briefs, correspondence</td><td>Created or received during the engagement</td></tr>
+      <tr><td><strong>Financial</strong></td><td>Invoice details, payment records, billing address</td><td>Provided by you or your finance team</td></tr>
+      <tr><td><strong>Technical</strong></td><td>Access credentials we create on your behalf for testing environments, software, or systems you share with us</td><td>Provided by you for service delivery</td></tr>
+      <tr><td><strong>Communications</strong></td><td>Emails, meeting notes, written feedback, project updates</td><td>Generated through our working relationship</td></tr>
+      <tr><td><strong>Website visitors</strong></td><td>IP address, browser type, pages visited, time of visit (via cookies &mdash; see Section 10)</td><td>Automatically collected when you visit our website</td></tr>
     </table>
-    <p>We do <strong>not</strong> intentionally collect special category data (e.g. health, ethnicity, biometric data) from clients. If any such data is shared incidentally as part of your product or materials submitted for testing, it will be handled with additional care and not retained beyond the project scope.</p>
-  </section>
+    <p>We do <strong>not</strong> intentionally collect sensitive personal information (as defined under APPI, e.g. health status, race, or criminal record) from clients. If any such data is shared incidentally as part of your product or materials submitted for testing, it will be handled with additional care and not retained beyond the project scope.</p>
+  </div>
 
-  <!-- 3 -->
-  <section id="how-we-use">
-    <h2>3. How we use your personal data</h2>
-    <p>We use your personal data for the following purposes:</p>
+  <div class="legal-section" id="how-we-use">
+    <div class="legal-section-num">Section 03</div>
+    <h2>How we use your personal data</h2>
     <ul>
-      <li><strong>Delivering contracted services</strong> — performing UX evaluations, usability testing, software assessments, and programme management work as agreed</li>
+      <li><strong>Delivering contracted services</strong> — performing software evaluations, usability testing, and programme management work as agreed</li>
       <li><strong>Communicating with you</strong> — responding to enquiries, managing project delivery, sharing deliverables and reports</li>
       <li><strong>Contract management</strong> — drawing up, administering, and enforcing our service agreements and NDAs</li>
       <li><strong>Financial administration</strong> — issuing invoices, processing payments, maintaining accounting records</li>
-      <li><strong>Legal compliance</strong> — meeting our obligations under UK tax law, company law, and data protection law</li>
-      <li><strong>Service improvement</strong> — understanding how our services are used to improve them (using anonymised or aggregated data where possible)</li>
-      <li><strong>Marketing communications</strong> — sending relevant updates about our services, where you have opted in or where we have a legitimate interest and you are an existing client (you may opt out at any time)</li>
+      <li><strong>Legal compliance</strong> — meeting our obligations under Japanese tax law and business registration requirements</li>
+      <li><strong>Service improvement</strong> — understanding how our services are used to improve them, using anonymized or aggregated data where possible</li>
+      <li><strong>Marketing communications</strong> — sending relevant updates about our services, where you have opted in or where you are an existing client (you may opt out at any time)</li>
     </ul>
-  </section>
+  </div>
 
-  <!-- 4 -->
-  <section id="lawful-basis">
-    <h2>4. Lawful basis for processing</h2>
-    <p>Under the UK GDPR, we must have a lawful basis for processing personal data. Our bases are:</p>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Processing purpose</th>
-          <th>Lawful basis (UK GDPR Article 6)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Delivering services under a signed agreement</td>
-          <td><strong>Contract</strong> — Art. 6(1)(b): processing necessary for the performance of a contract</td>
-        </tr>
-        <tr>
-          <td>Responding to pre-contract enquiries</td>
-          <td><strong>Contract</strong> — Art. 6(1)(b): steps taken at your request prior to entering a contract</td>
-        </tr>
-        <tr>
-          <td>Accounting, invoicing, tax obligations</td>
-          <td><strong>Legal obligation</strong> — Art. 6(1)(c): UK tax and company law requirements</td>
-        </tr>
-        <tr>
-          <td>Maintaining business records, managing disputes</td>
-          <td><strong>Legitimate interests</strong> — Art. 6(1)(f): our legitimate interest in operating a lawful business</td>
-        </tr>
-        <tr>
-          <td>Marketing to existing clients (email updates)</td>
-          <td><strong>Legitimate interests</strong> — Art. 6(1)(f): we balance this against your interests and you may opt out at any time</td>
-        </tr>
-        <tr>
-          <td>Marketing to new contacts (newsletter opt-in)</td>
-          <td><strong>Consent</strong> — Art. 6(1)(a): you have given clear, specific consent</td>
-        </tr>
-      </tbody>
+  <div class="legal-section" id="purpose">
+    <div class="legal-section-num">Section 04</div>
+    <h2>Purpose of utilization</h2>
+    <p>Under APPI, we must specify and notify you of the purpose for which we use your personal information, and we will not use it beyond the scope reasonably necessary to achieve that purpose without obtaining your consent. The purposes are those set out in Section 3 above.</p>
+    <table class="legal-table">
+      <tr><th>Processing purpose</th><th>Basis</th></tr>
+      <tr><td>Delivering services under a signed agreement</td><td>Necessary for performance of the contract you have entered into with us</td></tr>
+      <tr><td>Responding to pre-contract enquiries</td><td>Steps taken at your request prior to entering a contract</td></tr>
+      <tr><td>Accounting, invoicing, tax obligations</td><td>Necessary to comply with Japanese tax and business record-keeping obligations</td></tr>
+      <tr><td>Marketing to existing clients (email updates)</td><td>Legitimate business interest, balanced against your right to opt out at any time</td></tr>
+      <tr><td>Marketing to new contacts (newsletter opt-in)</td><td>Your clear, specific consent</td></tr>
     </table>
-    <p>Where we rely on legitimate interests, we have carried out a balancing test to ensure our interests do not override your rights. You may request details of this assessment by contacting us.</p>
-  </section>
+  </div>
 
-  <!-- 5 -->
-  <section id="sharing">
-    <h2>5. Who we share your data with</h2>
-    <p>We do not sell your personal data. We share it only where necessary:</p>
-    <h3>Service providers acting as processors</h3>
-    <p>We use a small number of trusted third-party tools to operate our business. Where these providers act as data processors on our behalf, they are contractually bound to process data only as we instruct:</p>
+  <div class="legal-section" id="sharing">
+    <div class="legal-section-num">Section 05</div>
+    <h2>Who we share your data with</h2>
+    <p>We do not sell your personal data. We share it only where necessary, and only with third parties bound to protect it appropriately:</p>
+    <h3>Service providers</h3>
+    <p>We use a small number of trusted third-party tools to operate our business. These providers process data only as we instruct:</p>
     <ul>
-      <li><strong>Email &amp; communication</strong> — Proton Mail AG (Switzerland; end-to-end encrypted; subject to the Swiss Data Protection Act and covered by the UK–Switzerland adequacy arrangement)</li>
-      <li><strong>File storage</strong> — Dropbox, Inc. (US; transfers covered by Standard Contractual Clauses / IDTA) and Google Drive / Google LLC (US; transfers covered by Standard Contractual Clauses / IDTA). Client files and internal working documents are stored here.</li>
-      <li><strong>Website hosting</strong> — GitHub, Inc. / GitHub Pages (US; transfers covered by Standard Contractual Clauses / IDTA). Static site files are hosted via GitHub; no personal data is processed by GitHub beyond standard server logs.</li>
-      <li><strong>Transactional email</strong> — Resend, Inc. (US; transfers covered by Standard Contractual Clauses). Enquiry submissions made via our contact form are transmitted to us through Resend's email delivery infrastructure. Enquiry data is processed only to deliver the email to us and is not retained by Resend beyond their standard log retention period.</li>
-      <li><strong>Serverless compute</strong> — Cloudflare, Inc. (US; transfers covered by Standard Contractual Clauses). Contact form submissions are processed by a Cloudflare Worker before being passed to Resend. Cloudflare may retain request logs for a short period for security and operational purposes.</li>
-      <li><strong>Website analytics</strong> — Google Analytics 4 / Google LLC (US; transfers covered by Standard Contractual Clauses / IDTA). We use Google Analytics to understand aggregate website usage. See Section 10 for full details of cookies and how to opt out.</li>
-    </ul>
-    <h3>Independent data controllers we share data with</h3>
-    <p>Some third parties receive personal data but act as independent data controllers under their own privacy notices — meaning they determine their own purposes for processing and you may need to contact them directly to exercise your rights in relation to data they hold:</p>
-    <ul>
-      <li><strong>Company administration</strong> — Quality Company Formations (Quality Formations Limited, ICO reg. ZA113958), who act as our registered office and company administration provider. They receive only the contact and identity information necessary to fulfil Companies House and HMRC obligations on our behalf. See their privacy policy at <a href="https://www.qualitycompanyformations.co.uk/privacy-policy/" target="_blank" rel="noopener">qualitycompanyformations.co.uk/privacy-policy</a>.</li>
+      <li><strong>Email &amp; communication</strong> &mdash; Proton Mail AG (Switzerland; end-to-end encrypted)</li>
+      <li><strong>File storage</strong> &mdash; Dropbox, Inc. and Google LLC (United States). Client files and internal working documents are stored here.</li>
+      <li><strong>Website hosting</strong> &mdash; GitHub, Inc. / GitHub Pages (United States). Static site files are hosted via GitHub; no personal data is processed by GitHub beyond standard server logs.</li>
+      <li><strong>Transactional email</strong> &mdash; Resend, Inc. (United States). Enquiry submissions are transmitted to us through Resend's email delivery infrastructure and are not retained by Resend beyond their standard log retention period.</li>
+      <li><strong>Serverless compute</strong> &mdash; Cloudflare, Inc. (United States). Contact form submissions are processed by a Cloudflare Worker before being passed to Resend.</li>
+      <li><strong>Website analytics</strong> &mdash; Google Analytics 4 / Google LLC (United States). See Section 10 for full details.</li>
+      <li><strong>Payments</strong> &mdash; Stripe, Inc. (United States) and Wise (United Kingdom), for processing payments and settlements.</li>
     </ul>
     <h3>Professional advisers</h3>
-    <p>Legal advisers where necessary for compliance or dispute resolution, bound by professional confidentiality obligations.</p>
+    <p>Legal, tax, or accounting advisers where necessary for compliance or dispute resolution, bound by professional confidentiality obligations.</p>
     <h3>Legal &amp; regulatory authorities</h3>
-    <p>HMRC, Companies House, or other authorities where we are legally required to disclose information.</p>
+    <p>Japanese tax authorities or other authorities where we are legally required to disclose information.</p>
     <p>We will not share your data with any other party without notifying you first, except where required by law.</p>
-  </section>
+  </div>
 
-  <!-- 6 -->
-  <section id="international">
-    <h2>6. International transfers</h2>
-    <p>As a business operated from Japan by a UK-registered company, your data may be processed or accessed from Japan. Japan has received an <strong>adequacy decision</strong> from the UK (under Article 45 UK GDPR), meaning the UK recognises Japan's data protection standards as equivalent. No additional safeguards are required for this transfer.</p>
-    <p>Where we use third-party service providers based outside the UK or Japan (for example, cloud services based in the US), we ensure transfers are protected by one of the following mechanisms:</p>
-    <ul>
-      <li>An adequacy decision issued by the UK Secretary of State</li>
-      <li>International Data Transfer Agreements (IDTAs) approved by the ICO</li>
-      <li>Standard Contractual Clauses (as adapted for UK use)</li>
-    </ul>
-    <p>You may request details of the specific transfer mechanisms in place for any particular service by contacting us at the address in Section 12.</p>
-  </section>
+  <div class="legal-section" id="international">
+    <div class="legal-section-num">Section 06</div>
+    <h2>Cross-border transfers</h2>
+    <p>As set out in Section 5, several of our service providers are based outside Japan, principally in the United States. Under APPI, transferring personal data to a third party located in a foreign country generally requires one of the following: the destination country having a data protection framework recognized by Japan's Personal Information Protection Commission (PPC) as equivalent, appropriate contractual or organizational safeguards with the recipient, or your consent to the transfer.</p>
+    <p>By engaging our services, you acknowledge and consent to your personal data being processed by the service providers listed in Section 5, including providers located in the United States, for the purposes described in this notice. We select providers that maintain their own data protection commitments (such as encryption in transit and at rest, and restricted access) and we review these arrangements periodically.</p>
+    <p>You may request details of the specific safeguards in place for any particular service by contacting us using the details in Section 12.</p>
+  </div>
 
-  <!-- 7 -->
-  <section id="retention">
-    <h2>7. How long we keep your data</h2>
-    <p>We retain personal data only for as long as necessary for the purposes for which it was collected, and in line with our legal obligations. Specific retention periods:</p>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Data type</th>
-          <th>Retention period</th>
-          <th>Reason</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Client contracts and engagement records</td>
-          <td>6 years from project end</td>
-          <td>UK Limitation Act 1980 (contractual claims period)</td>
-        </tr>
-        <tr>
-          <td>Invoices and financial records</td>
-          <td>6 years from the end of the relevant financial year</td>
-          <td>HMRC tax record requirements</td>
-        </tr>
-        <tr>
-          <td>Project correspondence and deliverables</td>
-          <td>3 years from project completion</td>
-          <td>Operational need and potential dispute resolution</td>
-        </tr>
-        <tr>
-          <td>Marketing contact data (opt-in)</td>
-          <td>Until you withdraw consent or 2 years of inactivity</td>
-          <td>Consent-based; withdrawn consent triggers deletion</td>
-        </tr>
-        <tr>
-          <td>Pre-contract enquiries (not converted)</td>
-          <td>12 months</td>
-          <td>Legitimate interest in managing our sales pipeline</td>
-        </tr>
-      </tbody>
+  <div class="legal-section" id="retention">
+    <div class="legal-section-num">Section 07</div>
+    <h2>How long we keep your data</h2>
+    <p>We retain personal data only for as long as necessary for the purposes for which it was collected, and in line with our legal and tax obligations as a business operating in Japan. Approximate retention periods:</p>
+    <table class="legal-table">
+      <tr><th>Data type</th><th>Retention period</th><th>Reason</th></tr>
+      <tr><td>Client contracts and engagement records</td><td>7 years from project end</td><td>Japanese business record-keeping practice</td></tr>
+      <tr><td>Invoices and financial records</td><td>7 years from the end of the relevant tax year</td><td>Japanese tax record requirements</td></tr>
+      <tr><td>Project correspondence and deliverables</td><td>3 years from project completion</td><td>Operational need and potential dispute resolution</td></tr>
+      <tr><td>Marketing contact data (opt-in)</td><td>Until you withdraw consent or 2 years of inactivity</td><td>Consent-based; withdrawn consent triggers deletion</td></tr>
+      <tr><td>Pre-contract enquiries (not converted)</td><td>12 months</td><td>Managing our sales pipeline</td></tr>
     </table>
-    <p>When data is no longer needed, it is securely deleted or anonymised.</p>
-  </section>
+    <p>Retention periods for financial and tax records should be confirmed against current guidance from a qualified Japanese tax advisor, as requirements can vary by document type. When data is no longer needed, it is securely deleted or anonymized.</p>
+  </div>
 
-  <!-- 8 -->
-  <section id="your-rights">
-    <h2>8. Your rights</h2>
-    <p>Under the UK GDPR, you have the following rights in relation to your personal data:</p>
-    <div class="rights-grid">
-      <div class="right-card">
-        <div class="right-name">Right of access</div>
-        <p>Request a copy of the personal data we hold about you (a Subject Access Request).</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to rectification</div>
-        <p>Ask us to correct inaccurate or incomplete data about you.</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to erasure</div>
-        <p>Ask us to delete your data where there is no longer a lawful reason to hold it ("right to be forgotten").</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to restrict processing</div>
-        <p>Ask us to pause processing of your data in certain circumstances.</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to data portability</div>
-        <p>Receive your data in a structured, commonly-used format to transfer to another organisation.</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to object</div>
-        <p>Object to processing based on legitimate interests, including direct marketing.</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Right to withdraw consent</div>
-        <p>Where processing is based on consent, withdraw it at any time without affecting prior lawful processing.</p>
-      </div>
-      <div class="right-card">
-        <div class="right-name">Rights re: automated decisions</div>
-        <p>We do not use automated decision-making or profiling. This right would apply if we did.</p>
-      </div>
-    </div>
-    <p>To exercise any of these rights, contact us using the details in Section 12. We will respond within <strong>one calendar month</strong> of receiving your request. In complex cases we may extend this by a further two months and will notify you if so.</p>
-    <p>We will not charge a fee for exercising your rights in most cases. If a request is clearly unfounded or excessive, we may charge a reasonable fee or refuse the request, and will explain why.</p>
-  </section>
+  <div class="legal-section" id="your-rights">
+    <div class="legal-section-num">Section 08</div>
+    <h2>Your rights</h2>
+    <p>Under APPI, you have the following rights in relation to your personal data:</p>
+    <ul>
+      <li><strong>Disclosure</strong> — request disclosure of the personal data we hold about you</li>
+      <li><strong>Correction</strong> — ask us to correct, add to, or delete inaccurate data about you</li>
+      <li><strong>Suspension of use</strong> — ask us to suspend use of your data in certain circumstances, including where it was obtained improperly or is no longer needed for its stated purpose</li>
+      <li><strong>Objection to third-party provision</strong> — object to your data being provided to third parties beyond what is described in this notice</li>
+    </ul>
+    <p>To exercise any of these rights, contact us using the details in Section 12. We will respond within a reasonable timeframe, generally within two weeks. We will not charge a fee for exercising your rights in most cases. If a request is clearly unfounded or excessive, we may charge a reasonable fee or decline the request, and will explain why.</p>
+  </div>
 
-  <!-- 9 -->
-  <section id="security">
-    <h2>9. Security</h2>
-    <p>We take appropriate technical and organisational measures to protect your personal data against unauthorised access, accidental loss, or destruction. Measures include:</p>
+  <div class="legal-section" id="security">
+    <div class="legal-section-num">Section 09</div>
+    <h2>Security</h2>
+    <p>We take appropriate technical and organizational measures to protect your personal data against unauthorized access, accidental loss, or destruction. Measures include:</p>
     <ul>
       <li>End-to-end encrypted email (Proton Mail) for sensitive communications</li>
       <li>Strong password policies and multi-factor authentication on all accounts holding client data</li>
@@ -499,54 +318,59 @@
       <li>Encrypted file storage for sensitive documents</li>
       <li>Regular review of our security practices</li>
     </ul>
-    <p>In the event of a personal data breach that is likely to pose a risk to your rights and freedoms, we will notify the ICO within 72 hours and, where required, inform you directly without undue delay.</p>
-  </section>
+    <p>In the event of a personal data breach likely to harm your rights or interests, we will notify Japan's Personal Information Protection Commission as required by law and, where appropriate, inform you directly without undue delay.</p>
+  </div>
 
-  <!-- 10 -->
-  <section id="cookies">
-    <h2>10. Cookies &amp; Analytics</h2>
-    <p>Our website uses Google Analytics 4 (GA4) to collect anonymised data about how visitors use the site — including pages visited, time on page, and general geographic region (country level). This helps us understand which content is useful and improve the site.</p>
-    <p>GA4 sets cookies on your device to distinguish visitors and sessions. The data collected is aggregated and does not identify you personally. Your IP address is anonymised before any data is stored by Google.</p>
-    <p><strong>Legal basis:</strong> We rely on legitimate interests (UK GDPR Art. 6(1)(f)) for analytics. Our interest is in understanding site performance; the data collected is minimal and anonymised.</p>
-    <p><strong>Opt out:</strong> You can prevent GA4 from collecting data about your visit by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>, or by using a browser privacy extension that blocks analytics trackers.</p>
+  <div class="legal-section" id="cookies">
+    <div class="legal-section-num">Section 10</div>
+    <h2>Cookies &amp; Analytics</h2>
+    <p>Our website uses Google Analytics 4 (GA4) to collect anonymized data about how visitors use the site &mdash; including pages visited, time on page, and general geographic region (country level). This helps us understand which content is useful and improve the site.</p>
+    <p>GA4 sets cookies on your device to distinguish visitors and sessions. The data collected is aggregated and does not identify you personally.</p>
+    <p><strong>Opt out:</strong> you can prevent GA4 from collecting data about your visit by installing the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>, or by using a browser privacy extension that blocks analytics trackers.</p>
     <p>We do not use advertising cookies, retargeting cookies, or any tracking technologies beyond GA4. Your browser may also store technically necessary information (such as session state) as part of normal website operation.</p>
-  </section>
+  </div>
 
-  <!-- 11 -->
-  <section id="changes">
-    <h2>11. Changes to this notice</h2>
+  <div class="legal-section" id="changes">
+    <div class="legal-section-num">Section 11</div>
+    <h2>Changes to this notice</h2>
     <p>We review this privacy notice at least annually and whenever there are material changes to how we process personal data. The "last reviewed" date at the top of this page will be updated accordingly.</p>
     <p>Where changes are significant, we will notify active clients directly by email prior to the changes taking effect. Continued engagement with us after that date constitutes acknowledgement of the updated notice.</p>
-  </section>
+  </div>
 
-  <!-- 12 -->
-  <section id="contact">
-    <h2>12. How to contact us</h2>
+  <div class="legal-section" id="contact">
+    <div class="legal-section-num">Section 12</div>
+    <h2>How to contact us</h2>
     <p>If you have any questions about this notice, wish to exercise your rights, or have a concern about how we handle your data, please contact us:</p>
-    <div class="contact-box">
-      <h3>Data Controller Contact</h3>
-      <p><strong>Hidden Insight Labs Ltd</strong></p>
-      <p>📧 Email: <a href="mailto:privacy@hiddeninsightlabs.com">privacy@hiddeninsightlabs.com</a></p>
-      <p>📮 Post: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ</p>
+    <div class="contact-block">
+      <p><strong>System Lens Evaluation (システムレンズ評価)</strong></p>
+      <p>Email: <a href="mailto:contact@hiddeninsightlabs.com">contact@hiddeninsightlabs.com</a></p>
+      <p>Operated from Kanagawa, Japan</p>
     </div>
-    <h3 style="margin-top:2rem;">Complaints</h3>
-    <p>If you are not satisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO):</p>
-    <div class="info-box">
-      <strong>Information Commissioner's Office (ICO)</strong>
-      <p>Website: <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk/make-a-complaint</a><br>
-      Phone: 0303 123 1113<br>
-      Post: ICO, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</p>
+    <h3>Complaints</h3>
+    <p>If you are not satisfied with our response, you have the right to contact Japan's data protection regulator:</p>
+    <div class="contact-block">
+      <p><strong>Personal Information Protection Commission (PPC), Japan</strong></p>
+      <p>Website: <a href="https://www.ppc.go.jp/en/">ppc.go.jp/en</a></p>
     </div>
-    <p>We would appreciate the opportunity to address your concerns directly before you contact the ICO.</p>
-  </section>
+    <p>We would appreciate the opportunity to address your concerns directly before you contact the PPC.</p>
+  </div>
 
-</div>
+  <div class="legal-footer-note">
+    <p>This notice describes our current practices as a small, Japan-operated business. If you have specific questions about how a particular piece of information is handled, the fastest way to get an answer is to email us directly.</p>
+  </div>
 
-<footer>
-  <p>&copy; 2026 Hidden Insight Labs Ltd &nbsp;·&nbsp; UK Company No. 16941841 &nbsp;·&nbsp; ICO Reg. No. ZC149156</p>
-  <p style="margin-top:0.35rem;font-size:0.82rem;opacity:0.75;">Hidden Insight Labs is operated from Japan by システムレンズ評価 (System Lens Evaluation)</p>
-  <p style="margin-top:0.5rem;"><a href="/">Back to website</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Notice</a></p>
-</footer>
+  <footer>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Hidden InSight Labs &#183; Operated from Japan by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (System Lens Evaluation) &#183; All services delivered digitally</p>
+      <div class="footer-links-row">
+        <a href="index.html">Home</a>
+        <a href="index.html#levels">All levels</a>
+        <a href="hil-terms-of-service.html">Terms of Service</a>
+        <a href="hil-refund-policy.html">Refund Policy</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

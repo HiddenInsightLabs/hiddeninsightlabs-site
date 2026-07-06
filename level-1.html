@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>New Client Evaluation — Hidden InSight Labs</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="description" content="The New Client Evaluation gives you an independent, documented second opinion on one critical user flow in your software — delivered within 48 hours. Available once per organization." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T280BWY17N');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:          #0b0d10;
+      --bg2:         #0f1216;
+      --surface:     #14181d;
+      --border:      rgba(200,210,220,0.10);
+      --border-hi:   rgba(200,210,220,0.18);
+      --accent:      #5b9ecf;
+      --accent-dim:  rgba(91,158,207,0.10);
+      --accent-line: rgba(91,158,207,0.30);
+      --ok:          #7fae8e;
+      --muted:       rgba(224,228,232,0.72);
+      --dim:         rgba(224,228,232,0.58);
+      --text:        #e3e6e9;
+      --white:       #f7f7f5;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 8%, rgba(91,158,207,0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(91,158,207,0.03) 0%, transparent 40%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11,13,16,0.94);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-mark {
+      width: 32px; height: 32px;
+      display: block; object-fit: contain;
+    }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+
+    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-returning {
+      font-size: 0.76rem; color: var(--dim); border: 1px solid var(--border-hi);
+      padding: 0.5rem 0.9rem; border-radius: 2px; text-decoration: none; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-returning:hover { color: var(--accent); border-color: var(--accent-line); }
+    @media (max-width: 700px) { .nav-returning { display: none; } }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      flex: 1;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 5rem;
+      align-items: start;
+      position: relative; z-index: 1;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .page-eyebrow {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent-line); display: inline-flex;
+      padding: 0.35rem 0.85rem; margin-bottom: 1.75rem;
+    }
+
+    .page-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 600; color: var(--white);
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.05rem; font-weight: 400; color: var(--muted);
+      line-height: 1.8; margin-bottom: 2.5rem; max-width: 520px;
+    }
+
+    /* Confidence statement */
+    .confidence-statement {
+      border-left: 2px solid var(--accent);
+      padding: 1.1rem 1.5rem;
+      background: var(--accent-dim);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem; color: var(--text); line-height: 1.8;
+    }
+    .confidence-statement strong { color: var(--white); }
+
+    /* What's included */
+    .includes-heading {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 1rem;
+    }
+
+    .includes-list {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--border-hi); margin-bottom: 2.5rem;
+    }
+
+    .include-row {
+      display: grid; grid-template-columns: 2.5rem 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .include-row:last-child { border-bottom: none; }
+
+    .include-num {
+      background: var(--surface); border-right: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.6rem; color: var(--accent);
+    }
+
+    .include-content { padding: 1rem 1.25rem; }
+    .include-content strong { font-size: 0.88rem; color: var(--white); display: block; margin-bottom: 0.2rem; }
+    .include-content p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* Who this is for */
+    .who-heading {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 1rem;
+    }
+
+    .who-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+    }
+
+    .who-tag {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em;
+      padding: 0.3rem 0.8rem; border: 1px solid var(--border-hi); color: var(--muted);
+    }
+
+    /* What happens next */
+    .next-heading {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 1rem;
+    }
+
+    .next-steps {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--border-hi); margin-bottom: 2.5rem;
+    }
+
+    .next-step {
+      display: grid; grid-template-columns: 2.5rem 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .next-step:last-child { border-bottom: none; }
+
+    .next-num {
+      background: var(--surface); border-right: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.6rem; color: var(--dim);
+    }
+
+    .next-content { padding: 0.9rem 1.25rem; }
+    .next-content strong { font-size: 0.85rem; color: var(--text); display: block; margin-bottom: 0.15rem; }
+    .next-content p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* FAQ */
+    .faq-heading {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 1rem;
+    }
+
+    .faq-list {
+      border: 1px solid var(--border-hi);
+    }
+
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; user-select: none; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--white); }
+    .faq-arrow { color: var(--accent); font-size: 0.7rem; transition: transform 0.2s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 1.25rem 1rem;
+      font-size: 0.82rem; color: var(--muted); line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ── RIGHT COLUMN: PURCHASE CARD ── */
+    .purchase-card {
+      position: sticky; top: 5rem;
+      border: 1px solid var(--border-hi);
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .purchase-card-top {
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .purchase-card-inner { padding: 2rem; }
+
+    .purchase-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+    }
+
+    .purchase-name {
+      font-size: 1.3rem; font-weight: 600; color: var(--white);
+      letter-spacing: -0.01em; margin-bottom: 1.5rem;
+    }
+
+    .purchase-price {
+      font-size: 2.8rem; font-weight: 600; color: var(--white);
+      letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.35rem;
+    }
+
+    .purchase-availability {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 1.5rem;
+    }
+
+    .purchase-divider {
+      border: none; border-top: 1px solid var(--border); margin-bottom: 1.5rem;
+    }
+
+    .digital-notice {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 0.85rem 1rem; margin-bottom: 1.25rem;
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em;
+      color: var(--dim); line-height: 1.65;
+    }
+
+    .purchase-btn {
+      display: block; width: 100%; text-align: center;
+      font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+      color: var(--bg); background: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 1rem; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 1rem;
+    }
+    .purchase-btn:hover { background: transparent; color: var(--accent); }
+
+    .purchase-terms {
+      font-size: 0.72rem; color: var(--dim); text-align: center;
+      line-height: 1.65; margin-bottom: 1.25rem;
+    }
+    .purchase-terms a { color: var(--accent); text-decoration: none; }
+    .purchase-terms a:hover { text-decoration: underline; }
+
+    .purchase-security {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.06em; color: var(--dim);
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+
+    .operator-notice {
+      margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.04em;
+      color: var(--dim); line-height: 1.7; text-align: center;
+    }
+    .operator-notice a { color: var(--accent); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem 3rem;
+      position: relative; z-index: 1;
+    }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 0.78rem; color: var(--dim); }
+    .footer-links-row {
+      display: flex; gap: 1.5rem; justify-content: center;
+      flex-wrap: wrap; margin-top: 0.75rem;
+    }
+    .footer-links-row a {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--dim); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links-row a:hover { color: var(--accent); }
+
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      main { grid-template-columns: 1fr; gap: 3rem; padding: 2.5rem 1.25rem 5rem; }
+      .purchase-card { position: static; }
+      footer { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-mark-96.png" alt="Hidden InSight Labs" class="logo-mark" />
+      <div class="logo-text-wrap">
+        <span class="logo-text">Hidden InSight Labs</span>
+        <span class="logo-tag">Independent Evaluation</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <a href="mailto:contact@hiddeninsightlabs.com?subject=Returning%20client" class="nav-returning">Returning client</a>
+      <a href="index.html" class="nav-back">&#8592; Back to site</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── LEFT: INFO ── -->
+    <div>
+
+      <div class="page-eyebrow">New Client Evaluation</div>
+      <h1 class="page-title">An independent second opinion on your software — before it ships.</h1>
+      <p class="page-subtitle">The New Client Evaluation gives you a documented, evidence-based assessment of one critical user flow, produced by evaluators who have never seen your product before and have no stake in the outcome.</p>
+
+      <div class="confidence-statement">
+        <strong>What you're actually buying:</strong> The confidence to ship — or the specific, actionable findings that tell you what to fix first. Either way, you stop guessing and start knowing.
+      </div>
+
+      <div class="includes-heading">What the evaluation includes</div>
+      <div class="includes-list">
+        <div class="include-row">
+          <div class="include-num">01</div>
+          <div class="include-content">
+            <strong>One end-to-end user flow</strong>
+            <p>One complete journey through your product — sign-up, checkout, onboarding, core feature use, or another flow you choose. Assessed in full by independent evaluators encountering it cold.</p>
+          </div>
+        </div>
+        <div class="include-row">
+          <div class="include-num">02</div>
+          <div class="include-content">
+            <strong>Real-World Validation Report</strong>
+            <p>A documented report with every finding, its severity, and the specific observation that supports it. No impressions — every conclusion is traceable to something a real person experienced.</p>
+          </div>
+        </div>
+        <div class="include-row">
+          <div class="include-num">03</div>
+          <div class="include-content">
+            <strong>Technical walkthrough meeting</strong>
+            <p>After delivery, we meet with your team to walk through the findings — what we found, why it matters, and what to do about it before you ship. Included on every engagement.</p>
+          </div>
+        </div>
+        <div class="include-row">
+          <div class="include-num">04</div>
+          <div class="include-content">
+            <strong>Real devices, real conditions</strong>
+            <p>Evaluation happens on real hardware under real network conditions — not a controlled lab environment. The findings reflect what your actual users will encounter.</p>
+          </div>
+        </div>
+        <div class="include-row">
+          <div class="include-num">05</div>
+          <div class="include-content">
+            <strong>Digital delivery within 48 hours</strong>
+            <p>Your report is delivered digitally within 48 hours of access confirmation. No physical goods. No waiting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="who-heading">This evaluation is well-suited for</div>
+      <div class="who-tags">
+        <span class="who-tag">Mobile apps</span>
+        <span class="who-tag">Web platforms</span>
+        <span class="who-tag">AI-enabled software</span>
+        <span class="who-tag">Mobile games</span>
+        <span class="who-tag">AR experiences</span>
+        <span class="who-tag">Desktop software</span>
+        <span class="who-tag">Community platforms</span>
+        <span class="who-tag">SaaS products</span>
+      </div>
+
+      <div class="next-heading">What happens after you commission this</div>
+      <div class="next-steps">
+        <div class="next-step">
+          <div class="next-num">01</div>
+          <div class="next-content">
+            <strong>We send you onboarding instructions</strong>
+            <p>Within one business day you will receive instructions for what we need and how to provide access to your product.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <div class="next-num">02</div>
+          <div class="next-content">
+            <strong>You provide access to your product</strong>
+            <p>A TestFlight link, Play Store beta invite, staging URL, or equivalent. We work with or without SDK access depending on your needs. No codebase access required.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <div class="next-num">03</div>
+          <div class="next-content">
+            <strong>Assessment begins</strong>
+            <p>Once access is confirmed, our evaluators begin the assessment. The 48-hour delivery window starts from this point.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <div class="next-num">04</div>
+          <div class="next-content">
+            <strong>You receive your Real-World Validation Report</strong>
+            <p>A structured digital report with every finding documented and prioritized. Followed by a technical walkthrough meeting at a time that works for your team.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-heading">Questions</div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What counts as one user flow?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">A single end-to-end journey — for example, the complete sign-up process, or adding an item to a cart and completing checkout, or creating a user profile. If you are unsure which flow to choose, tell us your biggest concern and we will advise during onboarding.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is this different from a QA test?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">Yes. A QA test asks whether features work as specified. This assessment asks whether real users, encountering your product for the first time, can actually use it confidently — and what they experience when they cannot. We find what QA cannot find, because QA cannot be a stranger to its own product.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            When does the 48-hour window start?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">The window starts once we have confirmed access to your product and everything we need to begin the assessment. If providing access takes time on your end, the clock does not start until we are ready to proceed.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What if I need more than one flow assessed?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">This evaluation covers one flow. If you need broader coverage after seeing our work, we offer Level 2 through Level 5 engagements with larger panels and wider scope. We will be happy to recommend the right level after your New Client Evaluation. See the <a href="index.html#levels">full levels table</a>.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is this available to returning clients?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">The New Client Evaluation is available once per organization at the $300 entry rate. For subsequent engagements, we would recommend a Level 2 or higher depending on your scope. The entry rate exists to make it easy to try the service — not as a recurring discount.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is my product information kept confidential?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">Yes. All client information, access credentials, and findings are strictly confidential. We will not reference your product publicly without your written consent. Evaluators are bound by confidentiality obligations. NDAs are available on request.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is your cancellation policy?
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-a">If you need to cancel before the assessment begins, contact us at <a href="mailto:contact@hiddeninsightlabs.com">contact@hiddeninsightlabs.com</a> and we will do our best to accommodate. Once assessment has commenced, no refund is issued. See our full <a href="hil-refund-policy.html">Refund Policy</a>.</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT: PURCHASE CARD ── -->
+    <div class="purchase-card">
+      <div class="purchase-card-top"></div>
+      <div class="purchase-card-inner">
+
+        <div class="purchase-label">New Client Evaluation</div>
+        <div class="purchase-name">Real-World Validation Report</div>
+
+        <div class="purchase-price">$300</div>
+        <div class="purchase-availability">Available once per organization</div>
+
+        <hr class="purchase-divider" />
+
+        <div class="digital-notice">
+          This is a digital evaluation service. All findings are delivered digitally. No physical goods are provided.
+        </div>
+
+        <!-- Replace href with your Stripe Payment Link -->
+        <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_LINK" class="purchase-btn">
+          Commission evaluation &#8594;
+        </a>
+
+        <div class="purchase-terms">
+          By purchasing, you agree to our <a href="hil-terms-of-service.html">Terms of Service</a> and <a href="hil-refund-policy.html">Refund Policy</a>.
+        </div>
+
+        <div class="purchase-security">
+          <svg width="12" height="13" viewBox="0 0 12 13" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.5">
+            <path d="M6 1L1 3.5v4C1 10.5 3.5 13 6 13s5-2.5 5-5.5v-4L6 1z"/>
+          </svg>
+          Secured by Stripe
+        </div>
+
+        <div class="operator-notice">
+          Hidden InSight Labs<br/>
+          Operated by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (Japan)<br/>
+          <a href="mailto:contact@hiddeninsightlabs.com">contact@hiddeninsightlabs.com</a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Hidden InSight Labs &#183; Operated by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (Japan) &#183; All services delivered digitally</p>
+      <div class="footer-links-row">
+        <a href="index.html">Home</a>
+        <a href="index.html#levels">All levels</a>
+        <a href="hil-terms-of-service.html">Terms of Service</a>
+        <a href="hil-refund-policy.html">Refund Policy</a>
+        <a href="hidden-insight-labs-privacy.html">Privacy Notice</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      el.parentElement.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

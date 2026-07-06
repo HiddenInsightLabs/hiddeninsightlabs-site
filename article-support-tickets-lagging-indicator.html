@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Support Tickets Are a Lagging Indicator | Hidden Insight Labs</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>Your Support Tickets Are a Lagging Indicator — Hidden InSight Labs</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <meta name="description" content="By the time a problem shows up in your support queue, it has already cost you users who never filed a ticket and just left. Here's the signal that catches problems before they become ticket volume." />
-  <meta name="keywords" content="support tickets lagging indicator, software quality, user churn, pre-launch testing, product quality, silent churn, user feedback, QA strategy" />
-  <link rel="canonical" href="https://hiddeninsightlabs.com/article-support-tickets-lagging-indicator.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Your Support Tickets Are a Lagging Indicator" />
-  <meta property="og:description" content="By the time a problem shows up in your support queue, it has already cost you users who never filed a ticket and just left." />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
   <script>
@@ -21,320 +29,292 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #080c10; --bg2: #0c1218; --surface: #101820;
-      --border: rgba(100,180,255,0.1); --border-hi: rgba(100,180,255,0.16);
-      --cyan: #38c8f0; --cyan-dim: rgba(56,200,240,0.1); --cyan-glow: rgba(56,200,240,0.2);
-      --green: #3df0a0; --amber: #f0843d; --red: #ff5f5f; --yellow: #f5d923;
-      --muted: rgba(216,232,244,0.68); --dim: rgba(216,232,244,0.42);
-      --text: #d8e8f4; --white: #ffffff;
-      --mono: 'JetBrains Mono', monospace; --display: 'Syne', sans-serif; --body: 'Instrument Sans', sans-serif;
+      --bg:          #0b0d10;
+      --bg2:         #0f1216;
+      --surface:     #14181d;
+      --border:      rgba(200,210,220,0.10);
+      --border-hi:   rgba(200,210,220,0.18);
+      --accent:      #5b9ecf;
+      --accent-dim:  rgba(91,158,207,0.10);
+      --accent-line: rgba(91,158,207,0.30);
+      --muted:       rgba(224,228,232,0.72);
+      --dim:         rgba(224,228,232,0.58);
+      --text:        #e3e6e9;
+      --white:       #f7f7f5;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', 'JetBrains Mono', monospace;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px); pointer-events: none; z-index: 1000; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
 
-    nav { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 3rem; border-bottom: 1px solid var(--border); background: #080c10; z-index: 100; }
-    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-    .logo-mark { width: 24px; height: 24px; border: 1px solid var(--cyan); border-radius: 3px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 8px var(--cyan-glow); }
-    .logo-text { font-family: var(--display); font-size: 0.9rem; font-weight: 700; color: var(--white); }
-    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--cyan); }
+    nav {
+      position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem; border-bottom: 1px solid var(--border);
+      background: rgba(11,13,16,0.92); backdrop-filter: blur(8px); z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-mark { width: 32px; height: 32px; display: block; object-fit: contain; }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+    .nav-back { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-returning {
+      font-size: 0.76rem; color: var(--dim); border: 1px solid var(--border-hi);
+      padding: 0.5rem 0.9rem; border-radius: 2px; text-decoration: none; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-returning:hover { color: var(--accent); border-color: var(--accent-line); }
+    @media (max-width: 700px) { .nav-returning { display: none; } }
 
-    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 8rem; }
-    .article-header { margin-bottom: 3rem; }
-    .article-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); border: 1px solid var(--border); padding: 0.3rem 0.75rem; background: var(--cyan-dim); margin-bottom: 1.5rem; }
-    .article-title { font-family: var(--display); font-size: clamp(1.35rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem; }
-    .article-intro { font-size: clamp(0.95rem, 3vw, 1.1rem); font-weight: 300; line-height: 1.75; color: var(--muted); margin-bottom: 2rem; border-left: 2px solid var(--cyan); padding-left: 1.25rem; }
-    .article-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--dim); border-top: 1px solid var(--border); padding-top: 1rem; }
+    /* ── ARTICLE HEADER ── */
+    .article-header { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .article-tags { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+    .article-title { font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--white); margin-bottom: 1.25rem; }
+    .article-lede { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .article-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.02em; }
 
-    .article-body h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--white); letter-spacing: -0.01em; margin: 2.75rem 0 0.9rem; line-height: 1.2; }
-    .article-body h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 1.75rem 0 0.5rem; }
-    .article-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 1.25rem; }
-    .article-body p strong { color: var(--white); font-weight: 500; }
-    .article-body p em { color: var(--text); font-style: italic; }
-    .article-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(56,200,240,0.3); transition: border-color 0.2s; }
-    .article-body a:hover { border-color: var(--cyan); }
-    .article-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-    .article-body ul li { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); margin-bottom: 0.4rem; padding-left: 0.4rem; }
-    .article-body ul li strong { color: var(--white); font-weight: 500; }
+    /* ── ARTICLE BODY ── */
+    .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; margin: 2.75rem 0 1.1rem; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--white); margin: 2rem 0 0.75rem; }
+    .article-body p { font-size: 0.98rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1.25rem; }
+    .article-body li { font-size: 0.96rem; color: var(--muted); line-height: 1.85; margin-bottom: 0.6rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body a { color: var(--accent); }
 
-    .callout { border: 1px solid var(--border-hi); border-left: 2px solid var(--cyan); background: var(--bg2); padding: 1.25rem 1.5rem; margin: 2rem 0; font-size: 0.92rem; line-height: 1.75; color: var(--text); }
-    .callout.amber { border-left-color: var(--amber); }
-    .callout.green { border-left-color: var(--green); }
-    .callout.red { border-left-color: var(--red); }
-    .callout strong { color: var(--white); }
+    .pull-quote {
+      border-left: 2px solid var(--accent); background: var(--accent-dim);
+      padding: 1.25rem 1.75rem; margin: 1.75rem 0; font-size: 0.98rem; color: var(--text); line-height: 1.85;
+    }
 
-    .pull-quote { font-family: var(--display); font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 700; color: var(--white); line-height: 1.3; letter-spacing: -0.01em; margin: 2.5rem 0; padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .pull-quote span { color: var(--cyan); }
+    /* ── VISIBILITY LADDER (iceberg section) ── */
+    .visibility-ladder { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 1.75rem 0; }
+    .visibility-item { background: var(--bg); padding: 1.5rem 1.75rem; }
+    .visibility-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .visibility-item h4 { font-size: 0.98rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .visibility-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0; }
 
-    .iceberg { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border-hi); margin: 2rem 0; }
-    .iceberg-row { display: grid; grid-template-columns: 1fr 3fr; background: var(--bg2); }
-    .iceberg-label { background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
-    .iceberg-content { padding: 1rem 1.25rem; font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.55; }
-    .iceberg-content strong { color: var(--white); font-weight: 500; }
+    /* ── DATA TABLE ── */
+    .article-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border: 1px solid var(--border-hi); font-size: 0.85rem; }
+    .article-table th {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); text-align: left; padding: 0.8rem 0.9rem; background: var(--surface); border-bottom: 1px solid var(--border-hi);
+    }
+    .article-table td { padding: 0.85rem 0.9rem; color: var(--muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+    .article-table tr:last-child td { border-bottom: none; }
+    .tag-lagging { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); }
+    .tag-leading { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+    .tag-mixed { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 
-    .signal-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
-    .signal-table th { text-align: left; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); padding: 0.65rem 1rem; background: var(--surface); border: 1px solid var(--border); }
-    .signal-table td { padding: 0.85rem 1rem; border: 1px solid var(--border); font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.55; background: var(--bg2); vertical-align: top; }
-    .signal-table tr:hover td { background: var(--surface); }
-    .signal-table td:first-child { color: var(--white); font-weight: 500; }
+    /* ── ARTICLE END CTA ── */
+    .article-cta { max-width: 720px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-cta-box { border: 1px solid var(--accent-line); background: var(--accent-dim); padding: 2.25rem 2rem; text-align: center; }
+    .article-cta-box h3 { font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 0.85rem; letter-spacing: -0.01em; }
+    .article-cta-box p { font-size: 0.94rem; color: var(--text); line-height: 1.8; margin-bottom: 1.5rem; }
+    .btn-primary {
+      display: inline-block; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.01em;
+      color: var(--bg); background: var(--accent); padding: 0.9rem 1.9rem; text-decoration: none;
+      border: 1px solid var(--accent); transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
 
-    .tag { display: inline-block; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.5rem; }
-    .tag.lag { color: var(--red); border: 1px solid rgba(255,95,95,0.3); background: rgba(255,95,95,0.07); }
-    .tag.lead { color: var(--green); border: 1px solid rgba(61,240,160,0.3); background: rgba(61,240,160,0.07); }
-    .tag.mixed { color: var(--yellow); border: 1px solid rgba(245,217,35,0.25); background: rgba(245,217,35,0.05); }
+    /* ── RELATED ARTICLES ── */
+    .related-section { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid var(--border); }
+    .related-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; text-align: center; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .related-card { background: var(--bg); padding: 1.5rem; text-decoration: none; display: block; transition: background 0.2s; }
+    .related-card:hover { background: var(--surface); }
+    .related-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .related-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); line-height: 1.4; }
 
-    .article-cta { border: 1px solid rgba(56,200,240,0.2); background: linear-gradient(135deg, var(--bg2), rgba(56,200,240,0.03)); padding: 2rem 2.5rem; margin: 3rem 0; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-    .article-cta h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
-    .article-cta p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.6; }
-    .article-cta a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--cyan); padding: 0.75rem 1.5rem; text-decoration: none; white-space: nowrap; box-shadow: 0 0 16px var(--cyan-glow); transition: box-shadow 0.2s; border-bottom: none; display: inline-block; }
-    .article-cta a:hover { box-shadow: 0 0 28px var(--cyan-glow); border-bottom: none; }
+    footer { padding: 2.5rem 3rem 3rem; }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--dim); }
+    .footer-links-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.85rem; }
+    .footer-links-row a {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links-row a:hover { color: var(--accent); }
 
-    .more-insights { margin: 3rem 0 0; border-top: 1px solid var(--border); padding-top: 2.5rem; }
-    .more-insights-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.25rem; }
-    .more-insights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border-hi); }
-    .more-insight-card { background: var(--bg2); padding: 1.25rem 1.5rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.4rem; transition: background 0.2s; }
-    .more-insight-card:hover { background: var(--surface); }
-    .more-insight-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); opacity: 0.7; }
-    .more-insight-title { font-family: var(--display); font-size: 0.88rem; font-weight: 700; color: var(--white); line-height: 1.25; }
-    .more-insight-arrow { font-family: var(--mono); font-size: 0.6rem; color: var(--dim); margin-top: 0.25rem; transition: color 0.2s; }
-    .more-insight-card:hover .more-insight-arrow { color: var(--cyan); }
-
-    .article-footer { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .article-footer p { font-family: var(--mono); font-size: 0.62rem; color: var(--dim); margin: 0; }
-    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-links a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cyan); }
-
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
-      .article-wrap { padding: 2.5rem 1.25rem 6rem; }
-      .iceberg-row { grid-template-columns: 1fr; }
-      .iceberg-label { border-right: none; border-bottom: 1px solid var(--border); writing-mode: horizontal-tb; }
-      .article-cta { grid-template-columns: 1fr; }
-      .more-insights-grid { grid-template-columns: 1fr; }
+      .article-header { padding: 3rem 1.5rem 2rem; }
+      .article-body { padding: 2rem 1.5rem; }
+      .article-cta { padding: 2rem 1.5rem; }
+      .related-section { padding: 2rem 1.5rem; }
+      .related-grid { grid-template-columns: 1fr 1fr; }
+      .article-table { display: block; }
+      .article-table tr { display: block; margin-bottom: 1px; background: var(--surface); border: 1px solid var(--border-hi); }
+      .article-table tr:first-child { display: none; }
+      .article-table td { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: right; white-space: normal; }
+      .article-table td:last-child { border-bottom: none; }
+      .article-table td::before {
+        content: attr(data-label); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em;
+        text-transform: uppercase; color: var(--dim); text-align: left; flex-shrink: 0; padding-top: 0.1rem;
+      }
+      footer { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
   <nav>
     <a href="index.html" class="nav-logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#38c8f0" stroke-width="1.5">
-          <circle cx="7" cy="7" r="2.5"/>
-          <path d="M7 1v2M7 11v2M1 7h2M11 7h2M3 3l1.4 1.4M9.6 9.6L11 11M3 11l1.4-1.4M9.6 4.4L11 3"/>
-        </svg>
+      <img src="assets/logo-mark-96.png" alt="Hidden InSight Labs" class="logo-mark" />
+      <div class="logo-text-wrap">
+        <span class="logo-text">Hidden InSight Labs</span>
+        <span class="logo-tag">Independent Evaluation</span>
       </div>
-      <span class="logo-text">Hidden Insight Labs</span>
     </a>
-    <a href="index.html#insights" class="nav-back">Back to Insights</a>
+    <div class="nav-right">
+      <a href="mailto:contact@hiddeninsightlabs.com?subject=Returning%20client" class="nav-returning">Returning client</a>
+      <a href="index.html#insights" class="nav-back">&#8592; All Insights</a>
+    </div>
   </nav>
 
-  <div class="article-wrap">
-    <header class="article-header">
-      <div class="article-tag">Product Quality · Strategy · PM</div>
-      <h1 class="article-title">Your Support Tickets Are a Lagging Indicator</h1>
-      <p class="article-intro">By the time a problem shows up in your support queue, it has already cost you users who never filed a ticket and just left. The question is what signals you're reading — and when.</p>
-      <div class="article-meta">
-        <span>Hidden Insight Labs</span>
-        <span>·</span>
-        <span>8 min read</span>
-        <span>·</span>
-        <span>Product Quality · Strategy</span>
+  <div class="article-header">
+    <div class="article-tags">Product Quality · Strategy · Programme Management</div>
+    <h1 class="article-title">Your Support Tickets Are a Lagging Indicator</h1>
+    <p class="article-lede">By the time a problem shows up in your support queue, it has already cost you users who never filed a ticket and just left. The question is what signals you're reading &mdash; and when.</p>
+    <div class="article-meta">Hidden InSight Labs &middot; 8 min read</div>
+  </div>
+
+  <div class="article-body">
+    <p>There is a standard response to product quality problems that most software teams have experienced. Something goes wrong. Users complain. Tickets accumulate. The team investigates, identifies the issue, ships a fix, and closes the tickets. The process works. The problem is solved.</p>
+    <p>What this process does not reveal is the size of the iceberg beneath the waterline. For every user who filed a ticket, there are users who encountered the same problem and said nothing. They did not write in. They did not leave a review. They just stopped using the product.</p>
+    <p>Support tickets are evidence that something went wrong. They are not a complete picture of the damage. And by the time they appear, the damage has already happened. This is exactly the kind of blind spot an independent second opinion exists to close &mdash; catching the signal before it becomes a support ticket, not after.</p>
+
+    <h2>The Iceberg Below the Ticket Queue</h2>
+    <p>Research on customer complaints across different service contexts consistently finds that most users who have a bad experience do not report it. The exact ratio varies by product category, user demographics, and the ease of reporting &mdash; but the pattern is consistent: the users who speak up are a minority of the users who were affected.</p>
+
+    <div class="visibility-ladder">
+      <div class="visibility-item">
+        <div class="visibility-label">Visible</div>
+        <h4>Users who file tickets</h4>
+        <p>They had a problem significant enough to act on, knew how to reach support, believed it was worth their time, and expected a useful response. This is a self-selected group with specific characteristics that do not represent your full user base.</p>
       </div>
-    </header>
-
-    <div class="article-body">
-
-      <p>There is a standard response to product quality problems that most software teams have experienced. Something goes wrong. Users complain. Tickets accumulate. The team investigates, identifies the issue, ships a fix, and closes the tickets. The process works. The problem is solved.</p>
-
-      <p>What this process does not reveal is the size of the iceberg beneath the waterline. For every user who filed a ticket, there are users who encountered the same problem and said nothing. They did not write in. They did not leave a review. They just stopped using the product.</p>
-
-      <p>Support tickets are evidence that something went wrong. They are not a complete picture of the damage. And by the time they appear, the damage has already happened.</p>
-
-      <h2>The Iceberg Below the Ticket Queue</h2>
-
-      <p>Research on customer complaints across different service contexts consistently finds that most users who have a bad experience do not report it. The exact ratio varies by product category, user demographics, and the ease of reporting — but the pattern is consistent: the users who speak up are a minority of the users who were affected.</p>
-
-      <div class="iceberg">
-        <div class="iceberg-row">
-          <div class="iceberg-label" style="color:var(--cyan)">Visible</div>
-          <div class="iceberg-content"><strong>Users who file tickets</strong> - They had a problem significant enough to act on, knew how to reach support, believed it was worth their time, and expected a useful response. This is a self-selected group with specific characteristics that do not represent your full user base.</div>
-        </div>
-        <div class="iceberg-row">
-          <div class="iceberg-label" style="color:var(--yellow)">Partially visible</div>
-          <div class="iceberg-content"><strong>Users who leave reviews</strong> - App store reviews capture some of the frustration that doesn't reach support, but skew toward extreme experiences. A user who was mildly but persistently frustrated rarely leaves a review. They just stop opening the app.</div>
-        </div>
-        <div class="iceberg-row">
-          <div class="iceberg-label" style="color:var(--amber)">Mostly hidden</div>
-          <div class="iceberg-content"><strong>Users who churned silently</strong> - They encountered a problem, decided it wasn't worth the effort to report, and moved on. Your metrics show a drop in retention or engagement. The cause is invisible unless you go looking for it.</div>
-        </div>
-        <div class="iceberg-row">
-          <div class="iceberg-label" style="color:var(--dim)">Invisible</div>
-          <div class="iceberg-content"><strong>Users who never converted</strong> - They encountered a friction point in onboarding or early use that caused them to abandon before becoming active users. They never showed up in your support queue because they were gone before they had a reason to write in.</div>
-        </div>
+      <div class="visibility-item">
+        <div class="visibility-label">Partially visible</div>
+        <h4>Users who leave reviews</h4>
+        <p>App store reviews capture some of the frustration that doesn't reach support, but skew toward extreme experiences. A user who was mildly but persistently frustrated rarely leaves a review. They just stop opening the app.</p>
       </div>
-
-      <p>The implication is that your support queue is a sample of your quality problems, not a census. And it is a biased sample — weighted toward problems that are severe enough to prompt action, from users who are engaged enough to bother. The quiet problems, affecting the less engaged users, are systematically underrepresented.</p>
-
-      <h2>Lagging vs. Leading Indicators of Quality</h2>
-
-      <p>In manufacturing and operations, the distinction between lagging and leading indicators is well understood. Lagging indicators tell you what has already happened. Leading indicators give you a signal before the outcome occurs, while there is still time to act.</p>
-
-      <p>Most software teams' quality feedback loops are built almost entirely on lagging indicators.</p>
-
-      <table class="signal-table">
-        <thead>
-          <tr>
-            <th>Signal</th>
-            <th>What it tells you</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Support tickets</td>
-            <td>Problems that were severe enough that users who engaged with support reported them</td>
-            <td><span class="tag lag">Lagging</span></td>
-          </tr>
-          <tr>
-            <td>App store ratings</td>
-            <td>Extreme experiences — very good or very bad — from users who felt strongly enough to review</td>
-            <td><span class="tag lag">Lagging</span></td>
-          </tr>
-          <tr>
-            <td>Crash reports</td>
-            <td>Technical failures that were caught by instrumentation</td>
-            <td><span class="tag lag">Lagging</span></td>
-          </tr>
-          <tr>
-            <td>Churn and retention metrics</td>
-            <td>That users left — not why</td>
-            <td><span class="tag lag">Lagging</span></td>
-          </tr>
-          <tr>
-            <td>Session length and engagement data</td>
-            <td>Behavioural patterns that may indicate friction or drop-off</td>
-            <td><span class="tag mixed">Mixed</span></td>
-          </tr>
-          <tr>
-            <td>Funnel drop-off analysis</td>
-            <td>Where users leave a flow — not why</td>
-            <td><span class="tag mixed">Mixed</span></td>
-          </tr>
-          <tr>
-            <td>Pre-launch human evaluation</td>
-            <td>What real users experience — before it affects your metrics</td>
-            <td><span class="tag lead">Leading</span></td>
-          </tr>
-          <tr>
-            <td>Structured usability testing</td>
-            <td>Where users struggle, hesitate, or fail — and why</td>
-            <td><span class="tag lead">Leading</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>The pattern is clear: the signals most teams rely on most heavily are the ones that tell them what already happened. The signals that could help them act before the damage occurs are the ones most teams underinvest in.</p>
-
-      <div class="pull-quote">
-        Support tickets tell you that something went wrong. <span>They don't tell you how many people left without saying anything.</span> That number is almost always larger.
+      <div class="visibility-item">
+        <div class="visibility-label">Mostly hidden</div>
+        <h4>Users who churned silently</h4>
+        <p>They encountered a problem, decided it wasn't worth the effort to report, and moved on. Your metrics show a drop in retention or engagement. The cause is invisible unless you go looking for it.</p>
       </div>
-
-      <h2>Why This Matters More Than It Used To</h2>
-
-      <p>The economics of this problem have shifted over the past decade in ways that make lagging-indicator-only quality strategies increasingly costly.</p>
-
-      <p>App store discoverability has become harder and more expensive. The cost of acquiring a new user — through paid channels, organic search, or word of mouth — has risen significantly in most categories. At the same time, the window for first impressions has compressed. Users who have a poor first experience are less likely to return, and more likely to leave a negative review that affects future acquisition.</p>
-
-      <p>The result is that the cost of a quality failure that reaches users has increased, while the cost of finding that failure before it reaches users has stayed relatively stable. The economic case for leading indicators — for investing in quality signals that arrive before users are affected — has strengthened considerably.</p>
-
-      <div class="callout amber">
-        <strong>The compounding problem:</strong> A negative app store review from a user who encountered a quality failure does two things. It reflects the damage that has already occurred. And it actively causes additional damage by influencing future users' decision to download. Lagging indicators don't just arrive late — they arrive and then keep costing you.
-      </div>
-
-      <h2>What Leading Quality Signals Actually Look Like</h2>
-
-      <p>Building leading indicators of quality into a development process doesn't require a fundamental restructuring of how a team works. It requires asking a different question at a specific point in the development cycle: not "does this work?" but "what do real users actually experience when they use this?"</p>
-
-      <p>The most useful leading quality signals share a few characteristics:</p>
-
-      <ul>
-        <li><strong>They involve real users</strong> who have no prior knowledge of the product and no investment in its success. The proximity problem — where internal teams and engaged beta users cannot experience the product as a stranger would — is the root cause of most quality failures that reach the support queue.</li>
-        <li><strong>They are structured enough to produce comparable signal</strong> across different users and sessions, so patterns are visible. A single user session is anecdote. Structured evaluation across a panel of users is evidence.</li>
-        <li><strong>They capture qualitative experience</strong>, not just behavioural data. Knowing that a user abandoned a flow tells you something. Knowing what they were thinking when they abandoned it tells you something actionable.</li>
-        <li><strong>They happen before launch</strong>, or before a significant release, when the cost of addressing findings is lowest. The same issue that takes an hour to fix before launch may take days to investigate, communicate, fix, test, and deploy after it appears in the support queue.</li>
-      </ul>
-
-      <h2>The Cost Comparison That Most Teams Don't Make</h2>
-
-      <p>Teams that do not invest in pre-launch evaluation often frame the decision as a cost question: evaluation costs time and money that could be spent on development. This framing is incomplete because it ignores the cost of the alternative.</p>
-
-      <p>The cost of finding a usability failure before launch is roughly the cost of the evaluation itself, plus the engineering time to address the finding.</p>
-
-      <p>The cost of the same failure reaching users includes: the engineering time to investigate and fix, the support load generated while the fix is in progress, the negative reviews that will accumulate and persist, the users who churned before any fix was possible, and the acquisition cost of replacing those users. In most product categories, the post-launch cost significantly exceeds the pre-launch evaluation cost for the same issue.</p>
-
-      <div class="callout green">
-        <strong>The framing that makes this concrete:</strong> Before your next release, ask your team to estimate the cost of handling 50 support tickets about the same issue — investigation time, engineering time, communication, re-release — and compare that number to the cost of an evaluation that might have surfaced the issue before it generated those tickets. The comparison is usually instructive.
-      </div>
-
-      <h2>Integrating Leading Signals Without Slowing Down</h2>
-
-      <p>The objection to pre-launch evaluation that comes up most often is timing: teams feel they do not have the space in their release cycle to run structured evaluation without delaying the release. This concern is real, but it reflects a specific way of thinking about evaluation as a sequential step rather than an ongoing input.</p>
-
-      <p>The most effective approaches to leading quality signals treat evaluation as something that happens continuously and proportionally, rather than as a gate that must be passed before shipping. A small evaluation of a new feature before it ships surfaces issues while they are still cheap to address. A focused evaluation of a specific user flow surfaces the friction that will otherwise generate tickets. Neither requires a full product pause.</p>
-
-      <p>The goal is not to replace the signals you already have. Crash reporting, analytics, and support queues remain useful. The goal is to add signals that arrive earlier — before users are affected, before tickets accumulate, before reviews are written — so that the quality picture is complete enough to act on while there is still time to act.</p>
-
-      <div class="article-cta">
-        <div>
-          <h3>Find what your tickets would have told you — before they arrive.</h3>
-          <p>A Pilot Evaluation puts real users through your most important flows before launch. The findings arrive while there is still time to act on them. Start for $300.</p>
-        </div>
-        <a href="index.html#contact">Talk to Us</a>
-      </div>
-
-    </div>
-
-    <div class="more-insights">
-      <div class="more-insights-label">More from Insights</div>
-      <div class="more-insights-grid">
-        <a href="article-habit-app-testing.html" class="more-insight-card">
-          <div class="more-insight-tag">Wellness · Habit Apps</div>
-          <div class="more-insight-title">Why Habit-Building Apps Fail in Ways Traditional QA Doesn't Catch</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-ai-testing-time-bombs.html" class="more-insight-card">
-          <div class="more-insight-tag">AI Development · Risk</div>
-          <div class="more-insight-title">Gradual Ways to Use Human Testing to Hedge Against AI Development Risk</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-indie-launch-risk.html" class="more-insight-card">
-          <div class="more-insight-tag">Indie Game Development</div>
-          <div class="more-insight-title">The Indie Studio Launch Risk Nobody Talks About</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
-        <a href="article-ai-personalisation-testing.html" class="more-insight-card">
-          <div class="more-insight-tag">AI · Personalisation</div>
-          <div class="more-insight-title">The Testing Problem That Comes With AI Personalisation at Scale</div>
-          <div class="more-insight-arrow">Read article →</div>
-        </a>
+      <div class="visibility-item">
+        <div class="visibility-label">Invisible</div>
+        <h4>Users who never converted</h4>
+        <p>They encountered a friction point in onboarding or early use that caused them to abandon before becoming active users. They never showed up in your support queue because they were gone before they had a reason to write in.</p>
       </div>
     </div>
 
-    <footer class="article-footer">
-      <p>© 2026 Hidden Insight Labs · Operated from Japan by システムレンズ評価</p>
-      <div class="footer-links">
+    <p>The implication is that your support queue is a sample of your quality problems, not a census. And it is a biased sample &mdash; weighted toward problems that are severe enough to prompt action, from users who are engaged enough to bother. The quiet problems, affecting the less engaged users, are systematically underrepresented.</p>
+
+    <h2>Lagging vs. Leading Indicators of Quality</h2>
+    <p>In manufacturing and operations, the distinction between lagging and leading indicators is well understood. Lagging indicators tell you what has already happened. Leading indicators give you a signal before the outcome occurs, while there is still time to act.</p>
+    <p>Most software teams' quality feedback loops are built almost entirely on lagging indicators.</p>
+
+    <table class="article-table">
+      <tr><th>Signal</th><th>What it tells you</th><th>Type</th></tr>
+      <tr><td data-label="Signal">Support tickets</td><td data-label="What it tells you">Problems severe enough that users who engaged with support reported them</td><td data-label="Type"><span class="tag-lagging">Lagging</span></td></tr>
+      <tr><td data-label="Signal">App store ratings</td><td data-label="What it tells you">Extreme experiences &mdash; very good or very bad &mdash; from users who felt strongly enough to review</td><td data-label="Type"><span class="tag-lagging">Lagging</span></td></tr>
+      <tr><td data-label="Signal">Crash reports</td><td data-label="What it tells you">Technical failures caught by instrumentation</td><td data-label="Type"><span class="tag-lagging">Lagging</span></td></tr>
+      <tr><td data-label="Signal">Churn and retention metrics</td><td data-label="What it tells you">That users left &mdash; not why</td><td data-label="Type"><span class="tag-lagging">Lagging</span></td></tr>
+      <tr><td data-label="Signal">Session length and engagement data</td><td data-label="What it tells you">Behavioural patterns that may indicate friction or drop-off</td><td data-label="Type"><span class="tag-mixed">Mixed</span></td></tr>
+      <tr><td data-label="Signal">Funnel drop-off analysis</td><td data-label="What it tells you">Where users leave a flow &mdash; not why</td><td data-label="Type"><span class="tag-mixed">Mixed</span></td></tr>
+      <tr><td data-label="Signal">Pre-launch human evaluation</td><td data-label="What it tells you">What real users experience &mdash; before it affects your metrics</td><td data-label="Type"><span class="tag-leading">Leading</span></td></tr>
+      <tr><td data-label="Signal">Structured usability testing</td><td data-label="What it tells you">Where users struggle, hesitate, or fail &mdash; and why</td><td data-label="Type"><span class="tag-leading">Leading</span></td></tr>
+    </table>
+
+    <p>The pattern is clear: the signals most teams rely on most heavily are the ones that tell them what already happened. The signals that could help them act before the damage occurs are the ones most teams underinvest in.</p>
+
+    <div class="pull-quote">Support tickets tell you that something went wrong. They don't tell you how many people left without saying anything. That number is almost always larger.</div>
+
+    <h2>Why This Matters More Than It Used To</h2>
+    <p>The economics of this problem have shifted over the past decade in ways that make lagging-indicator-only quality strategies increasingly costly.</p>
+    <p>App store discoverability has become harder and more expensive. The cost of acquiring a new user &mdash; through paid channels, organic search, or word of mouth &mdash; has risen significantly in most categories. At the same time, the window for first impressions has compressed. Users who have a poor first experience are less likely to return, and more likely to leave a negative review that affects future acquisition.</p>
+    <p>The result is that the cost of a quality failure that reaches users has increased, while the cost of finding that failure before it reaches users has stayed relatively stable. The economic case for leading indicators &mdash; for investing in quality signals that arrive before users are affected &mdash; has strengthened considerably.</p>
+    <p><strong>The compounding problem:</strong> a negative app store review from a user who encountered a quality failure does two things. It reflects the damage that has already occurred. And it actively causes additional damage by influencing future users' decision to download. Lagging indicators don't just arrive late &mdash; they arrive and then keep costing you.</p>
+
+    <h2>What Leading Quality Signals Actually Look Like</h2>
+    <p>Building leading indicators of quality into a development process doesn't require a fundamental restructuring of how a team works. It requires asking a different question at a specific point in the development cycle: not "does this work?" but "what do real users actually experience when they use this?"</p>
+    <p>The most useful leading quality signals share a few characteristics:</p>
+    <ul>
+      <li><strong>They involve real users</strong> who have no prior knowledge of the product and no investment in its success. The proximity problem &mdash; where internal teams and engaged beta users cannot experience the product as a stranger would &mdash; is the root cause of most quality failures that reach the support queue.</li>
+      <li><strong>They are structured enough to produce comparable signal</strong> across different users and sessions, so patterns are visible. A single user session is anecdote. Structured evaluation across a panel of users is evidence.</li>
+      <li><strong>They capture qualitative experience</strong>, not just behavioural data. Knowing that a user abandoned a flow tells you something. Knowing what they were thinking when they abandoned it tells you something actionable.</li>
+      <li><strong>They happen before launch</strong>, or before a significant release, when the cost of addressing findings is lowest. The same issue that takes an hour to fix before launch may take days to investigate, communicate, fix, test, and deploy after it appears in the support queue.</li>
+    </ul>
+
+    <h2>The Cost Comparison That Most Teams Don't Make</h2>
+    <p>Teams that do not invest in pre-launch evaluation often frame the decision as a cost question: evaluation costs time and money that could be spent on development. This framing is incomplete because it ignores the cost of the alternative.</p>
+    <p>The cost of finding a usability failure before launch is roughly the cost of the evaluation itself, plus the engineering time to address the finding.</p>
+    <p>The cost of the same failure reaching users includes: the engineering time to investigate and fix, the support load generated while the fix is in progress, the negative reviews that will accumulate and persist, the users who churned before any fix was possible, and the acquisition cost of replacing those users. In most product categories, the post-launch cost significantly exceeds the pre-launch evaluation cost for the same issue.</p>
+    <p><strong>A framing worth trying:</strong> before your next release, ask your team to estimate the cost of handling 50 support tickets about the same issue &mdash; investigation time, engineering time, communication, re-release &mdash; and compare that number to the cost of an evaluation that might have surfaced the issue before it generated those tickets. The comparison is usually instructive.</p>
+
+    <h2>Integrating Leading Signals Without Slowing Down</h2>
+    <p>The objection to pre-launch evaluation that comes up most often is timing: teams feel they do not have the space in their release cycle to run structured evaluation without delaying the release. This concern is real, but it reflects a specific way of thinking about evaluation as a sequential step rather than an ongoing input.</p>
+    <p>The most effective approaches to leading quality signals treat evaluation as something that happens continuously and proportionally, rather than as a gate that must be passed before shipping. A small evaluation of a new feature before it ships surfaces issues while they are still cheap to address. A focused evaluation of a specific user flow surfaces the friction that will otherwise generate tickets. Neither requires a full product pause.</p>
+    <p>The goal is not to replace the signals you already have. Crash reporting, analytics, and support queues remain useful. The goal is to add signals that arrive earlier &mdash; before users are affected, before tickets accumulate, before reviews are written &mdash; so that the quality picture is complete enough to act on while there is still time to act.</p>
+  </div>
+
+  <div class="article-cta">
+    <div class="article-cta-box">
+      <h3>Find what your tickets would have told you &mdash; before they arrive.</h3>
+      <p>A Level 1 New Client Evaluation puts real users through your most important flows before launch. The findings arrive while there is still time to act on them. Starts at $300.</p>
+      <a href="level-1.html" class="btn-primary">Get a Second Opinion</a>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <div class="related-label">More from Insights</div>
+    <div class="related-grid">
+      <a href="article-habit-app-testing.html" class="related-card">
+        <div class="related-tag">Wellness · Habit Apps</div>
+        <h4>Why Habit-Building Apps Fail in Ways Traditional QA Doesn't Catch</h4>
+      </a>
+      <a href="article-ai-testing-time-bombs.html" class="related-card">
+        <div class="related-tag">AI Development · Risk</div>
+        <h4>Gradual Ways to Use Human Testing to Hedge Against AI Development Risk</h4>
+      </a>
+      <a href="article-indie-launch-risk.html" class="related-card">
+        <div class="related-tag">Indie Game Development</div>
+        <h4>The Indie Studio Launch Risk Nobody Talks About</h4>
+      </a>
+      <a href="article-ai-personalisation-testing.html" class="related-card">
+        <div class="related-tag">AI · Personalisation</div>
+        <h4>The Testing Problem That Comes With AI Personalisation at Scale</h4>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Hidden InSight Labs &#183; Operated from Japan by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (System Lens Evaluation) &#183; All services delivered digitally</p>
+      <div class="footer-links-row">
         <a href="index.html">Home</a>
         <a href="index.html#insights">All Insights</a>
-        <a href="index.html#contact">Get in Touch</a>
+        <a href="hil-terms-of-service.html">Terms of Service</a>
+        <a href="hidden-insight-labs-privacy.html">Privacy Notice</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
+
 </body>
 </html>

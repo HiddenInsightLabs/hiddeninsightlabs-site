@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>Sample Report — Real-World Validation Report for Lumen — Hidden InSight Labs</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="description" content="A fictional but representative Real-World Validation Report, Level 1 scope: one critical onboarding flow in an AI-powered photo enhancement app, examined by an independent panel of five testers." />
+  <meta name="robots" content="noindex" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T280BWY17N');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:          #0b0d10;
+      --bg2:         #0f1216;
+      --surface:     #14181d;
+      --border:      rgba(200,210,220,0.10);
+      --border-hi:   rgba(200,210,220,0.18);
+      --accent:      #5b9ecf;
+      --accent-dim:  rgba(91,158,207,0.10);
+      --accent-line: rgba(91,158,207,0.30);
+      --ok:          #7fae8e;
+      --warn:        #c98a5a;
+      --crit:        #c96a6a;
+      --muted:       rgba(224,228,232,0.72);
+      --dim:         rgba(224,228,232,0.58);
+      --text:        #e3e6e9;
+      --white:       #f7f7f5;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-bottom: 88px; /* room for persistent CTA bar */
+    }
+
+    /* ── NAV (matches site) ── */
+    nav {
+      position: sticky; top: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11,13,16,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-mark {
+      width: 32px; height: 32px;
+      display: block; object-fit: contain;
+    }
+    .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+    .nav-back {
+      font-size: 0.82rem; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-returning {
+      font-size: 0.76rem; color: var(--dim); border: 1px solid var(--border-hi);
+      padding: 0.5rem 0.9rem; border-radius: 2px; text-decoration: none; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-returning:hover { color: var(--accent); border-color: var(--accent-line); }
+    @media (max-width: 700px) { .nav-returning { display: none; } }
+
+    /* ── PAGE HEADER ── */
+    .report-header {
+      padding: 4.5rem 3rem 3rem;
+      max-width: 900px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .report-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent-line); padding: 0.4rem 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .report-title {
+      font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.15; color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .report-subtitle {
+      font-size: 1.02rem; color: var(--muted); max-width: 680px;
+      line-height: 1.8; margin-bottom: 2.25rem;
+    }
+    .fictional-note {
+      font-family: var(--mono); font-size: 0.7rem; color: var(--dim);
+      letter-spacing: 0.04em; margin-bottom: 2rem; line-height: 1.7;
+      max-width: 680px;
+    }
+    .report-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      border: 1px solid var(--border-hi);
+    }
+    .report-stat-box { padding: 1.25rem 1.5rem; border-right: 1px solid var(--border); }
+    .report-stat-box:last-child { border-right: none; }
+    .stat-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 0.4rem;
+    }
+    .stat-val { font-size: 1.15rem; color: var(--white); font-weight: 600; }
+
+    /* ── SECTION SHARED ── */
+    .report-section { padding: 3.5rem 3rem; max-width: 900px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .section-eyebrow {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+    .report-section h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600;
+      color: var(--white); letter-spacing: -0.01em; margin-bottom: 1.25rem;
+    }
+    .report-section > p { font-size: 0.98rem; color: var(--muted); line-height: 1.85; max-width: 720px; margin-bottom: 1rem; }
+
+    /* ── METHODOLOGY GRID ── */
+    .method-grid-report {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border); margin-top: 2rem;
+    }
+    .method-box { background: var(--bg); padding: 1.5rem; }
+    .method-box h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .method-box p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── FINDINGS ── */
+    .findings-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1rem; }
+    .finding-item { background: var(--bg); padding: 2rem; }
+    .finding-top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+    .finding-num { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); }
+    .severity-tag {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid;
+    }
+    .sev-critical { color: var(--crit); border-color: rgba(201,106,106,0.4); background: rgba(201,106,106,0.08); }
+    .sev-high     { color: var(--warn); border-color: rgba(201,138,90,0.4); background: rgba(201,138,90,0.08); }
+    .sev-medium   { color: var(--accent); border-color: var(--accent-line); background: var(--accent-dim); }
+    .sev-low      { color: var(--dim); border-color: var(--border-hi); background: var(--surface); }
+    .finding-item h4 { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .finding-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.9rem; }
+    .finding-meta {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.78rem; color: var(--dim); margin-bottom: 0.9rem;
+    }
+    .finding-meta strong { color: var(--text); font-weight: 500; }
+    .finding-rec {
+      border-left: 2px solid var(--accent); padding-left: 1rem;
+      font-size: 0.85rem; color: var(--text); line-height: 1.7;
+    }
+    .finding-rec strong { color: var(--accent); font-weight: 600; }
+
+    /* ── VERDICT ── */
+    .verdict-box {
+      border: 1px solid var(--border-hi); padding: 2rem; margin-top: 1.5rem;
+      background: var(--surface);
+    }
+    .verdict-box h4 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
+    .verdict-box p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── NEXT LEVEL NOTE ── */
+    .upsell-note {
+      max-width: 720px; margin-top: 2rem; padding: 1.5rem 2rem;
+      border-left: 2px solid var(--accent); background: var(--bg2);
+    }
+    .upsell-note p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin: 0; }
+    .upsell-note a { color: var(--accent); text-decoration: none; }
+    .upsell-note a:hover { text-decoration: underline; }
+
+    /* ── END-OF-REPORT CTA ── */
+    .end-cta {
+      padding: 4.5rem 3rem; text-align: center; background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .end-cta-inner { max-width: 620px; margin: 0 auto; }
+    .end-cta h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 600; color: var(--white);
+      letter-spacing: -0.01em; margin-bottom: 1rem;
+    }
+    .end-cta p { font-size: 0.98rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .btn-primary {
+      display: inline-block; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.01em;
+      color: var(--bg); background: var(--accent);
+      padding: 0.95rem 2rem; text-decoration: none;
+      border: 1px solid var(--accent); transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+    .end-cta-note { font-family: var(--mono); font-size: 0.7rem; color: var(--dim); margin-top: 1rem; letter-spacing: 0.03em; }
+
+    /* ── FOOTER ── */
+    footer { padding: 2.5rem 3rem 6rem; }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--dim); }
+    .footer-links-row {
+      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 0.85rem;
+    }
+    .footer-links-row a {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--dim); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links-row a:hover { color: var(--accent); }
+
+    /* ── PERSISTENT BOTTOM CTA BAR ── */
+    .sticky-cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(15,18,22,0.96); backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border-hi);
+      padding: 1rem 3rem; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .sticky-cta-text { font-size: 0.85rem; color: var(--text); }
+    .sticky-cta-text strong { color: var(--white); }
+    .sticky-cta-price { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); margin-left: 0.75rem; }
+    .sticky-cta-btn {
+      flex-shrink: 0; font-size: 0.82rem; font-weight: 500;
+      color: var(--bg); background: var(--accent);
+      padding: 0.7rem 1.4rem; text-decoration: none;
+      border: 1px solid var(--accent); transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-cta-btn:hover { background: transparent; color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .report-header { padding: 3rem 1.5rem 2rem; }
+      .report-section { padding: 2.5rem 1.5rem; }
+      .end-cta { padding: 3rem 1.5rem; }
+      .report-stats { grid-template-columns: 1fr 1fr; }
+      .report-stat-box { border-bottom: 1px solid var(--border); }
+      .method-grid-report { grid-template-columns: 1fr; }
+      .sticky-cta-bar {
+        padding: 0.85rem 1.25rem; flex-direction: column; align-items: stretch; gap: 0.6rem;
+        text-align: center;
+      }
+      .sticky-cta-text { font-size: 0.78rem; }
+      .sticky-cta-btn { text-align: center; }
+      footer { padding: 2rem 1.5rem 6rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-mark-96.png" alt="Hidden InSight Labs" class="logo-mark" />
+      <div class="logo-text-wrap">
+        <span class="logo-text">Hidden InSight Labs</span>
+        <span class="logo-tag">Independent Evaluation</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <a href="mailto:contact@hiddeninsightlabs.com?subject=Returning%20client" class="nav-returning">Returning client</a>
+      <a href="index.html" class="nav-back">&#8592; Back to site</a>
+    </div>
+  </nav>
+
+  <!-- ── HEADER ── -->
+  <div class="report-header">
+    <div class="report-eyebrow">Level 1 Sample — Real-World Validation Report</div>
+    <h1 class="report-title">Lumen — Onboarding &amp; First-Edit Validation</h1>
+    <p class="report-subtitle">A first-look evaluation of Lumen's new-user onboarding and the first AI-powered photo enhancement, where its AI automatically adjusts lighting, color, and composition. Assessed by an independent panel encountering the product for the first time, under real-world conditions.</p>
+    <p class="fictional-note">Lumen is a fictional AI-powered photo enhancement app, used here to demonstrate the format, depth, and evidentiary standard of a Level 1 Real-World Validation Report. Findings, testers, and quotations below are illustrative and do not describe a real product or a real engagement.</p>
+    <div class="report-stats">
+      <div class="report-stat-box"><div class="stat-label">Panel</div><div class="stat-val">5 testers</div></div>
+      <div class="report-stat-box"><div class="stat-label">Duration</div><div class="stat-val">48 hours</div></div>
+      <div class="report-stat-box"><div class="stat-label">Findings</div><div class="stat-val">7 issues</div></div>
+      <div class="report-stat-box"><div class="stat-label">Scope</div><div class="stat-val">1 flow</div></div>
+    </div>
+  </div>
+
+  <!-- ── EXECUTIVE SUMMARY ── -->
+  <section class="report-section">
+    <div class="section-eyebrow">Executive Summary</div>
+    <h2>What we were asked to examine</h2>
+    <p>Lumen's team wanted an independent read on the first few minutes of the product experience: account creation, photo library access, and the first AI-enhanced photo. This is the moment that determines whether a new user trusts the app's AI enough to keep using it instead of reverting to manual edits.</p>
+    <p>Across five independent sessions, evaluators completed the flow without guidance from Lumen's team and without prior knowledge of how the enhancement algorithm was intended to work. We documented seven findings, two of which we rate as high severity because they directly affect whether a first-time user understands and trusts what the AI is doing to their photo.</p>
+  </section>
+
+  <!-- ── METHODOLOGY ── -->
+  <section class="report-section">
+    <div class="section-eyebrow">Methodology</div>
+    <h2>How this examination was conducted</h2>
+    <p>The panel is a small group of independent human testers — not Lumen employees, beta users, or anyone previously familiar with the product. Level 1 engagements can be run with or without SDK or codebase access; this one was assessed as a live product build, with no access to source or internal documentation.</p>
+    <div class="method-grid-report">
+      <div class="method-box">
+        <h4>Panel composition</h4>
+        <p>5 testers across iOS and Android, ages 22&ndash;54, in the US, UK, and the Philippines, all first-time Lumen users.</p>
+      </div>
+      <div class="method-box">
+        <h4>Conditions</h4>
+        <p>Real personal devices, real home and mobile network connections, no guidance or hints from Lumen's team during the session.</p>
+      </div>
+      <div class="method-box">
+        <h4>Scope</h4>
+        <p>Account creation through the first AI-enhanced photo and export. Later features and settings were out of scope for this level.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINDINGS ── -->
+  <section class="report-section">
+    <div class="section-eyebrow">Findings</div>
+    <h2>Documented observations</h2>
+    <p>Each finding below is corroborated by more than one tester where possible, and includes a specific recommendation rather than a general impression.</p>
+
+    <div class="findings-list">
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">01</span>
+          <span class="severity-tag sev-high">High</span>
+        </div>
+        <h4>The AI's first enhancement isn't explained</h4>
+        <p>Four of five testers had their first photo brightened, recolored, or recomposed in a way that didn't match what they expected, with no indication of what the AI had changed or why. Two testers described the result as feeling "random" and said they would hesitate to trust the app with a second photo without understanding the first result.</p>
+        <div class="finding-meta">Observed by <strong>4 of 5 testers</strong> &middot; Stage: <strong>First AI enhancement</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Surface a short, specific summary of what changed alongside the result — even "brightened shadows, warmed tone" measurably changes whether a first-time user trusts the feature enough to keep using it.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">02</span>
+          <span class="severity-tag sev-high">High</span>
+        </div>
+        <h4>Photo library permission request appears before its value is explained</h4>
+        <p>The full photo library permission prompt appears immediately on first launch, before any screen explains why Lumen needs access beyond a single photo. Three testers hesitated or declined on first attempt, then had to restart onboarding to reconnect it once they understood why it was needed.</p>
+        <div class="finding-meta">Observed by <strong>3 of 5 testers</strong> &middot; Stage: <strong>Account setup</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Move the value explanation ahead of the system permission dialog, not after it. A one-screen "why we ask" step ahead of the OS prompt is a well-established pattern for exactly this problem.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">03</span>
+          <span class="severity-tag sev-medium">Medium</span>
+        </div>
+        <h4>Before/after comparison slider resets without warning after saving</h4>
+        <p>Saving an edit snaps the comparison slider back to the "before" position instantly, which two testers found disorienting mid-session — they weren't sure if their edit had actually been saved or reverted.</p>
+        <div class="finding-meta">Observed by <strong>2 of 5 testers</strong> &middot; Stage: <strong>First edit session</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Hold the slider on the "after" position after saving, or show a brief confirmation state, so the save action doesn't read as a reset.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">04</span>
+          <span class="severity-tag sev-medium">Medium</span>
+        </div>
+        <h4>Processing progress indicator doesn't reflect actual remaining time</h4>
+        <p>The "Enhancing..." progress bar reached 90% within two seconds, then stalled there for another eight seconds before completing. One tester tapped away from the screen assuming the app had frozen.</p>
+        <div class="finding-meta">Observed by <strong>2 of 5 testers</strong> &middot; Stage: <strong>First AI enhancement</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Calibrate the progress curve against actual processing time, or replace it with an indeterminate spinner plus a short reassurance message ("finishing touches") during the final stretch.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">05</span>
+          <span class="severity-tag sev-medium">Medium</span>
+        </div>
+        <h4>Device-specific gesture conflict on a Motorola Moto G Power 5G (2024), Android 14</h4>
+        <p>On this device, pinch-to-zoom on the before/after comparison view conflicted with the OS's gesture-navigation back-swipe zone, causing two accidental exits from the app during the first session. This was not observed on the iOS devices or the higher-end Android device (Pixel 8) in the panel.</p>
+        <div class="finding-meta">Observed by <strong>1 of 5 testers</strong> &middot; Device: <strong>Motorola Moto G Power 5G (2024), Android 14</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Constrain the pinch-to-zoom hitbox away from the screen edge, and test specifically against Android devices with gesture navigation enabled, not just button navigation.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">06</span>
+          <span class="severity-tag sev-low">Low</span>
+        </div>
+        <h4>Exported photo resolution is lower than the original, with no upfront indication</h4>
+        <p>One tester exported their first edited photo and only noticed afterward, when trying to print it, that the export was compressed well below the original resolution. There was no indication at export time that a lower-resolution file was being produced.</p>
+        <div class="finding-meta">Observed by <strong>1 of 5 testers</strong> &middot; Stage: <strong>Export</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Show the export resolution before the user taps save, with a clear option to export at full resolution if that isn't already the default.</div>
+      </div>
+
+      <div class="finding-item">
+        <div class="finding-top">
+          <span class="finding-num">07</span>
+          <span class="severity-tag sev-low">Low</span>
+        </div>
+        <h4>No next-action prompt after the first successful export</h4>
+        <p>One tester who exported their first photo was shown a plain confirmation with nothing else to do or look forward to, which they described as an anticlimactic end to an otherwise positive first session.</p>
+        <div class="finding-meta">Observed by <strong>1 of 5 testers</strong> &middot; Stage: <strong>End of first session</strong></div>
+        <div class="finding-rec"><strong>Recommendation:</strong> Use this moment — it is a natural point to suggest a second photo, show a quick before/after they can share, or invite a second action rather than ending the session flat.</div>
+      </div>
+    </div>
+
+    <div class="verdict-box">
+      <h4>Overall verdict</h4>
+      <p>Lumen's enhancement quality itself is strong, and testers were impressed once they saw a finished result. The risk is concentrated in the first AI enhancement and the photo library permission step &mdash; both are early enough in the funnel that a new user's trust is still forming, which is why they are rated high severity despite being fixable with focused, contained changes.</p>
+    </div>
+
+    <div class="upsell-note">
+      <p>This Level 1 report covers a single flow. A Level 2 or Level 3 engagement would extend this same evidentiary standard across additional flows — such as return-user sessions, settings, and notification behavior — with a larger panel to catch issues a five-person sample won't surface. <a href="index.html#levels">See all engagement levels &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ── END OF REPORT CTA ── -->
+  <div class="end-cta">
+    <div class="end-cta-inner">
+      <h2>Ready to see this for your product?</h2>
+      <p>A Real-World Validation Report like this one, scoped to the flow you're most concerned about, starts at $300 for a first engagement. You'll know exactly what we found, why it matters, and what to fix first &mdash; within 48 hours.</p>
+      <a href="level-1.html" class="btn-primary">Commission a Real-World Validation Report</a>
+      <div class="end-cta-note">$300 &middot; New Client Evaluation &middot; available once per organization</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Hidden InSight Labs &#183; Operated by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (Japan) &#183; All services delivered digitally</p>
+      <div class="footer-links-row">
+        <a href="index.html">Home</a>
+        <a href="index.html#levels">All levels</a>
+        <a href="hil-terms-of-service.html">Terms of Service</a>
+        <a href="hil-refund-policy.html">Refund Policy</a>
+        <a href="hidden-insight-labs-privacy.html">Privacy Notice</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── PERSISTENT BOTTOM CTA BAR ── -->
+  <div class="sticky-cta-bar">
+    <div class="sticky-cta-text">Seen enough? Commission a Real-World Validation Report for your product.<span class="sticky-cta-price">$300 for new clients</span></div>
+    <a href="level-1.html" class="sticky-cta-btn">Get started &rarr;</a>
+  </div>
+
+</body>
+</html>
