@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Free 15-Minute Testing Strategy Second Opinion — Hidden Insight Labs</title>
+  <meta name="description" content="Tell us what you're building and how you're testing it. Get a free 15-minute independent perspective on gaps, overlooked real-world conditions, and what's worth validating before launch." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://hiddeninsightlabs.com/15" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hiddeninsightlabs.com/15" />
+  <meta property="og:title" content="Free 15-Minute Second Opinion on Your Testing Strategy — Hidden Insight Labs" />
+  <meta property="og:description" content="An independent perspective on potential gaps, overlooked real-world conditions, and device/user coverage — before you launch." />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PB8W83S8');</script>
+  <!-- End Google Tag Manager -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T280BWY17N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T280BWY17N');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #080c10;
+      --bg2:       #0c1218;
+      --bg3:       #101820;
+      --surface:   #131d28;
+      --border:    rgba(100,180,255,0.1);
+      --border2:   rgba(100,180,255,0.06);
+      --text:      #d8e8f4;
+      --muted:     rgba(216,232,244,0.72);
+      --dim:       rgba(216,232,244,0.52);
+      --cyan:      #38c8f0;
+      --cyan-dim:  rgba(56,200,240,0.12);
+      --cyan-glow: rgba(56,200,240,0.25);
+      --green:     #3df0a0;
+      --white:     #ffffff;
+      --display: 'Syne', sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+      --body:    'Instrument Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    nav {
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem 2rem; border-bottom: 1px solid var(--border2);
+      position: relative; z-index: 5;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo-mark {
+      width: 26px; height: 26px; border: 1px solid var(--border);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      background: var(--cyan-dim);
+    }
+    .nav-logo-text { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: -0.01em; }
+
+    /* ── HERO ── */
+    .hero { position: relative; padding: 0 2rem; overflow: hidden; }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(56,200,240,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,200,240,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-orb {
+      position: absolute; top: -15%; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 900px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,200,240,0.07) 0%, rgba(61,240,160,0.02) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2; max-width: 700px; margin: 0 auto;
+      padding: 6vh 0 4rem; text-align: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--cyan); border: 1px solid var(--border); padding: 0.35rem 0.85rem;
+      border-radius: 100px; margin-bottom: 2rem; background: var(--cyan-dim);
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    .hero-headline {
+      font-family: var(--display); font-size: clamp(1.9rem, 5.5vw, 3.4rem);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; color: var(--white);
+      margin-bottom: 1.75rem;
+    }
+    .hero-headline .hl { color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow), 0 0 60px rgba(56,200,240,0.1); }
+    .hero-body {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--muted);
+      max-width: 56ch; margin: 0 auto 2rem;
+    }
+    .scope-note {
+      font-size: 0.85rem; color: var(--dim); max-width: 52ch; margin: 0 auto 2.5rem;
+      line-height: 1.75; border-left: 2px solid var(--border); padding-left: 1rem; text-align: left;
+    }
+    .hero-actions { display: flex; justify-content: center; }
+    .btn-primary {
+      font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; color: var(--bg); background: var(--cyan);
+      padding: 1rem 2.25rem; border-radius: 3px; display: inline-block;
+      box-shadow: 0 0 20px var(--cyan-glow); transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { box-shadow: 0 0 36px var(--cyan-glow); transform: translateY(-2px); }
+    .btn-note { font-family: var(--mono); font-size: 0.65rem; color: var(--dim); margin-top: 1rem; letter-spacing: 0.04em; }
+
+    /* ── SCOPE SECTION ── */
+    .scope-section { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 5rem; position: relative; z-index: 2; }
+    .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border2); border: 1px solid var(--border2); }
+    .scope-box { background: var(--bg2); padding: 2rem; }
+    .scope-box h3 {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .scope-box.yes h3 { color: var(--cyan); }
+    .scope-box.no h3 { color: var(--dim); }
+    .scope-box ul { list-style: none; }
+    .scope-box li { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.85rem; padding-left: 1.25rem; position: relative; }
+    .scope-box.yes li::before { content: '+'; position: absolute; left: 0; color: var(--cyan); font-family: var(--mono); }
+    .scope-box.no li::before { content: '−'; position: absolute; left: 0; color: var(--dim); font-family: var(--mono); }
+
+    /* ── WHO ── */
+    .who-section { max-width: 700px; margin: 0 auto; padding: 0 2rem 5rem; text-align: center; position: relative; z-index: 2; }
+    .who-section h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .who-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
+
+    footer { padding: 2.5rem 2rem 3rem; border-top: 1px solid var(--border2); text-align: center; }
+    .footer-bottom p { font-size: 0.78rem; color: var(--dim); }
+    .footer-links-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.85rem; }
+    .footer-links-row a {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links-row a:hover { color: var(--cyan); }
+
+    @media (max-width: 700px) {
+      .scope-grid { grid-template-columns: 1fr; }
+      .hero-content { padding: 4vh 0 3rem; }
+      .scope-section { padding: 2.5rem 1.5rem 3.5rem; }
+      .who-section { padding: 0 1.5rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8W83S8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <nav>
+    <a href="https://hiddeninsightlabs.com/" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#38c8f0" stroke-width="1.5" width="14" height="14">
+          <circle cx="7" cy="7" r="2.5"></circle>
+          <path d="M7 1v2M7 11v2M1 7h2M11 7h2M3 3l1.4 1.4M9.6 9.6L11 11M3 11l1.4-1.4M9.6 4.4L11 3"></path>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Hidden Insight Labs</span>
+    </a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Free · 15-Minute Session</div>
+      <h1 class="hero-headline">Get a Free 15-Minute <span class="hl">Second Opinion</span> on Your Testing Strategy</h1>
+      <p class="hero-body">Tell us what you're building and how you're currently testing it. We'll give you an independent perspective on potential gaps, overlooked real-world conditions, device and user coverage, or areas worth validating before launch.</p>
+      <p class="scope-note">This is a conversation about your testing and validation <strong style="color:var(--text);">strategy</strong> — not a free evaluation of your product itself. If there's a fit, we'll talk about what a paid engagement could look like.</p>
+      <div class="hero-actions">
+        <a href="mailto:contact@hiddeninsightlabs.com?subject=Free%2015-Minute%20Strategy%20Session&body=What%20we're%20building%3A%0A%0AHow%20we're%20currently%20testing%20it%3A%0A%0ABiggest%20concern%20heading%20into%20launch%3A%0A%0ATimezone%20%2F%20times%20that%20work%20for%20a%20call%3A%0A" class="btn-primary">Request Your Free 15 Minutes</a>
+      </div>
+      <p class="btn-note">Opens an email to contact@hiddeninsightlabs.com — we'll reply to schedule.</p>
+    </div>
+  </header>
+
+  <div class="scope-section">
+    <div class="scope-grid">
+      <div class="scope-box yes">
+        <h3>What we'll cover</h3>
+        <ul>
+          <li>Gaps in your current test coverage</li>
+          <li>Real-world conditions you may be missing (devices, networks, regions)</li>
+          <li>Where AI behavior needs independent scrutiny, if relevant</li>
+          <li>What's worth validating before you ship, and roughly how</li>
+        </ul>
+      </div>
+      <div class="scope-box no">
+        <h3>What this isn't</h3>
+        <ul>
+          <li>A free test of your actual product</li>
+          <li>A written report or findings document</li>
+          <li>Technical implementation or fixes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="who-section">
+    <h2>Who this is for</h2>
+    <p>Founders and product leads a few weeks out from a launch, teams who suspect their current testing has blind spots, or anyone who wants an outside read on their strategy before committing budget to it.</p>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hidden Insight Labs. All rights reserved.</p>
+      <p style="font-size:0.68rem;margin-top:0.4rem;">Operated from Japan by &#12471;&#12473;&#12486;&#12512;&#12524;&#12531;&#12474;&#35413;&#20215; (System Lens Evaluation) &middot; All services delivered digitally.</p>
+      <div class="footer-links-row">
+        <a href="https://hiddeninsightlabs.com/">Home</a>
+        <a href="https://hiddeninsightlabs.com/Pilot_Evaluation___Terms_of_Service___Hidden_Insight_Labs.html">Terms of Service</a>
+        <a href="https://hiddeninsightlabs.com/hidden-insight-labs-privacy.html">Privacy Notice</a>
+        <a href="mailto:contact@hiddeninsightlabs.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
